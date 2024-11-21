@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { useRouter } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 import { useConfig } from 'nextra-theme-docs'
 
 const themeConfig = {
@@ -10,8 +10,10 @@ const themeConfig = {
   docsRepositoryBase:
     'https://github.com/nilveryboring/makeform.github.io/blob/main',
   useNextSeoProps() {
+    const pathname = usePathname()
     return {
-      titleTemplate: '%s – Makeform',
+      titleTemplate: '%s – Makeform Help Center',
+      canonical: `https://makeform.ai/help${pathname}`,
     }
   },
   logo: () => {
@@ -32,16 +34,33 @@ const themeConfig = {
   },
   head: () => {
     const { frontMatter, title } = useConfig()
-    const ogTitle = title ? `${title} – Makeform` : 'Makeform - Form Builder'
-    const ogDescription = frontMatter.description || 'Build forms with AI'
+    const pathname = usePathname()
+    const ogTitle = title
+      ? `${title} – Makeform Help Center`
+      : 'Makeform Help Center'
+    const ogDescription =
+      frontMatter.description ||
+      'Official documentation and guides for Makeform - The AI-powered form builder'
+    const ogImage =
+      frontMatter.image || 'https://makeform.ai/opengraph-image.png'
 
     return (
       <>
         <meta name="description" content={ogDescription} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@makeformAI" />
+        <meta name="twitter:title" content={ogTitle} />
+        <meta name="twitter:description" content={ogDescription} />
+        <meta name="twitter:image" content={ogImage} />
+        <meta
+          property="og:url"
+          content={`https://makeform.ai/help${pathname}`}
+        />
+        <meta property="og:type" content="website" />
         <meta property="og:title" content={ogTitle} />
         <meta property="og:description" content={ogDescription} />
+        <meta property="og:image" content={ogImage} />
+        <link rel="canonical" href={`https://makeform.ai/help${pathname}`} />
       </>
     )
   },
