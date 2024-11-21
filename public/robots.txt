@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://www.makeform.ai/help
+
+# Sitemaps
+Sitemap: https://www.makeform.ai/help/sitemap.xml
