@@ -1,23 +1,39 @@
-# Nextra Docs Template 
+# Makeform Help Center
 
-This is a template for creating documentation with [Nextra](https://nextra.site).
+Welcome to the official help center repository for [Makeform.ai](https://makeform.ai) - Your AI-powered form builder platform.
 
-[**Live Demo →**](https://nextra-docs-template.vercel.app)
+## Quick Access
 
-[![](.github/screenshot.png)](https://nextra-docs-template.vercel.app)
+Browse our documentation to learn how to:
+- Build AI-powered forms
+- Customize form layouts and themes
+- Integrate with your existing workflows
+- Analyze form responses with AI insights
 
-## Quick Start
+[**Explore Documentation →**](https://makeform.ai/help)
 
-Click the button to clone this repository and deploy it on Vercel:
+## Contributing
 
-[![](https://vercel.com/button)](https://vercel.com/new/clone?s=https%3A%2F%2Fgithub.com%2Fshuding%2Fnextra-docs-template&showOptionalTeamCreation=false)
+We welcome contributions to our documentation! If you'd like to improve our docs:
+
+1. Fork this repository
+2. Create your feature branch (`git checkout -b improve-docs`)
+3. Commit your changes (`git commit -am 'Add some documentation'`)
+4. Push to the branch (`git push origin improve-docs`)
+5. Create a new Pull Request
 
 ## Local Development
 
-First, run `pnpm i` to install the dependencies.
+To run this documentation site locally:
 
-Then, run `pnpm dev` to start the development server and visit localhost:3000.
+1. Clone the repository
+2. Install dependencies:
 
-## License
-
-This project is licensed under the MIT License.
+```bash
+pnpm install
+```
+3. Start the development server:
+```bash
+pnpm dev
+```
+4. Visit `localhost:3000` in your browser
