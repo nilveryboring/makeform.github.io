@@ -25,7 +25,7 @@ const themeConfig = {
           height={32}
         />
         <span className="ml-2 font-extrabold hidden md:inline select-none">
-          Makeform AI Help Center
+          Help Center
         </span>
       </>
     )
