@@ -1,0 +1,190 @@
+import { Callout, Tabs, Tab } from 'nextra-theme-docs'
+import Link from 'next/link'
+import React, { useEffect } from 'react'
+
+# Handle Form Events
+
+Learn how to handle events from your embedded Makeform forms. These events enable you to create interactive experiences, process form data, and integrate with your application.
+
+## Available Events
+
+Currently, Makeform supports the following events:
+
+| Event Name | Description | Payload |
+|------------|-------------|---------|
+| `MakeForm.SubmitSuccess` | Triggered when a form is successfully submitted | `{ [fieldName: string]: value }` |
+
+## Event Handling
+
+### Submit Success Event
+
+The `MakeForm.SubmitSuccess` event is triggered when a form submission is successfully completed. The event payload contains the form responses as key-value pairs, where keys are your form field names.
+
+**When is it triggered?**
+- After all form validations pass
+- When the submission is successfully processed
+- Before any success message or redirect
+
+**Common use cases:**
+- Send form data to your backend (you can also do it via webhooks)
+- Trigger notifications or webhooks
+- Update UI state or redirect users
+- Integration with analytics tools
+
+### Implementation Examples
+
+<Tabs items={['TypeScript', 'JavaScript', 'React/Next.js', 'Vue']}>
+  <Tab>
+    ```typescript filename="events.ts"
+    interface SubmissionPayload {
+      [key: string]: string | number | boolean | null;  // key is form field name, value is the response
+    }
+
+    window.addEventListener('message', (e: MessageEvent) => {
+      try {
+        const data = JSON.parse(e.data);
+        if (data.type === 'MakeForm.SubmitSuccess') {
+          const formData = data.payload as SubmissionPayload;
+          // formData example: { "Name": "John Doe", "Email": "john@example.com" }
+          console.log('Form submitted successfully:', formData);
+        }
+      } catch (error) {
+        console.error('Error parsing event message:', error);
+      }
+    });
+    ```
+  </Tab>
+  <Tab>
+    ```javascript filename="events.js"
+    window.addEventListener('message', (e) => {
+      try {
+        const data = JSON.parse(e.data);
+        if (data.type === 'MakeForm.SubmitSuccess') {
+          const formData = data.payload;
+          // formData example: { "Name": "John Doe", "Email": "john@example.com" }
+          console.log('Form submitted successfully:', formData);
+        }
+      } catch (error) {
+        console.error('Error parsing event message:', error);
+      }
+    });
+    ```
+  </Tab>
+  <Tab>
+    ```tsx filename="EmbeddedForm.tsx"
+    export default function EmbeddedForm() {
+      const FORM_ID = 'YOUR_FORM_ID'
+      const FORM_URL = `https://makeform.ai/e/${FORM_ID}`
+
+      useEffect(() => {
+        const handleMessage = (event) => {
+          try {
+            const data = typeof event.data === 'string'
+              ? JSON.parse(event.data)
+              : event.data;
+
+            if (data.type === 'MakeForm.SubmitSuccess') {
+              // formData example: { "Name": "John Doe", "Email": "john@example.com" }
+              const formData = data.payload;
+              console.log('Form submitted successfully:', formData);
+            }
+          } catch (error) {
+            console.error('Error parsing message:', error);
+          }
+        };
+
+        window.addEventListener('message', handleMessage);
+        return () => window.removeEventListener('message', handleMessage);
+      }, []);
+
+      return (
+        <iframe
+          src={FORM_URL}
+          className="w-full h-full"
+          style={{
+            border: 'none',
+            margin: 0,
+            padding: 0,
+            overflow: 'hidden',
+          }}
+        />
+      );
+    }
+    ```
+  </Tab>
+  <Tab>
+    ```vue filename="EmbeddedForm.vue"
+    <template>
+      <iframe
+        :src="formUrl"
+        class="w-full h-full"
+        :style="{
+          border: 'none',
+          margin: 0,
+          padding: 0,
+          overflow: 'hidden'
+        }"
+      />
+    </template>
+
+    <script setup>
+    import { onMounted, onUnmounted } from 'vue'
+
+    const FORM_ID = 'YOUR_FORM_ID'
+    const formUrl = `https://makeform.ai/e/${FORM_ID}`
+
+    const handleMessage = (event) => {
+      try {
+        const data = typeof event.data === 'string'
+          ? JSON.parse(event.data)
+          : event.data
+
+        if (data.type === 'MakeForm.SubmitSuccess') {
+          // formData example: { "Name": "John Doe", "Email": "john@example.com" }
+          const formData = data.payload
+          console.log('Form submitted successfully:', formData)
+        }
+      } catch (error) {
+        console.error('Error parsing message:', error)
+      }
+    }
+
+    onMounted(() => {
+      window.addEventListener('message', handleMessage)
+    })
+
+    onUnmounted(() => {
+      window.removeEventListener('message', handleMessage)
+    })
+    </script>
+    ```
+  </Tab>
+</Tabs>
+
+## Best Practices
+
+1. **Always Clean Up Event Listeners**
+   - Remove event listeners when components unmount
+   - Avoid memory leaks in single-page applications
+
+2. **Error Handling**
+   - Wrap event handling in try-catch blocks
+   - Validate event data before processing
+   - Log errors for debugging
+
+3. **Security Considerations**
+   - Validate the event origin
+   - Sanitize form data before using it
+   - Don't store sensitive information in client-side code
+
+## Coming Soon
+
+We're working on additional events to give you more control over your forms:
+- Form Load Event
+- Page Navigation Events
+- Validation Events
+- And more!
+
+<Callout type="info">
+  Stay tuned for updates! We'll be adding more events based on developer feedback and common use cases.
+</Callout>
