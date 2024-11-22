@@ -2,6 +2,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { useConfig } from 'nextra-theme-docs'
+import { useRouter } from 'next/router'
 
 const themeConfig = {
   project: {
@@ -46,6 +47,7 @@ const themeConfig = {
 
     return (
       <>
+        <title>{ogTitle}</title>
         <meta name="description" content={ogDescription} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@makeformAI" />
