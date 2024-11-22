@@ -1,13 +1,12 @@
-const withNextra = require('nextra')({
+/** @type {import('next').NextConfig} */
+import nextra from 'nextra'
+ 
+const withNextra = nextra({
   theme: 'nextra-theme-docs',
   themeConfig: './theme.config.tsx',
-  shiki: {
-    theme: 'github-dark', // Or another theme you prefer
-    langs: ['javascript', 'typescript', 'react', 'nextjs', 'vue'] // Add Vue explicitly
-  }
 })
 
-module.exports = withNextra({
+export default withNextra({
   basePath: '/help',
   images: {
     remotePatterns: [
