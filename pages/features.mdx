@@ -1,4 +1,5 @@
 import { Callout } from 'nextra/components'
+import Link from 'next/link'
 
 # Features
 
@@ -11,31 +12,23 @@ WriteForm.ai provides powerful form-building capabilities with an intuitive inte
     <tbody>
       <tr>
         <td className="w-1/2 p-6 rounded-lg align-top">
-          <h3 className="text-lg font-semibold mb-4">📥 Input Blocks</h3>
+          <h3 className="text-lg font-semibold mb-4"> Input Blocks</h3>
           <ul className="list-none space-y-2">
-            <li className="underline">🏆 <strong>Ranking question</strong></li>
-            <li className="underline">📊 <strong>Matrix question</strong></li>
-            <li className="underline">⏬ <strong>Dropdown</strong></li>
-            <li className="underline">📌 <strong>Multi-select</strong></li>
-            <li className="underline">☑️ <strong>Multiple choice</strong></li>
-            <li className="underline">#️⃣ <strong>Number</strong></li>
-            <li className="underline">📞 <strong>Phone number</strong></li>
-            <li className="underline">✉️ <strong>Email</strong></li>
-            <li className="underline">📂 <strong>File uploads</strong></li>
-            <li className="underline">💳 <strong>Payments</strong></li>
-            <li className="underline">✍️ <strong>Electronic signatures</strong></li>
+            <li className="underline"> <Link href="./features/short_text_input"><strong>Short Text Input</strong></Link></li>
+            <li className="underline"> <Link href="./features/long_text_input"><strong>Long Text Input</strong></Link></li>
+            <li className="underline"> <Link href="./features/opinion_scale"><strong>Opinion Scale</strong></Link></li>
+            <li className="underline"> <Link href="./features/checkboxes"><strong>Checkboxes</strong></Link></li>
+            <li className="underline"> <Link href="./features/multi_select"><strong>Multi Select</strong></Link></li>
+            <li className="underline"> <Link href="./features/multiple_choice"><strong>Multiple Choice</strong></Link></li>
+            <li className="underline"> <Link href="./features/rating"><strong>Rating</strong></Link></li>
           </ul>
         </td>
         <td className="w-1/2 p-6 rounded-lg align-top">
-          <h3 className="text-lg font-semibold mb-4">🔀 Advanced Blocks</h3>
+          <h3 className="text-lg font-semibold mb-4"> Layout Blocks</h3>
           <ul className="list-none space-y-2">
-            <li className="underline">🔀 <strong>Conditional logic</strong></li>
-            <li className="underline">🛑 <strong>Hidden fields</strong></li>
-            <li className="underline">🧮 <strong>Calculated fields</strong></li>
-            <li className="underline">📩 <strong>Answer piping</strong></li>
-            <li className="underline">🌍 <strong>Respondent’s country</strong></li>
-            <li className="underline">🎥 <strong>Embed anything</strong></li>
-            <li className="underline">🛡️ <strong>reCAPTCHA</strong></li>
+            <li className="underline"> <Link href="./features/text"><strong>Text</strong></Link></li>
+            <li className="underline"> <Link href="./features/headings"><strong>Headings</strong></Link></li>
+            
           </ul>
         </td>
       </tr>
