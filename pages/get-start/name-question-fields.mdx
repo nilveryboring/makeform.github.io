@@ -1,0 +1,56 @@
+import Link from 'next/link'
+
+# How to name question fields
+
+When you include a question in your form, the title of each question will appear in the Summary and Submission tabs of your published form. Utilize these question titles to review and analyze the responses in your form.
+
+---
+
+---
+
+In the example below, we included "Your Name" and "Your Age" as the question titles in a form.
+After the first response is received, any provided answers will be displayed in the <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Summary</span> tab
+under each corresponding question title.
+
+<div className="shadow-2xl mt-12">
+  ![Summary Tab Example](/images/question_fields1.png)
+</div>
+
+<p className="text-center text-xl mt-8 text-slate-400">Summary tab</p>
+
+
+In the <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded"> Submissions </span> tab, 
+you can view each respondent’s answers in a table format. Each question title will have its own column.
+
+<div className="shadow-2xl mt-12">
+  ![Submissions Tab Example](/images/question_fields2.png)
+</div>
+
+<p className="text-center text-xl mt-8 text-slate-400">Submissions tab</p>
+
+## Create question titles
+You can tell AI the name of question titles you want to create.  
+Question titles are **not** automatically created in your forms when you manually add question titles.
+
+To manually add question titles:
+ - Insert a question
+ - Enter the title in <span className="font-bold bg-gray-100 px-2 py-1 rounded">Label</span> section
+
+<div className="shadow-2xl mt-8">
+  ![Question title Example1](/images/question_fields3.png)
+</div>
+<p className="text-center text-xl mt-8 text-slate-400">Figure 1</p>
+
+
+<div className="shadow-2xl mt-12">
+  ![Question title Example2](/images/question_fields4.png)
+</div>
+<p className="text-center text-xl mt-8 text-slate-400">Figure 2</p>
+
+
+
+## Rename question titles
+When you want to change your question titles, follow the <span className="font-bold bg-gray-100 px-2 py-1 rounded">Figure 2</span> above.
+
+## Rename forms
+Learn more about how to <Link href="../get-start" className="underline">rename your form here</Link>.

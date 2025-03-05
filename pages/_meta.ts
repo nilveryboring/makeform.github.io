@@ -1,4 +1,6 @@
 export default {
-  "index": "Introduction",
-  "developer": "Developer"
+  index: 'Help Center',
+  'get-start': 'Get Started',
+  features: 'Features',
+  developer: 'Developer',
 }
