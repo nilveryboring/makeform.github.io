@@ -12,4 +12,5 @@ export default {
   'remove-makeform-branding': 'Remove Makeform branding',
   'email-notifications': 'Email notifications',
   'share-setting': 'Share setting',
+  'summary-detail': 'Summary details',
 }
