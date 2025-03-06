@@ -1,9 +1,9 @@
 export default {
   index: 'Help Center',
-  'get-start': 'Get Started',
+  guides: 'Get Started',
   features: 'Features',
+  tutorials: 'Tutorials',
   integrations: 'Integrations',
-  guides: 'Guides',
   developer: 'Developer',
   'makeform-for-startups': {
     title: "Makeform's Partner Program",
