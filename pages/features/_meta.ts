@@ -8,4 +8,8 @@ export default {
   rating: 'Rating',
   text: 'Text',
   headings: 'Headings',
+  'hidden-fields': 'Hidden Fields',
+  'remove-makeform-branding': 'Remove Makeform branding',
+  'email-notifications': 'Email notifications',
+  'share-setting': 'Share setting',
 }
