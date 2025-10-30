@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { useConfig } from 'nextra-theme-docs'
 import { useRouter } from 'next/router'
+import IconLogo from './public/icon.svg'
 
 const themeConfig = {
   project: {
@@ -21,7 +22,7 @@ const themeConfig = {
     return (
       <>
         <Image
-          src="/help/icon.svg"
+          src={IconLogo}
           alt="Makeform Logo"
           className="inline-block h-8 w-8 hover:rotate-[720deg] transition-all duration-500 ease-in-out"
           width={32}
