@@ -21,7 +21,7 @@ const themeConfig = {
     return (
       <>
         <Image
-          src="https://makeform.ai/icon.png"
+          src="/help/icon.svg"
           alt="Makeform Logo"
           className="inline-block h-8 w-8 hover:rotate-[720deg] transition-all duration-500 ease-in-out"
           width={32}
