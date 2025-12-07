@@ -1,5 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
-<url><loc>https://www.makeform.ai/help</loc><lastmod>2024-11-21T07:14:29.515Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://www.makeform.ai/help/developer/embed</loc><lastmod>2024-11-21T07:14:29.515Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.makeform.ai/help</loc><lastmod>2025-12-07T07:35:56.336Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.makeform.ai/help/developer/embedded/form-event</loc><lastmod>2025-12-07T07:35:56.339Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.makeform.ai/help/features</loc><lastmod>2025-12-07T07:35:56.339Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.makeform.ai/help/features/checkboxes</loc><lastmod>2025-12-07T07:35:56.339Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.makeform.ai/help/features/email-notifications</loc><lastmod>2025-12-07T07:35:56.339Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.makeform.ai/help/features/headings</loc><lastmod>2025-12-07T07:35:56.339Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.makeform.ai/help/features/hidden-fields</loc><lastmod>2025-12-07T07:35:56.339Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.makeform.ai/help/features/long-text-input</loc><lastmod>2025-12-07T07:35:56.339Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.makeform.ai/help/features/multi-select</loc><lastmod>2025-12-07T07:35:56.339Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.makeform.ai/help/features/multiple-choice</loc><lastmod>2025-12-07T07:35:56.339Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.makeform.ai/help/features/opinion-scale</loc><lastmod>2025-12-07T07:35:56.339Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.makeform.ai/help/features/rating</loc><lastmod>2025-12-07T07:35:56.339Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.makeform.ai/help/features/remove-makeform-branding</loc><lastmod>2025-12-07T07:35:56.339Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.makeform.ai/help/features/share-setting</loc><lastmod>2025-12-07T07:35:56.339Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.makeform.ai/help/features/short-text-input</loc><lastmod>2025-12-07T07:35:56.339Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.makeform.ai/help/features/summary-detail</loc><lastmod>2025-12-07T07:35:56.339Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.makeform.ai/help/features/text</loc><lastmod>2025-12-07T07:35:56.339Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.makeform.ai/help/guides</loc><lastmod>2025-12-07T07:35:56.339Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.makeform.ai/help/guides/create-a-multi-page-form</loc><lastmod>2025-12-07T07:35:56.339Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.makeform.ai/help/guides/create-form</loc><lastmod>2025-12-07T07:35:56.339Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.makeform.ai/help/guides/customize-form</loc><lastmod>2025-12-07T07:35:56.339Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.makeform.ai/help/guides/form-templates</loc><lastmod>2025-12-07T07:35:56.339Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.makeform.ai/help/guides/name-question-fields</loc><lastmod>2025-12-07T07:35:56.339Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.makeform.ai/help/guides/publish</loc><lastmod>2025-12-07T07:35:56.339Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.makeform.ai/help/integrations</loc><lastmod>2025-12-07T07:35:56.339Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.makeform.ai/help/integrations/slack-integration</loc><lastmod>2025-12-07T07:35:56.339Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.makeform.ai/help/makeform-for-bootstrappers</loc><lastmod>2025-12-07T07:35:56.339Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.makeform.ai/help/makeform-for-startups</loc><lastmod>2025-12-07T07:35:56.339Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.makeform.ai/help/tutorials</loc><lastmod>2025-12-07T07:35:56.339Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.makeform.ai/help/tutorials/common-tutorials</loc><lastmod>2025-12-07T07:35:56.339Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.makeform.ai/help/tutorials/common-tutorials/how-to-create-a-free-personality-quiz</loc><lastmod>2025-12-07T07:35:56.339Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.makeform.ai/help/tutorials/common-tutorials/how-to-create-a-free-quiz</loc><lastmod>2025-12-07T07:35:56.339Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 </urlset>
