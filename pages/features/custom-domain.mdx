@@ -1,0 +1,126 @@
+import { Callout } from 'nextra/components'
+
+# Custom Domain
+
+Use your own domain for your forms instead of the default makeform.ai domain.
+
+---
+
+**What you get with custom domains:**
+
+- ✅ Professional branded form URLs (e.g., `forms.yourcompany.com`)
+- ✅ Automatic SSL certificates for secure HTTPS connections
+- ✅ Quick setup with just one CNAME record
+
+<Callout type="info">
+Custom domains is a **Pro feature**.
+</Callout>
+
+---
+
+## Step 1: Access the Domains Page
+
+Navigate to the Domains section from your dashboard sidebar.
+
+![Domains Page](/images/custom_domain1.png)
+
+1. Log in to your Makeform account
+2. Click on **Domains** in the left sidebar navigation
+3. Click **Add Your First Domain** (or **Add Domain** if you already have domains)
+
+---
+
+## Step 2: Choose Your Domain Type
+
+Select whether you want to use a subdomain or root domain.
+
+![Choose Domain Type](/images/custom_domain2.png)
+
+<Callout type="info">
+**Recommendation:** We suggest using a **subdomain** (like `forms.yourcompany.com`) to avoid conflicts with your main website and for easier setup.
+</Callout>
+
+---
+
+## Step 3: Enter Your Domain
+
+After selecting your domain type, enter your domain details.
+
+![Enter Domain](/images/custom_domain3.png)
+
+<Callout type="warning">
+After adding your domain, you'll need to update your DNS settings to point to Vercel. Detailed instructions will be provided once the domain is added.
+</Callout>
+
+Click **Add Domain** to proceed.
+
+---
+
+## Step 4: Add CNAME Record to Your DNS Provider
+
+After adding your domain, you'll receive DNS configuration instructions.
+
+![DNS Setup Instructions](/images/custom_domain4.png)
+
+### How to Add the CNAME Record
+
+1. **Log in to your domain provider** (e.g., GoDaddy, Namecheap, Cloudflare, Google Domains)
+2. **Navigate to DNS settings** (usually called "DNS Management", "DNS Records", or "Advanced DNS")
+3. **Add a new record** with the following details:
+   - **Type**: CNAME
+   - **Name/Host**: Your subdomain (e.g., `forms`)
+   - **Value/Target**: `cname.makeform.ai`
+   - **TTL**: Auto or 3600 (1 hour)
+4. **Save the changes**
+
+<Callout type="info">
+**Need help?** Use the **Check DNS Propagation** link in your dashboard to verify your DNS changes, or consult the **Vercel Domain Docs** for detailed provider-specific instructions.
+</Callout>
+
+### Important Notes
+
+- **DNS propagation**: DNS changes can take up to 24 hours to propagate globally, though most changes are visible within 1-2 hours
+- **SSL certificates**: Will be automatically provisioned once DNS is configured
+- **Verification**: You can check verification status using the "Check Verification" button
+
+<Callout type="warning">
+The domain status will show as **Pending** until the DNS records are detected. This is normal - just wait for DNS propagation.
+</Callout>
+
+---
+
+## Step 5: Verify and Wait for Completion
+
+Once DNS is configured, click **Check Verification** to verify your domain.
+
+![Domain Verified](/images/custom_domain5.png)
+
+### Verification Process
+
+1. Wait 5-15 minutes after adding the CNAME record
+2. Click **Check Verification** button in your dashboard
+3. If DNS has propagated, the domain will be verified
+4. SSL certificate will be automatically provisioned
+
+### Domain Status Indicators
+
+Your domain will show different statuses during the setup process:
+
+| Status | Indicator | Description |
+|--------|-----------|-------------|
+| 🟢 **Verified** | Green badge with ✓ checkmark | Domain is fully verified, SSL certificate active, and ready to use |
+| 🟠 **Pending** | Orange outline with ⏰ clock icon | DNS records not yet detected or still propagating |
+| 🔵 **Configuring** | Blue outline with ⚙️ settings icon | DNS detected, SSL certificate being provisioned |
+
+### When Complete
+
+You'll see:
+- ✅ Status changes to **Verified** (green checkmark)
+- ✅ Message: "Domain is verified and ready to use!"
+- ✅ Timestamps for Added, Last Checked, and Verified dates
+
+![Domain Verified](/images/custom_domain6.png)
+
+<Callout type="success">
+**Your custom domain is now live!** Your forms are now accessible at your custom domain with automatic HTTPS encryption.
+</Callout>
