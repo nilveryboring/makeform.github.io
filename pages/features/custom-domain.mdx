@@ -124,3 +124,94 @@ You'll see:
 <Callout type="success">
 **Your custom domain is now live!** Your forms are now accessible at your custom domain with automatic HTTPS encryption.
 </Callout>
+
+---
+
+## Using Your Custom Domain with Forms
+
+Once your domain is verified, you can assign it to your forms to create professional branded URLs.
+
+## Assign Custom Domain to a Form
+
+Navigate to the Share page of the form you want to use with your custom domain.
+
+![Form Share Page - Domain Selector](/images/custom_domain7.png)
+
+1. Open your form in the form builder
+2. Click on the **Share** tab in the top navigation
+3. Find the **Custom Domain** section
+4. Click the domain dropdown to select from your verified domains
+
+<Callout type="info">
+Only **verified domains** will appear in the dropdown. Make sure you've completed the domain verification process first.
+</Callout>
+
+After selecting a domain, your form will be accessible at:
+```
+https://yourdomain.com/f/{form-id}
+```
+
+For example: `https://forms.company.com/f/abc123`
+
+---
+
+## Customizing Form URLs with Custom Paths
+
+Take your branded URLs to the next level by creating clean, memorable paths instead of using the default form ID format.
+
+### What are Custom Paths?
+
+Custom paths let you replace the `/f/{form-id}` format with your own custom URL path:
+
+- **Default format**: `https://yourdomain.com/f/abc123xyz`
+- **Custom path**: `https://yourdomain.com/contact`
+- **Another example**: `https://yourdomain.com/feedback`
+
+## Enable Custom Paths
+
+After assigning a custom domain to your form, enable the custom paths feature.
+
+![Enable Custom Paths](/images/custom_domain8.png)
+
+1. In the form Share page, locate the **Custom Paths** toggle
+2. Click the toggle to enable custom path URLs
+3. The custom path input field will appear
+
+<Callout type="info">
+Custom paths are only available when you have a **custom domain assigned** to your form. The toggle will not be active for forms using the default makeform.ai domain.
+</Callout>
+
+---
+
+## Create Your Custom Path
+
+Enter your desired path and save it to create a branded URL.
+
+![Create Custom Path](/images/custom_domain9.png)
+
+1. **Enter your path** in the input field (e.g., `contact`, `feedback`, `apply`)
+2. The system will **validate your path** in real-time:
+   - **✓ Green checkmark** — path is available
+   - **✗ Red X** — path is taken or invalid
+3. **Preview your URL** below the input field
+4. Click **Save Path** to create the custom path
+
+### Path Rules and Guidelines
+
+When creating custom paths, follow these rules:
+
+**Allowed characters:**
+- Letters (a-z, A-Z)
+- Numbers (0-9)
+- Hyphens (-)
+- Underscores (_)
+- Forward slashes (/) for nested paths
+
+**Reserved paths** that cannot be used:
+- `api`, `admin`, `auth`, `f`, `e`
+- `_next`, `favicon.ico`, `robots.txt`
+- And other system-reserved paths
+
+<Callout type="warning">
+Paths are **case-sensitive** and must be unique within each domain. Two forms on the same domain cannot use the same path.
+</Callout>

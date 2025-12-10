@@ -28,6 +28,7 @@ export default {
   'hidden-fields': 'Hidden Fields',
 
   // Form Settings
+  'conditional-logic': 'Conditional Logic',
   'custom-domain': 'Custom Domain',
   'remove-makeform-branding': 'Remove Makeform branding',
   'email-notifications': 'Email notifications',
