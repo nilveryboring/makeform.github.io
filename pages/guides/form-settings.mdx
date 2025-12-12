@@ -1,0 +1,108 @@
+import { Callout } from 'nextra/components'
+
+# Form Settings
+
+Customize how your form behaves and appears to respondents. Access form settings by opening a form and navigating to the **Settings** tab.
+
+---
+
+## In This Guide
+
+- [General](#general)
+  - [Anti-Bot Protection (Level 1)](#anti-bot-protection-level-1)
+  - [Reduce Motion](#reduce-motion)
+  - [Redirect on Completion](#redirect-on-completion)
+  - [Hidden Fields](#hidden-fields)
+- [Branding](#branding)
+  - [Show Loading Screen](#show-loading-screen)
+  - [Show Custom Message on Loading Screen](#show-custom-message-on-loading-screen)
+  - [Show "Powered by" Badge](#show-powered-by-badge)
+  - [Show Makeform Link on End Page](#show-makeform-link-on-end-page)
+- [Tracking](#tracking)
+  - [Google Analytics (GA4)](#google-analytics-ga4)
+- [Access](#access)
+  - [Close Form](#close-form)
+  - [Show Custom Message on Closed Form](#show-custom-message-on-closed-form)
+- [Behavior](#behavior)
+  - [Save Answers for Later](#save-answers-for-later)
+  - [Auto-Jump to Next Page](#auto-jump-to-next-page)
+
+---
+
+## General
+
+### Anti-Bot Protection (Level 1)
+
+Enable honeypot field detection to automatically block spam submissions. Recommended for all public forms to reduce spam.
+
+### Reduce Motion
+
+Disable page transition effects for simpler and faster navigation. Improves accessibility for users who prefer reduced motion.
+
+### Redirect on Completion
+
+Redirect respondents to a custom URL after form submission. URL must start with `http://` or `https://`.
+
+### Hidden Fields
+
+Add custom hidden fields to capture additional data like UTM parameters, user IDs, or referral codes without showing them to respondents. Field names must start with a letter and can only contain letters, numbers, and underscores.
+
+---
+
+## Branding
+
+<Callout type="info">
+Branding customization requires a [Pro plan](../plans-and-pricing).
+</Callout>
+
+### Show Loading Screen
+
+Display a loading screen when your form first loads.
+
+### Show Custom Message on Loading Screen
+
+Display a custom message on the loading screen instead of the default text. Maximum 100 characters.
+
+### Show "Powered by" Badge
+
+Show or hide the "Powered by Makeform" badge on your form. Hidden by default for Pro users.
+
+### Show Makeform Link on End Page
+
+Show or hide the Makeform link on the thank you page after form submission.
+
+---
+
+## Tracking
+
+### Google Analytics (GA4)
+
+Track form views and interactions with Google Analytics 4. Enter your GA4 Measurement ID (format: `G-XXXXXXXXXX`). [Learn more](https://support.google.com/analytics/answer/9304153) about finding your Measurement ID.
+
+<Callout type="info">
+Requires a [Pro plan](../plans-and-pricing).
+</Callout>
+
+---
+
+## Access
+
+### Close Form
+
+Prevent new responses to your form. When enabled, visitors will see a custom message instead of the form.
+
+### Show Custom Message on Closed Form
+
+Customize the message shown when your form is closed. Include a title and description to inform visitors why the form is unavailable.
+
+---
+
+## Behavior
+
+### Save Answers for Later
+
+Allow respondents to save their progress in the browser and return later. Progress is saved locally on the same device and browser. Enabled by default.
+
+### Auto-Jump to Next Page
+
+Automatically advance to the next page when a question is answered. Works with single multiple choice (without "Other" option), single select, rating, or opinion scale questions. Only one question per page.
