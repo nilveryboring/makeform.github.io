@@ -30,6 +30,7 @@ export default {
   // Form Settings
   'conditional-logic': 'Conditional Logic',
   'custom-domain': 'Custom Domain',
+  'link-preview': 'Link Preview',
   'remove-makeform-branding': 'Remove Makeform branding',
   'email-notifications': 'Email notifications',
   'share-setting': 'Share setting',
