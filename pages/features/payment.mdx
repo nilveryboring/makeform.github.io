@@ -1,0 +1,367 @@
+import { Callout } from 'nextra/components'
+
+# Payment
+
+Collect payments directly through your forms with secure Stripe integration. Accept credit cards, Apple Pay, and Google Pay without any coding required.
+
+![Payment Form Example](/images/payment-example.png)
+
+<div style={{ backgroundColor: '#ecfdf5', border: '2px solid #10b981', borderRadius: '0.5rem', padding: '1rem', marginTop: '1.5rem', marginBottom: '1.5rem', display: 'flex', gap: '0.75rem', alignItems: 'flex-start' }}>
+  <div style={{ fontSize: '1.5rem', lineHeight: '1' }}>🎁</div>
+  <div style={{ flex: '1' }}>
+    <span style={{ color: '#065f46', fontSize: '0.95rem' }}>Payment collection is available for <strong>free</strong> to all Makeform users with a 5% application fee. <a href="/plans-and-pricing" style={{ textDecoration: 'underline', color: '#065f46' }}><strong>Pro users</strong></a> pay 0% application fee.</span>
+  </div>
+</div>
+
+---
+
+<div className="bg-white dark:bg-neutral-900 border border-gray-200 dark:border-neutral-700 rounded-xl p-8 my-8 shadow-sm">
+  <div className="grid gap-5 text-[0.95rem]">
+    <div>
+      <a href="#what-do-i-need-to-collect-payments" className="block font-semibold text-slate-900 dark:text-slate-100 no-underline text-base mb-2">What do I need to collect payments?</a>
+    </div>
+    <div>
+      <a href="#payment-fees" className="block font-semibold text-slate-900 dark:text-slate-100 no-underline text-base mb-2">Payment fees</a>
+    </div>
+    <div>
+      <a href="#add-payment-to-your-form" className="block font-semibold text-slate-900 dark:text-slate-100 no-underline text-base mb-2">Add payment to your form</a>
+    </div>
+    <div>
+      <a href="#payment-settings" className="block font-semibold text-slate-900 dark:text-slate-100 no-underline text-base mb-2">Payment settings</a>
+      <div className="ml-5 grid gap-1.5">
+        <a href="#amount-type" className="block px-3 py-1.5 rounded-md text-slate-600 dark:text-slate-400 no-underline transition-all hover:bg-slate-100 dark:hover:bg-neutral-800 hover:text-slate-900 dark:hover:text-slate-100">• Amount type</a>
+        <a href="#currency" className="block px-3 py-1.5 rounded-md text-slate-600 dark:text-slate-400 no-underline transition-all hover:bg-slate-100 dark:hover:bg-neutral-800 hover:text-slate-900 dark:hover:text-slate-100">• Currency</a>
+        <a href="#payment-methods" className="block px-3 py-1.5 rounded-md text-slate-600 dark:text-slate-400 no-underline transition-all hover:bg-slate-100 dark:hover:bg-neutral-800 hover:text-slate-900 dark:hover:text-slate-100">• Payment methods</a>
+        <a href="#email-receipts" className="block px-3 py-1.5 rounded-md text-slate-600 dark:text-slate-400 no-underline transition-all hover:bg-slate-100 dark:hover:bg-neutral-800 hover:text-slate-900 dark:hover:text-slate-100">• Email receipts</a>
+      </div>
+    </div>
+    <div>
+      <a href="#view-payments" className="block font-semibold text-slate-900 dark:text-slate-100 no-underline text-base mb-2">View payments</a>
+    </div>
+    <div>
+      <a href="#dynamic-pricing" className="block font-semibold text-slate-900 dark:text-slate-100 no-underline text-base mb-2">Dynamic pricing</a>
+    </div>
+    <div>
+      <a href="#frequently-asked-questions" className="block font-semibold text-slate-900 dark:text-slate-100 no-underline text-base mb-2">Frequently asked questions</a>
+    </div>
+  </div>
+</div>
+
+---
+
+## What do I need to collect payments?
+
+To collect payments through your Makeform forms, you need:
+
+1. **A Makeform account** (Free or Pro)
+2. **A Stripe account** (free to create at [stripe.com](https://stripe.com))
+
+Makeform uses Stripe to process payments securely. Stripe is a trusted payment platform used by millions of businesses worldwide. When you connect your Stripe account to Makeform, payments go directly to your Stripe account, and Makeform never stores sensitive payment information.
+
+### Connect your Stripe account
+
+Before you can add a payment field to your form, you'll need to connect your Stripe account:
+
+1. Go to your Makeform **Settings** or **Integrations** page
+2. Click **Connect Stripe**
+3. You'll be redirected to Stripe to authorize the connection
+4. Once connected, you can start adding payment fields to your forms
+
+<Callout type="info">
+If you don't have a Stripe account yet, you can create one for free during the connection process.
+</Callout>
+
+---
+
+## Payment fees
+
+Makeform charges an application fee on top of standard Stripe payment processing fees:
+
+- **Free plan**: 5% application fee
+- **Pro plan**: 0% application fee (no markup)
+
+**Stripe's standard processing fees** apply to all transactions:
+- 2.9% + $0.30 per successful card charge (US)
+- Fees vary by country and payment method
+
+<Callout type="info">
+For complete Stripe pricing details, visit [stripe.com/pricing](https://stripe.com/pricing).
+</Callout>
+
+---
+
+## Add payment to your form
+
+Adding a payment field to your form is simple:
+
+### Using AI
+
+You can ask the AI to add a payment field to your form:
+
+```
+"Add a payment field for $50"
+"Add a payment field with dynamic pricing based on quantity"
+```
+
+The AI will add the payment field and configure it based on your instructions.
+
+### Manual setup
+
+1. Open your form in the editor
+2. Click the **Add field** button or the **+** button between fields
+3. Select **Payment** from the field type menu
+4. Configure your payment settings (amount, currency, etc.)
+5. Click **Save**
+
+<Callout type="warning">
+The payment field is always required. Make sure to place it strategically in your form, typically as one of the last fields.
+</Callout>
+
+---
+
+## Payment settings
+
+### Amount type
+
+You can set up payments in two ways:
+
+#### Fixed amount
+
+Set a specific price that never changes. Perfect for:
+- Registration fees
+- Product purchases with set prices
+- Membership dues
+- Ticket sales
+
+**Example:** Event registration fee of $25.00
+
+#### Dynamic amount
+
+Calculate the price based on other fields in your form. Perfect for:
+- Quantity-based pricing (e.g., number of tickets × price per ticket)
+- Donation forms where users choose their amount
+- Custom calculations based on selections
+
+**Example:** Number of attendees × $25.00 per person
+
+See [Dynamic pricing](#dynamic-pricing) for more details.
+
+---
+
+### Currency
+
+Makeform supports all currencies available through Stripe, including:
+
+- USD (US Dollar)
+- EUR (Euro)
+- GBP (British Pound)
+- JPY (Japanese Yen)
+- AUD (Australian Dollar)
+- CAD (Canadian Dollar)
+- And [100+ more currencies](https://stripe.com/docs/currencies)
+
+The currency symbol will automatically display based on your selection.
+
+---
+
+### Payment methods
+
+Your payment field automatically supports multiple payment methods:
+
+- **Credit and debit cards** (Visa, Mastercard, American Express, etc.)
+- **Apple Pay** (when available on the user's device)
+- **Google Pay** (when available on the user's browser)
+
+Payment methods are automatically shown based on what's available to the respondent. For example, Apple Pay only appears for users on Apple devices with Apple Pay set up.
+
+All payment methods are processed securely through Stripe with full PCI compliance.
+
+---
+
+### Email receipts
+
+You can automatically send payment receipts to your respondents:
+
+1. Add an **Email input** field to your form
+2. In the payment field settings, select that email field for receipts
+3. Stripe will automatically send a receipt to that email address after successful payment
+
+If you don't configure this, respondents can enter their email address directly in the payment form to receive a receipt.
+
+---
+
+## View payments
+
+After respondents submit payments, you can view them in two places:
+
+### In Makeform
+
+1. Open your form
+2. Go to the **Responses** tab
+3. Each submission shows the payment status and amount
+4. Click on a submission to view full details
+
+### In Stripe
+
+All payment details are available in your Stripe dashboard:
+
+1. Log in to your [Stripe dashboard](https://dashboard.stripe.com)
+2. Go to **Payments** to see all transactions
+3. Each payment includes the form submission data as metadata
+
+Your Stripe dashboard provides complete payment information including:
+- Transaction details and fees
+- Customer information
+- Refund options
+- Dispute management
+- Financial reports
+
+---
+
+## Dynamic pricing
+
+<Callout type="info">
+Dynamic pricing allows you to calculate payment amounts based on other fields in your form, such as quantity inputs, number selectors, or custom calculations.
+</Callout>
+
+### How it works
+
+1. Add fields that will be used for calculation (e.g., a number input for quantity)
+2. Add a payment field to your form
+3. Set the amount type to **Dynamic**
+4. Select which field to calculate from
+5. Optionally set minimum and maximum amounts
+
+### Use cases
+
+**Quantity-based pricing:**
+- Event tickets: Number of tickets × $50.00
+- Product orders: Quantity × unit price
+- Per-person fees: Number of attendees × registration fee
+
+**Tiered pricing:**
+- Calculate different rates based on number input
+- Combine with conditional logic for complex pricing
+
+**Donation forms:**
+- Let users choose their donation amount
+- Set minimum donation amounts
+
+### Example setup
+
+For a workshop charging $75 per attendee:
+
+1. Add a **Number input** field asking "How many attendees?"
+2. Add a **Payment** field
+3. Configure the payment field:
+   - Amount type: Dynamic
+   - Calculate from: "How many attendees?" field
+   - Multiply by: 75.00
+   - Currency: USD
+   - Minimum amount: $75.00 (at least 1 attendee)
+
+The payment amount will automatically update as respondents change their quantity selection.
+
+---
+
+## FAQs about the payment field
+
+<details className="group mb-4">
+  <summary className="cursor-pointer text-base font-normal text-slate-900 dark:text-slate-100 [&::-webkit-details-marker]:hidden [&::marker]:hidden" style={{ listStyle: 'none' }}>
+    Can I test payments before going live?
+  </summary>
+  <div className="ml-6 mt-2 text-slate-600 dark:text-slate-400 text-sm space-y-2">
+    <p>Yes! When you're in development or testing mode, you can use Stripe's test mode:</p>
+    <ol className="ml-4 space-y-1">
+      <li>1. In your Stripe dashboard, toggle to <strong>Test mode</strong></li>
+      <li>2. Use <a href="https://stripe.com/docs/testing#cards" className="text-blue-600 dark:text-blue-400 underline">Stripe test card numbers</a> to simulate payments</li>
+      <li>3. Test cards like <code>4242 4242 4242 4242</code> (Visa) will process successfully</li>
+      <li>4. No real money is charged in test mode</li>
+    </ol>
+    <p>Switch to <strong>Live mode</strong> in Stripe when you're ready to accept real payments.</p>
+  </div>
+</details>
+
+<details className="group mb-4">
+  <summary className="cursor-pointer text-base font-normal text-slate-900 dark:text-slate-100 [&::-webkit-details-marker]:hidden [&::marker]:hidden" style={{ listStyle: 'none' }}>
+    Are receipts automatically sent to customers?
+  </summary>
+  <div className="ml-6 mt-2 text-slate-600 dark:text-slate-400 text-sm">
+    <p>Receipts are sent automatically when you configure an email field for receipts in the payment settings. If not configured, respondents can enter their email address in the payment form to receive a receipt from Stripe.</p>
+  </div>
+</details>
+
+<details className="group mb-4">
+  <summary className="cursor-pointer text-base font-normal text-slate-900 dark:text-slate-100 [&::-webkit-details-marker]:hidden [&::marker]:hidden" style={{ listStyle: 'none' }}>
+    Can I accept recurring payments or subscriptions?
+  </summary>
+  <div className="ml-6 mt-2 text-slate-600 dark:text-slate-400 text-sm">
+    <p>Currently, Makeform supports one-time payments only. Recurring payments and subscriptions are not yet available but are on the roadmap for future releases.</p>
+  </div>
+</details>
+
+<details className="group mb-4">
+  <summary className="cursor-pointer text-base font-normal text-slate-900 dark:text-slate-100 [&::-webkit-details-marker]:hidden [&::marker]:hidden" style={{ listStyle: 'none' }}>
+    Can I modify the payment amount after the form is published?
+  </summary>
+  <div className="ml-6 mt-2 text-slate-600 dark:text-slate-400 text-sm space-y-2">
+    <p>Yes, you can update payment amounts at any time:</p>
+    <ul className="ml-4 space-y-1">
+      <li>• <strong>Fixed amounts</strong>: Edit the payment field settings and change the amount</li>
+      <li>• <strong>Dynamic amounts</strong>: Modify the calculation logic or linked fields</li>
+    </ul>
+    <p>Changes apply immediately to new form submissions but don't affect payments already processed.</p>
+  </div>
+</details>
+
+<details className="group mb-4">
+  <summary className="cursor-pointer text-base font-normal text-slate-900 dark:text-slate-100 [&::-webkit-details-marker]:hidden [&::marker]:hidden" style={{ listStyle: 'none' }}>
+    What happens if a payment fails?
+  </summary>
+  <div className="ml-6 mt-2 text-slate-600 dark:text-slate-400 text-sm space-y-2">
+    <p>If a payment fails:</p>
+    <ul className="ml-4 space-y-1">
+      <li>• The respondent sees an error message from Stripe (e.g., "Your card was declined")</li>
+      <li>• They can try again with a different payment method or card</li>
+      <li>• The form submission is not completed until payment succeeds</li>
+      <li>• Progress is saved, so they won't lose their form responses</li>
+    </ul>
+  </div>
+</details>
+
+<details className="group mb-4">
+  <summary className="cursor-pointer text-base font-normal text-slate-900 dark:text-slate-100 [&::-webkit-details-marker]:hidden [&::marker]:hidden" style={{ listStyle: 'none' }}>
+    Can I issue refunds?
+  </summary>
+  <div className="ml-6 mt-2 text-slate-600 dark:text-slate-400 text-sm space-y-2">
+    <p>Yes, you can issue full or partial refunds through your Stripe dashboard:</p>
+    <ol className="ml-4 space-y-1">
+      <li>1. Go to the payment in your Stripe dashboard</li>
+      <li>2. Click <strong>Refund</strong></li>
+      <li>3. Enter the refund amount</li>
+      <li>4. Stripe processes the refund back to the original payment method</li>
+    </ol>
+    <p>Refunds typically appear within 5-10 business days.</p>
+  </div>
+</details>
+
+<details className="group mb-4">
+  <summary className="cursor-pointer text-base font-normal text-slate-900 dark:text-slate-100 [&::-webkit-details-marker]:hidden [&::marker]:hidden" style={{ listStyle: 'none' }}>
+    Is payment data secure?
+  </summary>
+  <div className="ml-6 mt-2 text-slate-600 dark:text-slate-400 text-sm space-y-2">
+    <p>Yes, payment security is handled by Stripe:</p>
+    <ul className="ml-4 space-y-1">
+      <li>• All payment information is encrypted and PCI-compliant</li>
+      <li>• Makeform never stores or processes raw card data</li>
+      <li>• Stripe is certified to the highest security standards (PCI Level 1)</li>
+      <li>• Payment forms use Stripe Elements for secure data collection</li>
+    </ul>
+  </div>
+</details>
+
+---
+
+## Need help?
+
+If you have questions about setting up payments or run into any issues, check the [Stripe documentation](https://stripe.com/docs).
