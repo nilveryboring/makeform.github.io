@@ -6,26 +6,49 @@ Customize how your form behaves and appears to respondents. Access form settings
 
 ---
 
-## In This Guide
-
-- [General](#general)
-  - [Anti-Bot Protection (Level 1)](#anti-bot-protection-level-1)
-  - [Reduce Motion](#reduce-motion)
-  - [Redirect on Completion](#redirect-on-completion)
-  - [Hidden Fields](#hidden-fields)
-- [Branding](#branding)
-  - [Show Loading Screen](#show-loading-screen)
-  - [Show Custom Message on Loading Screen](#show-custom-message-on-loading-screen)
-  - [Show "Powered by" Badge](#show-powered-by-badge)
-  - [Show Makeform Link on End Page](#show-makeform-link-on-end-page)
-- [Tracking](#tracking)
-  - [Google Analytics (GA4)](#google-analytics-ga4)
-- [Access](#access)
-  - [Close Form](#close-form)
-  - [Show Custom Message on Closed Form](#show-custom-message-on-closed-form)
-- [Behavior](#behavior)
-  - [Save Answers for Later](#save-answers-for-later)
-  - [Auto-Jump to Next Page](#auto-jump-to-next-page)
+<div className="bg-white dark:bg-neutral-900 border border-gray-200 dark:border-neutral-700 rounded-xl p-8 my-8 shadow-sm">
+  <div className="text-xl font-bold mb-6 text-slate-900 dark:text-slate-100 tracking-tight">📋 In This Guide</div>
+  <div className="grid gap-5 text-[0.95rem]">
+    <div>
+      <a href="#general" className="block font-semibold text-slate-900 dark:text-slate-100 no-underline text-base mb-2">General</a>
+      <div className="ml-5 grid gap-1.5">
+        <a href="#anti-bot-protection-level-1" className="block px-3 py-1.5 rounded-md text-slate-600 dark:text-slate-400 no-underline transition-all hover:bg-slate-100 dark:hover:bg-neutral-800 hover:text-slate-900 dark:hover:text-slate-100">• Anti-Bot Protection (Level 1)</a>
+        <a href="#reduce-motion" className="block px-3 py-1.5 rounded-md text-slate-600 dark:text-slate-400 no-underline transition-all hover:bg-slate-100 dark:hover:bg-neutral-800 hover:text-slate-900 dark:hover:text-slate-100">• Reduce Motion</a>
+        <a href="#redirect-on-completion" className="block px-3 py-1.5 rounded-md text-slate-600 dark:text-slate-400 no-underline transition-all hover:bg-slate-100 dark:hover:bg-neutral-800 hover:text-slate-900 dark:hover:text-slate-100">• Redirect on Completion</a>
+        <a href="#hidden-fields" className="block px-3 py-1.5 rounded-md text-slate-600 dark:text-slate-400 no-underline transition-all hover:bg-slate-100 dark:hover:bg-neutral-800 hover:text-slate-900 dark:hover:text-slate-100">• Hidden Fields</a>
+      </div>
+    </div>
+    <div>
+      <a href="#branding" className="block font-semibold text-slate-900 dark:text-slate-100 no-underline text-base mb-2">Branding</a>
+      <div className="ml-5 grid gap-1.5">
+        <a href="#show-loading-screen" className="block px-3 py-1.5 rounded-md text-slate-600 dark:text-slate-400 no-underline transition-all hover:bg-slate-100 dark:hover:bg-neutral-800 hover:text-slate-900 dark:hover:text-slate-100">• Show Loading Screen</a>
+        <a href="#show-custom-message-on-loading-screen" className="block px-3 py-1.5 rounded-md text-slate-600 dark:text-slate-400 no-underline transition-all hover:bg-slate-100 dark:hover:bg-neutral-800 hover:text-slate-900 dark:hover:text-slate-100">• Show Custom Message on Loading Screen</a>
+        <a href="#show-powered-by-badge" className="block px-3 py-1.5 rounded-md text-slate-600 dark:text-slate-400 no-underline transition-all hover:bg-slate-100 dark:hover:bg-neutral-800 hover:text-slate-900 dark:hover:text-slate-100">• Show "Powered by" Badge</a>
+        <a href="#show-makeform-link-on-end-page" className="block px-3 py-1.5 rounded-md text-slate-600 dark:text-slate-400 no-underline transition-all hover:bg-slate-100 dark:hover:bg-neutral-800 hover:text-slate-900 dark:hover:text-slate-100">• Show Makeform Link on End Page</a>
+      </div>
+    </div>
+    <div>
+      <a href="#tracking" className="block font-semibold text-slate-900 dark:text-slate-100 no-underline text-base mb-2">Tracking</a>
+      <div className="ml-5 grid gap-1.5">
+        <a href="#google-analytics-ga4" className="block px-3 py-1.5 rounded-md text-slate-600 dark:text-slate-400 no-underline transition-all hover:bg-slate-100 dark:hover:bg-neutral-800 hover:text-slate-900 dark:hover:text-slate-100">• Google Analytics (GA4)</a>
+      </div>
+    </div>
+    <div>
+      <a href="#access" className="block font-semibold text-slate-900 dark:text-slate-100 no-underline text-base mb-2">Access</a>
+      <div className="ml-5 grid gap-1.5">
+        <a href="#close-form" className="block px-3 py-1.5 rounded-md text-slate-600 dark:text-slate-400 no-underline transition-all hover:bg-slate-100 dark:hover:bg-neutral-800 hover:text-slate-900 dark:hover:text-slate-100">• Close Form</a>
+        <a href="#show-custom-message-on-closed-form" className="block px-3 py-1.5 rounded-md text-slate-600 dark:text-slate-400 no-underline transition-all hover:bg-slate-100 dark:hover:bg-neutral-800 hover:text-slate-900 dark:hover:text-slate-100">• Show Custom Message on Closed Form</a>
+      </div>
+    </div>
+    <div>
+      <a href="#behavior" className="block font-semibold text-slate-900 dark:text-slate-100 no-underline text-base mb-2">Behavior</a>
+      <div className="ml-5 grid gap-1.5">
+        <a href="#save-answers-for-later" className="block px-3 py-1.5 rounded-md text-slate-600 dark:text-slate-400 no-underline transition-all hover:bg-slate-100 dark:hover:bg-neutral-800 hover:text-slate-900 dark:hover:text-slate-100">• Save Answers for Later</a>
+        <a href="#auto-jump-to-next-page" className="block px-3 py-1.5 rounded-md text-slate-600 dark:text-slate-400 no-underline transition-all hover:bg-slate-100 dark:hover:bg-neutral-800 hover:text-slate-900 dark:hover:text-slate-100">• Auto-Jump to Next Page</a>
+      </div>
+    </div>
+  </div>
+</div>
 
 ---
 

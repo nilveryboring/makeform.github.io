@@ -6,6 +6,7 @@ module.exports = {
     './pages/**/*.{md,mdx}',
     './theme.config.tsx',
   ],
+  darkMode: 'class',
   theme: {
     extend: {},
   },
