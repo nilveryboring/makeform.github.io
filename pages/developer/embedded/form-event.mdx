@@ -1,56 +1,253 @@
 import { Callout, Tabs } from 'nextra/components'
 import Link from 'next/link'
-import React, { useEffect } from 'react'
 
 # Handle Form Events
 
-Learn how to handle events from your embedded Makeform forms. These events enable you to create interactive experiences, process form data, and integrate with your application.
+Learn how to handle events from your embedded Makeform forms. These events enable you to create interactive experiences, track form activity, process submission data, and integrate with your application.
 
-## Available Events
+<div style={{ backgroundColor: '#ecfdf5', border: '2px solid #10b981', borderRadius: '0.5rem', padding: '1rem', marginTop: '1.5rem', marginBottom: '1.5rem', display: 'flex', gap: '0.75rem', alignItems: 'flex-start' }}>
+  <div style={{ fontSize: '1.5rem', lineHeight: '1' }}>🎁</div>
+  <div style={{ flex: '1' }}>
+    <span style={{ color: '#065f46', fontSize: '0.95rem' }}>
+      Form events are available for **free** to all Makeform users.
+    </span>
+  </div>
+</div>
 
-Currently, Makeform supports the following events:
+---
 
-| Event Name | Description | Payload |
-|------------|-------------|---------|
-| `MakeForm.SubmitSuccess` | Triggered when a form is successfully submitted | `{ [fieldName: string]: value }` |
+## Enabling events
 
-## Event Handling
+Events must be opted into depending on your embed type.
 
-### Submit Success Event
+### Inline (standard) embed
 
-The `MakeForm.SubmitSuccess` event is triggered when a form submission is successfully completed. The event payload contains the form responses as key-value pairs, where keys are your form field names.
+Add <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">data-makeform-events</span> to your iframe element:
 
-**When is it triggered?**
-- After all form validations pass
-- When the submission is successfully processed
-- Before any success message or redirect
+```html
+<iframe
+  data-makeform-src="https://makeform.ai/e/YOUR_FORM_ID"
+  data-makeform-events
+  ...
+></iframe>
+```
 
-**Common use cases:**
-- Send form data to your backend (you can also do it via webhooks)
-- Trigger notifications or webhooks
+### Popup and slider
+
+Add <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">data-makeform-events</span> to the trigger button:
+
+```html
+<button
+  data-makeform-popup="https://makeform.ai/e/YOUR_FORM_ID"
+  data-makeform-events
+>
+  Open Form
+</button>
+```
+
+Or set <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">dispatchEvents: true</span> in the JavaScript API:
+
+```javascript
+MakeForm.openPopup("YOUR_FORM_ID", {
+  dispatchEvents: true
+});
+```
+
+### Full page embed
+
+Append <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">__mf_emitEvents=1</span> to the form URL:
+
+```html
+<iframe
+  data-makeform-src="https://makeform.ai/f/YOUR_FORM_ID?__mf_emitEvents=1"
+  data-makeform-events
+  ...
+></iframe>
+```
+
+---
+
+## PostMessage events
+
+These events are sent from the form iframe to the parent window via `window.postMessage`. Listen for them with `window.addEventListener('message', handler)`.
+
+### MakeForm.Loaded
+
+Fired when the form iframe has finished loading and is ready to display.
+
+**Payload:**
+```json
+{ "type": "MakeForm.Loaded" }
+```
+
+**Use cases:**
+- Hide a loading indicator on your page
+- Track form load performance
+- Initialize other UI elements after the form is ready
+
+### MakeForm.SubmitSuccess
+
+Fired when a form submission is successfully completed. The payload contains the form responses as key-value pairs.
+
+**Payload:**
+```json
+{
+  "type": "MakeForm.SubmitSuccess",
+  "payload": {
+    "Name": "John Doe",
+    "Email": "john@example.com",
+    "Message": "Hello!"
+  }
+}
+```
+
+**Use cases:**
+- Send form data to your backend
+- Trigger notifications or analytics events
 - Update UI state or redirect users
-- Integration with analytics tools
+- Integration with third-party tools
 
-### Implementation Examples
+### MakeForm.FieldChange
+
+Fired when any form field value changes.
+
+**Payload:**
+```json
+{
+  "type": "MakeForm.FieldChange",
+  "field": "Email",
+  "value": "john@example.com"
+}
+```
+
+**Use cases:**
+- Real-time validation outside the form
+- Conditional UI updates on the parent page
+- Progress tracking
+
+### MakeForm.SetHeight
+
+Fired when the form content height changes. Used internally by the SDK for auto-resizing.
+
+**Payload:**
+```json
+{ "type": "MakeForm.SetHeight", "height": 850 }
+```
+
+### MakeForm.SetBackgroundColor
+
+Fired when the form's background color is determined. Used internally to sync modal backgrounds.
+
+**Payload:**
+```json
+{ "type": "MakeForm.SetBackgroundColor", "backgroundColor": "#ffffff" }
+```
+
+---
+
+## Custom DOM events
+
+When using popup or slider embeds with events enabled (<span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">data-makeform-events</span> or <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">dispatchEvents: true</span>), the SDK dispatches `CustomEvent` instances on the `window` object.
+
+### MakeForm:open
+
+Fired when a popup or slider modal opens.
+
+```javascript
+window.addEventListener('MakeForm:open', (e) => {
+  console.log('Modal opened for form:', e.detail.formId);
+});
+```
+
+### MakeForm:ready
+
+Fired when the form content has loaded inside the modal.
+
+```javascript
+window.addEventListener('MakeForm:ready', (e) => {
+  console.log('Form ready:', e.detail.formId);
+});
+```
+
+### MakeForm:submit
+
+Fired when a form is successfully submitted from within a modal.
+
+```javascript
+window.addEventListener('MakeForm:submit', (e) => {
+  console.log('Form submitted:', e.detail.formId);
+  console.log('Form data:', e.detail.data);
+});
+```
+
+### MakeForm:close
+
+Fired when a popup or slider modal closes.
+
+```javascript
+window.addEventListener('MakeForm:close', (e) => {
+  console.log('Modal closed for form:', e.detail.formId);
+});
+```
+
+---
+
+## Complete examples
 
 <Tabs items={['TypeScript', 'JavaScript', 'React/Next.js', 'Vue']}>
   <Tabs.Tab>
     ```typescript filename="events.ts" copy
-    interface SubmissionPayload {
-      [key: string]: string | number | boolean | null;  // key is form field name, value is the response
+    interface MakeFormEvent {
+      type: string;
+      payload?: Record<string, any>;
+      field?: string;
+      value?: any;
+      height?: number;
+      backgroundColor?: string;
     }
 
     window.addEventListener('message', (e: MessageEvent) => {
       try {
-        const data = JSON.parse(e.data);
-        if (data.type === 'MakeForm.SubmitSuccess') {
-          const formData = data.payload as SubmissionPayload;
-          // formData example: { "Name": "John Doe", "Email": "john@example.com" }
-          console.log('Form submitted successfully:', formData);
+        const data: MakeFormEvent = JSON.parse(e.data);
+
+        switch (data.type) {
+          case 'MakeForm.Loaded':
+            console.log('Form loaded');
+            break;
+
+          case 'MakeForm.SubmitSuccess':
+            console.log('Submitted:', data.payload);
+            // data.payload example: { "Name": "John", "Email": "john@example.com" }
+            break;
+
+          case 'MakeForm.FieldChange':
+            console.log(`Field "${data.field}" changed to:`, data.value);
+            break;
+
+          case 'MakeForm.SetHeight':
+            console.log('Height updated:', data.height);
+            break;
+
+          case 'MakeForm.SetBackgroundColor':
+            console.log('Background:', data.backgroundColor);
+            break;
         }
-      } catch (error) {
-        console.error('Error parsing event message:', error);
+      } catch {
+        // Not a MakeForm event, ignore
       }
+    });
+
+    // Custom DOM events (for popup/slider)
+    window.addEventListener('MakeForm:open', (e: CustomEvent) => {
+      console.log('Opened:', e.detail.formId);
+    });
+
+    window.addEventListener('MakeForm:submit', (e: CustomEvent) => {
+      console.log('Submitted:', e.detail.formId, e.detail.data);
+    });
+
+    window.addEventListener('MakeForm:close', (e: CustomEvent) => {
+      console.log('Closed:', e.detail.formId);
     });
     ```
   </Tabs.Tab>
@@ -59,53 +256,111 @@ The `MakeForm.SubmitSuccess` event is triggered when a form submission is succes
     window.addEventListener('message', (e) => {
       try {
         const data = JSON.parse(e.data);
-        if (data.type === 'MakeForm.SubmitSuccess') {
-          const formData = data.payload;
-          // formData example: { "Name": "John Doe", "Email": "john@example.com" }
-          console.log('Form submitted successfully:', formData);
+
+        switch (data.type) {
+          case 'MakeForm.Loaded':
+            console.log('Form loaded');
+            break;
+
+          case 'MakeForm.SubmitSuccess':
+            console.log('Submitted:', data.payload);
+            break;
+
+          case 'MakeForm.FieldChange':
+            console.log(`Field "${data.field}" changed to:`, data.value);
+            break;
+
+          case 'MakeForm.SetHeight':
+            console.log('Height updated:', data.height);
+            break;
+
+          case 'MakeForm.SetBackgroundColor':
+            console.log('Background:', data.backgroundColor);
+            break;
         }
-      } catch (error) {
-        console.error('Error parsing event message:', error);
+      } catch {
+        // Not a MakeForm event, ignore
       }
+    });
+
+    // Custom DOM events (for popup/slider)
+    window.addEventListener('MakeForm:open', (e) => {
+      console.log('Opened:', e.detail.formId);
+    });
+
+    window.addEventListener('MakeForm:submit', (e) => {
+      console.log('Submitted:', e.detail.formId, e.detail.data);
+    });
+
+    window.addEventListener('MakeForm:close', (e) => {
+      console.log('Closed:', e.detail.formId);
     });
     ```
   </Tabs.Tab>
   <Tabs.Tab>
     ```tsx filename="EmbeddedForm.tsx" copy
+    import { useEffect } from 'react';
+
     export default function EmbeddedForm() {
-      const FORM_ID = 'YOUR_FORM_ID'
-      const FORM_URL = `https://makeform.ai/e/${FORM_ID}`
+      const FORM_ID = 'YOUR_FORM_ID';
+      const FORM_URL = `https://makeform.ai/e/${FORM_ID}`;
 
       useEffect(() => {
-        const handleMessage = (event) => {
+        const handleMessage = (event: MessageEvent) => {
           try {
             const data = typeof event.data === 'string'
               ? JSON.parse(event.data)
               : event.data;
 
-            if (data.type === 'MakeForm.SubmitSuccess') {
-              // formData example: { "Name": "John Doe", "Email": "john@example.com" }
-              const formData = data.payload;
-              console.log('Form submitted successfully:', formData);
+            switch (data.type) {
+              case 'MakeForm.Loaded':
+                console.log('Form loaded');
+                break;
+              case 'MakeForm.SubmitSuccess':
+                console.log('Submitted:', data.payload);
+                break;
+              case 'MakeForm.FieldChange':
+                console.log(`Field "${data.field}" changed to:`, data.value);
+                break;
             }
-          } catch (error) {
-            console.error('Error parsing message:', error);
+          } catch {
+            // Not a MakeForm event
           }
         };
 
+        const handleOpen = (e: Event) => {
+          console.log('Opened:', (e as CustomEvent).detail.formId);
+        };
+        const handleSubmit = (e: Event) => {
+          const detail = (e as CustomEvent).detail;
+          console.log('Submitted:', detail.formId, detail.data);
+        };
+        const handleClose = (e: Event) => {
+          console.log('Closed:', (e as CustomEvent).detail.formId);
+        };
+
         window.addEventListener('message', handleMessage);
-        return () => window.removeEventListener('message', handleMessage);
+        window.addEventListener('MakeForm:open', handleOpen);
+        window.addEventListener('MakeForm:submit', handleSubmit);
+        window.addEventListener('MakeForm:close', handleClose);
+
+        return () => {
+          window.removeEventListener('message', handleMessage);
+          window.removeEventListener('MakeForm:open', handleOpen);
+          window.removeEventListener('MakeForm:submit', handleSubmit);
+          window.removeEventListener('MakeForm:close', handleClose);
+        };
       }, []);
 
       return (
         <iframe
           src={FORM_URL}
-          className="w-full h-full"
+          className="w-full"
           style={{
             border: 'none',
             margin: 0,
             padding: 0,
-            overflow: 'hidden',
+            minHeight: '600px',
           }}
         />
       );
@@ -117,74 +372,112 @@ The `MakeForm.SubmitSuccess` event is triggered when a form submission is succes
     <template>
       <iframe
         :src="formUrl"
-        class="w-full h-full"
+        class="w-full"
         :style="{
           border: 'none',
           margin: 0,
           padding: 0,
-          overflow: 'hidden'
+          minHeight: '600px'
         }"
       />
     </template>
 
     <script setup>
-    import { onMounted, onUnmounted } from 'vue'
+    import { onMounted, onUnmounted } from 'vue';
 
-    const FORM_ID = 'YOUR_FORM_ID'
-    const formUrl = `https://makeform.ai/e/${FORM_ID}`
+    const FORM_ID = 'YOUR_FORM_ID';
+    const formUrl = `https://makeform.ai/e/${FORM_ID}`;
 
     const handleMessage = (event) => {
       try {
         const data = typeof event.data === 'string'
           ? JSON.parse(event.data)
-          : event.data
+          : event.data;
 
-        if (data.type === 'MakeForm.SubmitSuccess') {
-          // formData example: { "Name": "John Doe", "Email": "john@example.com" }
-          const formData = data.payload
-          console.log('Form submitted successfully:', formData)
+        switch (data.type) {
+          case 'MakeForm.Loaded':
+            console.log('Form loaded');
+            break;
+          case 'MakeForm.SubmitSuccess':
+            console.log('Submitted:', data.payload);
+            break;
+          case 'MakeForm.FieldChange':
+            console.log(`Field "${data.field}" changed to:`, data.value);
+            break;
         }
-      } catch (error) {
-        console.error('Error parsing message:', error)
+      } catch {
+        // Not a MakeForm event
       }
-    }
+    };
+
+    const handleOpen = (e) => console.log('Opened:', e.detail.formId);
+    const handleSubmit = (e) => console.log('Submitted:', e.detail.formId, e.detail.data);
+    const handleClose = (e) => console.log('Closed:', e.detail.formId);
 
     onMounted(() => {
-      window.addEventListener('message', handleMessage)
-    })
+      window.addEventListener('message', handleMessage);
+      window.addEventListener('MakeForm:open', handleOpen);
+      window.addEventListener('MakeForm:submit', handleSubmit);
+      window.addEventListener('MakeForm:close', handleClose);
+    });
 
     onUnmounted(() => {
-      window.removeEventListener('message', handleMessage)
-    })
+      window.removeEventListener('message', handleMessage);
+      window.removeEventListener('MakeForm:open', handleOpen);
+      window.removeEventListener('MakeForm:submit', handleSubmit);
+      window.removeEventListener('MakeForm:close', handleClose);
+    });
     </script>
     ```
   </Tabs.Tab>
 </Tabs>
 
-## Best Practices
+---
 
-1. **Always Clean Up Event Listeners**
-   - Remove event listeners when components unmount
-   - Avoid memory leaks in single-page applications
+## Event reference
 
-2. **Error Handling**
-   - Wrap event handling in try-catch blocks
-   - Validate event data before processing
-   - Log errors for debugging
+### PostMessage events
 
-3. **Security Considerations**
-   - Validate the event origin
-   - Sanitize form data before using it
-   - Don't store sensitive information in client-side code
+| Event | Description | Key Payload |
+|-------|-------------|-------------|
+| `MakeForm.Loaded` | Form iframe loaded and ready | — |
+| `MakeForm.SubmitSuccess` | Form submitted successfully | `payload: { [field]: value }` |
+| `MakeForm.FieldChange` | Field value changed | `field`, `value` |
+| `MakeForm.SetHeight` | Content height changed | `height` |
+| `MakeForm.SetBackgroundColor` | Background color determined | `backgroundColor` |
 
-## Coming Soon
+### Custom DOM events
 
-We're working on additional events to give you more control over your forms:
-- Form Load Event
-- Page Navigation Events
-- Validation Events
-- And more!
+| Event | Fires when | Detail |
+|-------|-----------|--------|
+| `MakeForm:open` | Popup/slider opens | `{ formId }` |
+| `MakeForm:ready` | Form loads in modal | `{ formId }` |
+| `MakeForm:submit` | Form submitted in modal | `{ formId, data }` |
+| `MakeForm:close` | Popup/slider closes | `{ formId }` |
 
-<Callout type="info">
-  Stay tuned for updates! We'll be adding more events based on developer feedback and common use cases.
-</Callout>
+---
+
+## Best practices
+
+1. **Always clean up event listeners**
+   Remove event listeners when components unmount to avoid memory leaks in single-page applications.
+
+2. **Wrap in try-catch**
+   Not all `message` events are from MakeForm. Always wrap `JSON.parse` in a try-catch to ignore unrelated messages.
+
+3. **Validate event origin**
+   For security, check `event.origin` matches your expected MakeForm domain before processing data.
+
+4. **Debounce FieldChange events**
+   `MakeForm.FieldChange` fires on every keystroke. If you're making API calls or expensive operations, debounce the handler.
+
+5. **Don't rely on SetHeight/SetBackgroundColor**
+   These are internal events used by the SDK for auto-resizing. They may change without notice. Use them for debugging, not production logic.
+
+---
+
+## Related
+
+- <Link href="/developer/embedded/embed-your-form">Embed Your Form</Link> — Overview of all embed types
+- <Link href="/developer/embedded/popup-and-slider">Popup & Slider Forms</Link> — Callbacks and lifecycle events
+- <Link href="/developer/embedded/developer-resources">Developer Resources</Link> — Full JavaScript API reference

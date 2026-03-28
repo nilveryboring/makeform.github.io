@@ -1,0 +1,196 @@
+import { Callout } from 'nextra/components'
+import Link from 'next/link'
+
+# Hidden Fields in Embeds
+
+Pass contextual data into your embedded forms using URL parameters. This lets you include information you already have — like user IDs, emails, or campaign tags — directly in form submissions without asking respondents to fill them in.
+
+<div style={{ backgroundColor: '#ecfdf5', border: '2px solid #10b981', borderRadius: '0.5rem', padding: '1rem', marginTop: '1.5rem', marginBottom: '1.5rem', display: 'flex', gap: '0.75rem', alignItems: 'flex-start' }}>
+  <div style={{ fontSize: '1.5rem', lineHeight: '1' }}>🎁</div>
+  <div style={{ flex: '1' }}>
+    <span style={{ color: '#065f46', fontSize: '0.95rem' }}>
+      Hidden fields in embeds are available for <strong>free</strong> to all Makeform users.
+    </span>
+  </div>
+</div>
+
+To set up hidden fields in your form, see <Link href="/features/hidden-fields">Hidden Fields</Link>.
+
+---
+
+## How it works
+
+1. Define hidden fields in your form's <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Settings</span> tab
+2. Append the field names and values as URL query parameters to your embed URL
+3. When the form is submitted, the hidden field values are included in the submission data
+
+<div className="shadow-2xl mt-12">![Hidden field setup in Settings tab](/images/embed_hidden1.png)</div>
+
+Hidden field values are applied with the highest priority — they override any default values or saved progress.
+
+<Callout type="info">
+Hidden field parameter names are **case-sensitive** and must exactly match the field names defined in your form settings. Parameter names starting with `__mf_` are reserved for internal use and cannot be used as hidden fields.
+</Callout>
+
+---
+
+## Standard (inline) embed
+
+Append query parameters directly to the `data-makeform-src` URL:
+
+```html copy
+<iframe
+  data-makeform-src="https://makeform.ai/e/YOUR_FORM_ID?user_id=123&plan=pro&email=user@example.com"
+  loading="lazy"
+  style="width: 100%; height: 600px;"
+  data-makeform-auto-resize
+  frameborder="0"
+  marginheight="0"
+  marginwidth="0"
+  title="My Form"
+></iframe>
+<script src="https://www.makeform.ai/widgets/embed.js"></script>
+```
+
+The first parameter uses `?`, and additional parameters are separated with `&`.
+
+---
+
+## Popup and slider embeds
+
+### Via URL parameters
+
+Append parameters to the `data-makeform-popup` or `data-makeform-slider` URL:
+
+```html copy
+<button
+  data-makeform-popup="https://makeform.ai/e/YOUR_FORM_ID?user_id=123&plan=pro"
+  data-makeform-width="500"
+>
+  Open Form
+</button>
+<script src="https://www.makeform.ai/widgets/embed.js"></script>
+```
+
+### Via JavaScript API
+
+Use the `hiddenFields` option for cleaner, dynamic values:
+
+```javascript copy
+MakeForm.openPopup("YOUR_FORM_ID", {
+  hiddenFields: {
+    user_id: "123",
+    plan: "pro",
+    email: "user@example.com"
+  }
+});
+```
+
+This works the same way with `MakeForm.openSlider()`.
+
+### Via auto-open configuration
+
+```javascript copy
+window.MakeFormConfig = {
+  formId: "YOUR_FORM_ID",
+  popup: {
+    hiddenFields: {
+      user_id: "123",
+      source: "homepage"
+    },
+    open: { trigger: "time", ms: 5000 }
+  }
+};
+```
+
+---
+
+## Full page embed
+
+Append query parameters to the full page URL:
+
+```
+https://makeform.ai/f/YOUR_FORM_ID?user_id=123&plan=pro&email=user@example.com
+```
+
+---
+
+## Dynamic hidden fields
+
+Pass values from your page context at runtime using the JavaScript API:
+
+```javascript copy
+// Get values from your application
+const userId = getCurrentUser().id;
+const userEmail = getCurrentUser().email;
+
+MakeForm.openPopup("YOUR_FORM_ID", {
+  hiddenFields: {
+    user_id: userId,
+    email: userEmail,
+    page_url: window.location.href,
+    referrer: document.referrer
+  }
+});
+```
+
+### Forwarding UTM parameters
+
+Capture marketing attribution by forwarding UTM parameters from the current page:
+
+```javascript copy
+const params = new URLSearchParams(window.location.search);
+
+MakeForm.openPopup("YOUR_FORM_ID", {
+  hiddenFields: {
+    utm_source: params.get("utm_source") || "",
+    utm_medium: params.get("utm_medium") || "",
+    utm_campaign: params.get("utm_campaign") || ""
+  }
+});
+```
+
+---
+
+## Hidden fields in form results
+
+Hidden field values appear alongside other form responses in the <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Submissions</span> tab.
+
+<div className="shadow-2xl mt-12">![Hidden field data in Submissions](/images/embed_hidden2.png)</div>
+
+---
+
+## Common use cases
+
+### User tracking
+Pass authenticated user IDs or emails to associate form submissions with known users — useful for in-app feedback forms and support requests.
+
+### Campaign attribution
+Forward UTM parameters or custom campaign tags to track which marketing campaigns drive form submissions.
+
+### A/B testing
+Pass an experiment variant identifier to measure conversion rates across different form or page variations.
+
+### Multi-step workflows
+When redirecting between forms, pass data from the first form as hidden fields in the second to maintain context across the workflow.
+
+---
+
+## Transparent background
+
+Use the special `mk-rm-bg` parameter to make the form background transparent. This lets the form blend seamlessly with your page design:
+
+```html
+data-makeform-src="https://makeform.ai/e/YOUR_FORM_ID?mk-rm-bg=true"
+```
+
+This works with all embed types (standard, popup, slider, and full page).
+
+---
+
+## Related
+
+- <Link href="/features/hidden-fields">Hidden Fields</Link> — Set up hidden fields in your form
+- <Link href="/developer/embedded/embed-your-form">Embed Your Form</Link> — Overview of all embed types
+- <Link href="/developer/embedded/popup-and-slider">Popup & Slider Forms</Link> — Auto-open triggers with hidden fields
+- <Link href="/developer/embedded/developer-resources">Developer Resources</Link> — Full JavaScript API reference

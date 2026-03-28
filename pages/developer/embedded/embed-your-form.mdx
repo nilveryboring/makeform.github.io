@@ -1,0 +1,187 @@
+import { Callout } from 'nextra/components'
+import Link from 'next/link'
+
+# Embed Your Form
+
+You can embed a Makeform form on any webpage. Customize it to blend in seamlessly with your website, or use it as a popup or slider to capture leads and feedback.
+
+<div style={{ backgroundColor: '#ecfdf5', border: '2px solid #10b981', borderRadius: '0.5rem', padding: '1rem', marginTop: '1.5rem', marginBottom: '1.5rem', display: 'flex', gap: '0.75rem', alignItems: 'flex-start' }}>
+  <div style={{ fontSize: '1.5rem', lineHeight: '1' }}>🎁</div>
+  <div style={{ flex: '1' }}>
+    <span style={{ color: '#065f46', fontSize: '0.95rem' }}>
+      Embedding forms is available for **free** to all Makeform users. Some customization options require <a href="/plans-and-pricing" style={{ textDecoration: 'underline', color: '#065f46' }}><strong>Makeform Pro</strong></a>.
+    </span>
+  </div>
+</div>
+
+---
+
+## How embedding works
+
+Makeform serves your forms via an iframe from `https://makeform.ai/e/{FORM_ID}`. The embed SDK (`embed.js`) handles initialization, auto-resizing, and communication between the form and your website.
+
+There are four ways to embed your form:
+- **Standard (Inline)** — The form appears directly within your page content
+- **Popup** — The form opens as a centered modal overlay
+- **Slider** — The form slides in from the right side of the screen
+- **Full Page** — The form takes over the entire browser window
+
+---
+
+## Getting the embed code
+
+Go to the <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Share tab</span> of your published form and select your preferred embed type. Click <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Get the code</span> to copy the embed snippet.
+
+<div className="shadow-2xl mt-12">![Share tab showing embed options](/images/embed_form1.png)</div>
+
+<Callout type="info">
+When you update your form content, changes are reflected automatically in all embeds. However, if you change embed **settings** (like width or background), you'll need to copy and replace the embed code.
+</Callout>
+
+---
+
+## Standard (Inline) embed
+
+The standard embed places your form directly within the page as an inline element. The form auto-resizes its height to match the content.
+
+<div className="shadow-2xl mt-12">![Inline embed on a webpage](/images/embed_form2.png)</div>
+
+```html copy
+<iframe
+  data-makeform-src="https://makeform.ai/e/YOUR_FORM_ID"
+  loading="lazy"
+  style="width: 100%; height: 600px;"
+  data-makeform-auto-resize
+  data-makeform-events
+  frameborder="0"
+  marginheight="0"
+  marginwidth="0"
+  title="My Form"
+></iframe>
+<script src="https://www.makeform.ai/widgets/embed.js"></script>
+```
+
+### Options
+
+- **Width** — Set any CSS width (`100%`, `500px`, etc.)
+- **Height** — Set a fixed pixel height, or use `data-makeform-auto-resize` for automatic height
+- **Transparent background** — Append `?mk-rm-bg=true` to the URL for a transparent form background
+
+---
+
+## Popup embed
+
+The popup displays your form as a centered modal overlay. Users click a button to open it.
+
+<div className="shadow-2xl mt-12">![Popup modal](/images/embed_form3.png)</div>
+
+```html copy
+<button
+  data-makeform-popup="https://makeform.ai/e/YOUR_FORM_ID"
+  data-makeform-width="500"
+  data-makeform-events
+>
+  Open Form
+</button>
+<script src="https://www.makeform.ai/widgets/embed.js"></script>
+```
+
+Popups can also be triggered automatically — on page load, after a time delay, on exit intent, or after scrolling. See <Link href="/developer/embedded/popup-and-slider">Popup & Slider Forms</Link> for all options.
+
+---
+
+## Slider embed
+
+The slider opens your form as a panel that slides in from the right edge of the screen.
+
+<div className="shadow-2xl mt-12">![Slider panel](/images/embed_form4.png)</div>
+
+```html copy
+<button
+  data-makeform-slider="https://makeform.ai/e/YOUR_FORM_ID"
+  data-makeform-width="500"
+  data-makeform-events
+>
+  Feedback
+</button>
+<script src="https://www.makeform.ai/widgets/embed.js"></script>
+```
+
+Sliders support the same auto-open triggers and options as popups. See <Link href="/developer/embedded/popup-and-slider">Popup & Slider Forms</Link> for details.
+
+---
+
+## Full page embed
+
+The full page embed makes your form occupy the entire browser window. This is ideal for dedicated form pages or when using a custom domain.
+
+The full page form uses a different URL format: `https://makeform.ai/f/YOUR_FORM_ID`
+
+```html copy
+<iframe
+  src="https://makeform.ai/f/YOUR_FORM_ID"
+  style="position: absolute; top: 0; right: 0; bottom: 0; left: 0; border: 0; width: 100%; height: 100%;"
+  title="My Form"
+></iframe>
+```
+
+To enable event tracking on full page embeds, append `?__mf_emitEvents=1` to the URL and use `data-makeform-src` instead of `src`:
+
+```html copy
+<iframe
+  data-makeform-src="https://makeform.ai/f/YOUR_FORM_ID?__mf_emitEvents=1"
+  data-makeform-events
+  style="position: absolute; top: 0; right: 0; bottom: 0; left: 0; border: 0; width: 100%; height: 100%;"
+  title="My Form"
+></iframe>
+<script src="https://www.makeform.ai/widgets/embed.js"></script>
+```
+
+You can also use a <Link href="/features/custom-domain">custom domain</Link> for a fully branded experience.
+
+---
+
+## Data attributes reference
+
+| Attribute | Applies to | Description | Default |
+|-----------|-----------|-------------|---------|
+| `data-makeform-src` | Inline, Full page | Form URL — activates SDK initialization | *required* |
+| `data-makeform-popup` | Popup | Form URL for popup trigger | *required* |
+| `data-makeform-slider` | Slider | Form URL for slider trigger | *required* |
+| `data-makeform-auto-resize` | Inline | Auto-adjust height based on form content | — |
+| `data-makeform-width` | Popup, Slider | Modal width in pixels (360–800) | `500` |
+| `data-makeform-bg` | Popup, Slider | Initial background color (prevents white flash) | `#ffffff` |
+| `data-makeform-events` | All | Enable event dispatching to parent page | — |
+| `data-makeform-auto-close` | Popup, Slider | Auto-close delay in seconds after submit (0–30) | — |
+
+---
+
+## Pro embed features
+
+<div style={{ backgroundColor: '#fdf2f8', border: '2px solid #ec4899', borderRadius: '0.5rem', padding: '1rem', marginTop: '1.5rem', marginBottom: '1.5rem', display: 'flex', gap: '0.75rem', alignItems: 'flex-start' }}>
+  <div style={{ fontSize: '1.5rem', lineHeight: '1' }}>✨</div>
+  <div style={{ flex: '1' }}>
+    <span style={{ color: '#831843', fontSize: '0.95rem' }}>
+      The following embed customization options are available with <a href="/plans-and-pricing" style={{ textDecoration: 'underline', color: '#831843' }}><strong>Makeform Pro</strong></a>.
+    </span>
+  </div>
+</div>
+
+| Feature | Description |
+|---------|-------------|
+| **Hide loading screen** | Remove the loading spinner that appears while the form loads |
+| **Custom loading text** | Display your own message during form loading |
+| **Hide "Powered by" badge** | Remove MakeForm branding from the bottom of the form |
+| **Hide end screen branding** | Remove branding from the thank-you / completion screen |
+| **Custom CSS** | Inject custom styles to fully customize the form appearance |
+
+See also: <Link href="/features/remove-makeform-branding">Remove Makeform branding</Link>
+
+---
+
+## Next steps
+
+- <Link href="/developer/embedded/popup-and-slider">Popup & Slider Forms</Link> — Auto-open triggers, suppression, callbacks, and all modal options
+- <Link href="/developer/embedded/embed-hidden-fields">Hidden Fields in Embeds</Link> — Pass data into your forms via URL parameters
+- <Link href="/developer/embedded/form-event">Handle Form Events</Link> — Listen to form events like submit, load, and field changes
+- <Link href="/developer/embedded/developer-resources">Developer Resources</Link> — Full JavaScript API reference and framework integration examples
