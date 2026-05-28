@@ -16,6 +16,23 @@ Currently, Makeform supports the following events:
 
 ## Event Handling
 
+### Recommended Inline Embed
+
+Use the `/e/{formId}` embed route with the Makeform widget script. This gives the iframe dynamic height, avoids an inner scrollbar, and still lets the form post submission events to the host page.
+
+```html copy
+<iframe
+  data-makeform-src="https://www.makeform.ai/e/YOUR_FORM_ID"
+  loading="lazy"
+  style="width:100%;height:200px;border:0;"
+  data-makeform-auto-resize
+  title="Makeform form"
+></iframe>
+<script async src="https://www.makeform.ai/widgets/embed.js"></script>
+```
+
+Do not replace the Makeform embed host with a custom-domain or custom-path URL. Custom domains are for direct form visits; inline embeds should use the app-generated `/e/{formId}` URL.
+
 ### Submit Success Event
 
 The `MakeForm.SubmitSuccess` event is triggered when a form submission is successfully completed. The event payload contains the form responses as key-value pairs, where keys are your form field names.
@@ -72,9 +89,12 @@ The `MakeForm.SubmitSuccess` event is triggered when a form submission is succes
   </Tabs.Tab>
   <Tabs.Tab>
     ```tsx filename="EmbeddedForm.tsx" copy
+    import Script from 'next/script'
+    import { useEffect } from 'react'
+
     export default function EmbeddedForm() {
       const FORM_ID = 'YOUR_FORM_ID'
-      const FORM_URL = `https://makeform.ai/e/${FORM_ID}`
+      const FORM_URL = `https://www.makeform.ai/e/${FORM_ID}`
 
       useEffect(() => {
         const handleMessage = (event) => {
@@ -98,16 +118,23 @@ The `MakeForm.SubmitSuccess` event is triggered when a form submission is succes
       }, []);
 
       return (
-        <iframe
-          src={FORM_URL}
-          className="w-full h-full"
-          style={{
-            border: 'none',
-            margin: 0,
-            padding: 0,
-            overflow: 'hidden',
-          }}
-        />
+        <>
+          <iframe
+            data-makeform-src={FORM_URL}
+            loading="lazy"
+            data-makeform-auto-resize
+            title="Makeform form"
+            style={{
+              width: '100%',
+              height: 200,
+              border: 0,
+            }}
+          />
+          <Script
+            src="https://www.makeform.ai/widgets/embed.js"
+            strategy="afterInteractive"
+          />
+        </>
       );
     }
     ```
@@ -116,13 +143,14 @@ The `MakeForm.SubmitSuccess` event is triggered when a form submission is succes
     ```vue filename="EmbeddedForm.vue" copy
     <template>
       <iframe
-        :src="formUrl"
-        class="w-full h-full"
+        :data-makeform-src="formUrl"
+        loading="lazy"
+        data-makeform-auto-resize
+        title="Makeform form"
         :style="{
-          border: 'none',
-          margin: 0,
-          padding: 0,
-          overflow: 'hidden'
+          width: '100%',
+          height: '200px',
+          border: 0
         }"
       />
     </template>
@@ -131,7 +159,8 @@ The `MakeForm.SubmitSuccess` event is triggered when a form submission is succes
     import { onMounted, onUnmounted } from 'vue'
 
     const FORM_ID = 'YOUR_FORM_ID'
-    const formUrl = `https://makeform.ai/e/${FORM_ID}`
+    const formUrl = `https://www.makeform.ai/e/${FORM_ID}`
+    const scriptSrc = 'https://www.makeform.ai/widgets/embed.js'
 
     const handleMessage = (event) => {
       try {
@@ -151,6 +180,12 @@ The `MakeForm.SubmitSuccess` event is triggered when a form submission is succes
 
     onMounted(() => {
       window.addEventListener('message', handleMessage)
+      if (!document.querySelector(`script[src="${scriptSrc}"]`)) {
+        const script = document.createElement('script')
+        script.src = scriptSrc
+        script.async = true
+        document.body.appendChild(script)
+      }
     })
 
     onUnmounted(() => {
