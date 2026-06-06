@@ -4,7 +4,7 @@ import { Callout } from 'nextra/components'
 
 Use calculation fields to compute totals, scores, estimates, and other dynamic values from answers in the same form.
 
-![Calculation field builder example](/images/calculator-builder.webp)
+![AI adding a calculation field from a prompt](/images/calculator-ai-create.webp)
 
 <Callout type="info">
 Calculation fields are best when the value should be saved with the submission, shown to the respondent, or reused by another field such as a payment amount.
@@ -24,14 +24,27 @@ Give the fields you want to calculate from clear names. For example, use field n
 
 If your formula references a field, that field should appear earlier in the form flow so Makeform can calculate from a value that already exists.
 
-## Create a calculation field
+## Create a calculation with AI
 
 1. Open your form in the builder.
 2. Add the input fields that provide the values for your calculation, such as <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Number Input</span>, <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Currency Input</span>, or choice fields with point values.
-3. Add a <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Calculation</span> field.
-4. In the calculation settings, enter a formula that references your field names.
-5. Choose how the result should be formatted.
-6. Preview the form and test the formula with realistic answers.
+3. Ask Makeform AI to add the calculation. For example: `Add a calculation field that calculates total price from quantity and unit price`.
+4. Review the calculation field that Makeform creates.
+5. Preview the form and test the formula with realistic answers.
+
+Makeform AI can create a hidden calculation field when the value is mainly used behind the scenes. Hidden calculations are still saved with the response and can still be referenced by other fields.
+
+![Calculation field in the builder](/images/calculator-field-summary.webp)
+
+## Edit the calculation rules
+
+Open the calculation field and review the rule Makeform created. A simple total can be built from rule blocks, such as multiplying `Quantity` by `Unit Price`.
+
+![Calculation rule builder](/images/calculator-rule-builder.webp)
+
+Use rules when the calculation is simple and easier to read as steps. Use advanced formula mode when you want to type the expression directly.
+
+![Advanced formula editor](/images/calculator-advanced-formula.webp)
 
 ## Formula examples
 
@@ -45,11 +58,19 @@ If your formula references a field, that field should appear earlier in the form
 
 ## Show the calculated value
 
-![Calculated result in a form](/images/calculator-result.webp)
-
 You can show the result to respondents when the calculation helps them understand the next step. This is useful for quotes, estimates, order totals, or assessment scores.
 
-If the calculation is only for your internal workflow, you can keep the field less prominent and review the value in the submission data.
+If the calculation field itself is hidden, add a text block that references the calculation result. For example:
+
+```text
+Total: ${{total_price}}
+```
+
+You can also ask Makeform AI to do this for you. For example: `Show the total price on the same page below the unit price field`.
+
+![Calculated total shown on the same page](/images/calculator-preview-result.webp)
+
+If the calculation is only for your internal workflow, keep it hidden and review the value in the submission data.
 
 ## Use calculation fields with payments
 
