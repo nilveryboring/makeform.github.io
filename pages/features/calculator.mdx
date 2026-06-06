@@ -1,0 +1,91 @@
+import { Callout } from 'nextra/components'
+
+# Calculation Fields
+
+Use calculation fields to compute totals, scores, estimates, and other dynamic values from answers in the same form.
+
+![Calculation field builder example](/images/calculator-builder.webp)
+
+<Callout type="info">
+Calculation fields are best when the value should be saved with the submission, shown to the respondent, or reused by another field such as a payment amount.
+</Callout>
+
+## Common use cases
+
+- Quote requests that calculate price from quantity, hours, or package choices
+- Lead scoring forms that assign points to answers
+- Event registration forms that total tickets, add-ons, or fees
+- Assessments that calculate a score before showing an ending page
+- Payment forms that use a calculated amount
+
+## Before you start
+
+Give the fields you want to calculate from clear names. For example, use field names like `hours`, `rate`, `quantity`, `plan`, or `score`.
+
+If your formula references a field, that field should appear earlier in the form flow so Makeform can calculate from a value that already exists.
+
+## Create a calculation field
+
+1. Open your form in the builder.
+2. Add the input fields that provide the values for your calculation, such as <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Number Input</span>, <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Currency Input</span>, or choice fields with point values.
+3. Add a <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Calculation</span> field.
+4. In the calculation settings, enter a formula that references your field names.
+5. Choose how the result should be formatted.
+6. Preview the form and test the formula with realistic answers.
+
+## Formula examples
+
+| Goal | Example formula |
+| --- | --- |
+| Multiply hours by a rate | `hours * rate` |
+| Add two values | `setup_fee + monthly_fee` |
+| Apply a percentage | `subtotal * 0.1` |
+| Score several answers | `score_a + score_b + score_c` |
+| Add tax to a total | `subtotal + (subtotal * tax_rate)` |
+
+## Show the calculated value
+
+![Calculated result in a form](/images/calculator-result.webp)
+
+You can show the result to respondents when the calculation helps them understand the next step. This is useful for quotes, estimates, order totals, or assessment scores.
+
+If the calculation is only for your internal workflow, you can keep the field less prominent and review the value in the submission data.
+
+## Use calculation fields with payments
+
+For dynamic payment amounts, create the calculation first, test it, then use that calculation as the source for the payment amount.
+
+Good examples:
+
+- `ticket_count * ticket_price`
+- `package_price + add_on_total`
+- `base_fee + rush_fee`
+
+Avoid using calculations for values that should never change without server-side verification, such as regulated pricing or legally binding quotes.
+
+## Testing checklist
+
+- Test with empty fields.
+- Test with small and large numbers.
+- Test decimals if your form accepts currency or percentage values.
+- Confirm the result format is readable.
+- Submit a test response and verify the calculated value appears in submissions.
+- If the calculation powers a payment amount, test the payment flow before sharing the form.
+
+## Troubleshooting
+
+### The result is blank
+
+Check that every referenced field has a value. If a field is empty, the formula may not have enough data to calculate.
+
+### The formula does not recognize a field
+
+Confirm that the formula uses the field name, not just the question label. Field names are easier to reference when they are short and consistent.
+
+### The result looks wrong
+
+Check parentheses and operator order. For example, `subtotal + fee * tax` is different from `(subtotal + fee) * tax`.
+
+### The payment amount is wrong
+
+Test the calculation independently first. Once the calculation result is correct, connect it to the payment field again.

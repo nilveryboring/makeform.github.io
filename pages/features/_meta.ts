@@ -13,6 +13,7 @@ export default {
   'currency-input': 'Currency Input',
   'address-input': 'Address Input',
   'ranking-input': 'Ranking Input',
+  matrix: 'Matrix Questions',
   'link-input': 'Link Input',
   'time-input': 'Time Input',
   'geo-capture': 'Geo Capture',
@@ -29,6 +30,10 @@ export default {
 
   // Form Settings
   'conditional-logic': 'Conditional Logic',
+  calculator: 'Calculation Fields',
+  'answer-piping': 'Answer Piping',
+  'pre-populate': 'Pre-Populate Forms',
+  redirect: 'Redirect After Submission',
   'custom-domain': 'Custom Domain',
   'link-preview': 'Link Preview',
   'remove-makeform-branding': 'Remove Makeform branding',

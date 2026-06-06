@@ -1,0 +1,74 @@
+import { Callout } from 'nextra/components'
+
+# Answer Piping
+
+Use answer piping to insert a respondent's previous answer into later questions, descriptions, text blocks, or ending pages.
+
+![Answer piping setup example](/images/answer-piping-setup.webp)
+
+<Callout type="info">
+Answer piping makes forms feel personal without creating separate forms or writing custom code.
+</Callout>
+
+## What answer piping does
+
+Answer piping takes a value from an earlier field and places it into later copy.
+
+For example:
+
+- Ask for a first name, then write `Thanks @first_name, what is your main goal?`
+- Ask for a company name, then write `What should we know about @company?`
+- Ask for a selected package, then write `You selected @package. Choose your add-ons.`
+
+## Create an answer-piped question
+
+1. Add the field you want to reuse, such as <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Short Text Input</span> for a first name.
+2. Give that field a clear field name.
+3. Add a later question, description, text block, or ending page.
+4. Type <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">@</span>.
+5. Choose the earlier field from the menu.
+6. Preview the form and complete the earlier field to confirm the copy updates.
+
+## Respondent experience
+
+![Answer piping preview example](/images/answer-piping-preview.webp)
+
+The respondent sees the final copy with their answer inserted. They do not need to know that a variable was used.
+
+## Good places to use answer piping
+
+| Place | Example |
+| --- | --- |
+| Question title | `Thanks @first_name, what do you want to build?` |
+| Description | `We will send the checklist to @email.` |
+| Text block | `Your selected plan is @plan.` |
+| Ending page | `Thanks @first_name, your request was received.` |
+
+## Best practices
+
+- Reference fields that appear earlier in the form.
+- Use short field names so they are easy to find in the @ menu.
+- Add fallback-friendly copy. For example, avoid sentences that break if an answer is blank.
+- Test every path if the piped value appears after conditional logic.
+- Keep personalization helpful, not gimmicky.
+
+## Testing checklist
+
+- Fill the source field in preview mode.
+- Confirm the later question shows the inserted answer.
+- Test what happens if the source answer is empty.
+- Submit a test response and confirm the original answer is still saved.
+
+## Troubleshooting
+
+### The @ menu does not show the field
+
+Make sure the source field is already created and has a clear label or field name.
+
+### The inserted answer is blank
+
+The respondent may not have answered the source field, or the piped field may appear before the source field in the form.
+
+### The copy sounds awkward
+
+Rewrite the sentence so it still reads naturally with short, long, or unexpected answers.
