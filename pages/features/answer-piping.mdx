@@ -4,7 +4,7 @@ import { Callout } from 'nextra/components'
 
 Use answer piping to insert a respondent's previous answer into later questions, descriptions, text blocks, or ending pages.
 
-![Answer piping setup example](/images/answer-piping-setup.webp)
+![Insert a field answer into a text block](/images/answer-piping-setup.webp)
 
 <Callout type="info">
 Answer piping makes forms feel personal without creating separate forms or writing custom code.
@@ -12,15 +12,26 @@ Answer piping makes forms feel personal without creating separate forms or writi
 
 ## What answer piping does
 
-Answer piping takes a value from an earlier field and places it into later copy.
+Answer piping takes a value from an earlier field and places it into later copy. Makeform can pipe answers into question titles and text content, so the same form can react to what the respondent already entered.
 
 For example:
 
 - Ask for a first name, then write `Thanks @first_name, what is your main goal?`
 - Ask for a company name, then write `What should we know about @company?`
 - Ask for a selected package, then write `You selected @package. Choose your add-ons.`
+- Ask for a quantity, then write `@quantity Unit Price`
 
-## Create an answer-piped question
+## Create answer piping with AI
+
+You can ask Makeform AI to add answer piping for you. For example:
+
+```text
+Use the quantity answer in the Unit Price question title.
+```
+
+Makeform AI can update the form copy and insert the right field reference. Review the result in the builder, then preview the form with a real answer to make sure the sentence reads correctly.
+
+## Add answer piping manually
 
 1. Add the field you want to reuse, such as <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Short Text Input</span> for a first name.
 2. Give that field a clear field name.
@@ -29,11 +40,19 @@ For example:
 5. Choose the earlier field from the menu.
 6. Preview the form and complete the earlier field to confirm the copy updates.
 
+## Pipe answers into question titles
+
+Place your cursor in a question title, click the <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">@</span> control, then choose the field answer you want to reuse.
+
+![Insert a field answer into a question title](/images/answer-piping-question-title.webp)
+
+In the example above, the `quantity` answer can be inserted into the next question title so the respondent sees a title like `12 Unit Price`.
+
 ## Respondent experience
 
-![Answer piping preview example](/images/answer-piping-preview.webp)
-
 The respondent sees the final copy with their answer inserted. They do not need to know that a variable was used.
+
+![Answer piping preview example](/images/answer-piping-preview.webp)
 
 ## Good places to use answer piping
 
