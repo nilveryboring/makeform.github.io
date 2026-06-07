@@ -5,7 +5,7 @@ import { Callout } from 'nextra/components'
 Send Makeform submissions to a Notion database so responses become database entries.
 
 <Callout type="info">
-Notion can be connected from a form's Integrations tab. You can choose a workspace, choose or create a database, and map form fields to Notion properties.
+Notion automations are created from a form's Automations tab. You can choose a workspace, choose or create a database, and map form fields to Notion properties.
 </Callout>
 
 ## What the Notion integration does
@@ -24,12 +24,12 @@ Use it for:
 ## Connect Notion
 
 1. Open your form.
-2. Go to the <span className="text-cyan-500 font-semibold bg-cyan-100 px-2 py-1 rounded">Integrations</span> tab.
+2. Go to the <span className="text-cyan-500 font-semibold bg-cyan-100 px-2 py-1 rounded">Automations</span> tab.
 3. Choose <span className="text-cyan-500 font-semibold bg-cyan-100 px-2 py-1 rounded">Notion</span>.
 4. Connect a Notion workspace or choose an existing connected workspace.
 5. Select a database or create a new one.
 6. Review field mappings.
-7. Save the integration.
+7. Save the automation.
 
 ## Map form fields to Notion properties
 
@@ -44,7 +44,7 @@ Review the mappings before saving, especially when:
 
 ## Export existing submissions
 
-If available during setup, use export existing submissions to backfill responses that were already collected before the Notion integration was connected.
+If available during setup, use export existing submissions to backfill responses that were already collected before the Notion automation was connected.
 
 For active production forms, test with a copy or a small sample first so you do not create unwanted database rows.
 
@@ -54,7 +54,7 @@ For active production forms, test with a copy or a small sample first so you do 
 - Confirm a new page appears in the selected Notion database.
 - Check mapped fields.
 - Confirm the Notion workspace connection is still active.
-- Disable old Notion integrations if the destination database changes.
+- Disable old Notion automations if the destination database changes.
 
 ## Troubleshooting
 
@@ -68,4 +68,4 @@ Refresh the database properties, then review the field mappings again.
 
 ### Responses go to the wrong database
 
-Edit the Notion integration and select the correct database.
+Edit the Notion automation and select the correct database.
