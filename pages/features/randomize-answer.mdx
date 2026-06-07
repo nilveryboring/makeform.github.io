@@ -1,0 +1,65 @@
+import { Callout } from 'nextra/components'
+
+# Randomize Answers
+
+Randomize answer options to reduce order bias when respondents rank choices.
+
+<Callout type="info">
+Randomization is available on ranking questions. Each respondent sees the options in a shuffled order when the form loads.
+</Callout>
+
+## When to use randomization
+
+Use randomized answers when the order of options could influence the response.
+
+Good examples:
+
+- Product preference tests
+- Feature prioritization surveys
+- Candidate or idea ranking
+- Research studies where first-option bias matters
+
+Do not randomize options when the order itself carries meaning, such as steps in a process, sizes from small to large, or time ranges.
+
+## Turn on randomized answers
+
+1. Open your form in the builder.
+2. Add or select a <span className="text-cyan-500 font-semibold bg-cyan-100 px-2 py-1 rounded">Ranking</span> question.
+3. Open the question settings.
+4. Turn on <span className="text-cyan-500 font-semibold bg-cyan-100 px-2 py-1 rounded">Randomize options</span>.
+5. Save or publish the form.
+
+Randomization happens for respondents, not while you are editing the form. Use preview or a published form link to test the respondent experience.
+
+## How results are saved
+
+Makeform saves the selected option values, not their displayed position.
+
+That means your results stay readable even when different respondents saw the same options in a different order.
+
+## Use with partial ranking
+
+Randomized answers work well with <span className="text-cyan-500 font-semibold bg-cyan-100 px-2 py-1 rounded">Allow partial ranking</span>.
+
+For example, you can ask respondents to rank their top 3 options from a longer randomized list. This is useful when you want preference data without forcing people to rank every option.
+
+## Testing checklist
+
+- Preview the form more than once and confirm the option order changes.
+- Submit a test response and confirm the ranked values are saved correctly.
+- Keep option labels clear enough to make sense in any order.
+- Turn randomization off for options that should stay in a fixed sequence.
+
+## Troubleshooting
+
+### The order does not change in the editor
+
+That is expected. Randomization is designed for the respondent view.
+
+### Results look out of order
+
+The display order can vary by respondent. Read the selected option values, not the original option position.
+
+### The setting is missing
+
+Check that you are editing a ranking question. Randomized answers are not shown for every field type.
