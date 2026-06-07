@@ -2,219 +2,125 @@ import { Callout } from 'nextra/components'
 
 # Custom Domain
 
-Use your own domain for your forms instead of the default makeform.ai domain.
+Use your own domain for Makeform forms instead of the default makeform.ai URL.
 
-<div style={{ backgroundColor: '#fdf2f8', border: '2px solid #ec4899', borderRadius: '0.5rem', padding: '1rem', marginTop: '1.5rem', marginBottom: '1.5rem', display: 'flex', gap: '0.75rem', alignItems: 'flex-start' }}>
-  <div style={{ fontSize: '1.5rem', lineHeight: '1' }}>✨</div>
-  <div style={{ flex: '1' }}>
-    <span style={{ color: '#831843', fontSize: '0.95rem' }}>Custom domains is a <a href="/plans-and-pricing" style={{ textDecoration: 'underline', color: '#831843' }}><strong>Makeform Pro</strong></a> feature.</span>
-  </div>
-</div>
-
----
-
-**What you get with custom domains:**
-
-- ✅ Professional branded form URLs (e.g., `forms.yourcompany.com`)
-- ✅ Automatic SSL certificates for secure HTTPS connections
-- ✅ Quick setup with just one CNAME record
-
----
-
-## Step 1: Access the Domains Page
-
-Navigate to the Domains section from your dashboard sidebar.
-
-![Domains Page](/images/custom_domain1.png)
-
-1. Log in to your Makeform account
-2. Click on **Domains** in the left sidebar navigation
-3. Click **Add Your First Domain** (or **Add Domain** if you already have domains)
-
----
-
-## Step 2: Choose Your Domain Type
-
-Select whether you want to use a subdomain or root domain.
-
-![Choose Domain Type](/images/custom_domain2.png)
+![Domains page](/images/custom_domain1.webp)
 
 <Callout type="info">
-**Recommendation:** We suggest using a **subdomain** (like `forms.yourcompany.com`) to avoid conflicts with your main website and for easier setup.
+Custom domains are a Makeform Pro feature.
 </Callout>
 
----
+## What custom domains change
 
-## Step 3: Enter Your Domain
+Custom domains let respondents open your forms on a branded domain such as `forms.company.com`.
 
-After selecting your domain type, enter your domain details.
+With a verified custom domain, you can:
 
-![Enter Domain](/images/custom_domain3.png)
+- Share branded form URLs.
+- Serve forms over HTTPS with automatic SSL.
+- Assign a verified domain to individual forms.
+- Use custom paths such as `/contact`, `/feedback`, or `/apply`.
+
+## Add a domain
+
+Open the <span className="text-cyan-500 font-semibold bg-cyan-100 px-2 py-1 rounded">Domains</span> page from your dashboard, then click <span className="text-cyan-500 font-semibold bg-cyan-100 px-2 py-1 rounded">Add Domain</span>.
+
+![Choose a domain type](/images/custom_domain2.webp)
+
+Choose the domain type you want to connect:
+
+| Domain type | Example | Recommendation |
+| --- | --- | --- |
+| Subdomain | `forms.company.com` | Best default. It avoids conflicts with your main website. |
+| Root domain | `companyforms.com` | Use when the entire domain is dedicated to forms. |
 
 <Callout type="warning">
-After adding your domain, you'll need to update your DNS settings to point to Vercel. Detailed instructions will be provided once the domain is added.
+Do not point your main website domain at Makeform unless you intend Makeform to serve that domain.
 </Callout>
 
-Click **Add Domain** to proceed.
+## Configure DNS
 
----
+After you add a domain, Makeform shows the DNS records required for that domain.
 
-## Step 4: Add CNAME Record to Your DNS Provider
+![DNS setup instructions](/images/custom_domain4.webp)
 
-After adding your domain, you'll receive DNS configuration instructions.
+Add the shown records in your DNS provider. The exact record depends on the domain:
 
-![DNS Setup Instructions](/images/custom_domain4.png)
+- Subdomains usually use a `CNAME` record pointing to `cname.makeform.ai`.
+- Root domains may use an `A` record.
+- Some domains may also require a `TXT` verification record.
 
-### How to Add the CNAME Record
+Use the record values shown in Makeform instead of guessing. DNS changes can take minutes to hours to propagate.
 
-1. **Log in to your domain provider** (e.g., GoDaddy, Namecheap, Cloudflare, Google Domains)
-2. **Navigate to DNS settings** (usually called "DNS Management", "DNS Records", or "Advanced DNS")
-3. **Add a new record** with the following details:
-   - **Type**: CNAME
-   - **Name/Host**: Your subdomain (e.g., `forms`)
-   - **Value/Target**: `cname.makeform.ai`
-   - **TTL**: Auto or 3600 (1 hour)
-4. **Save the changes**
+## Verify the domain
+
+After adding the DNS records, return to Makeform and check verification.
+
+![Verified custom domain](/images/custom_domain6.webp)
+
+When verification succeeds, Makeform can serve forms on that domain with HTTPS.
 
 <Callout type="info">
-**Need help?** Use the **Check DNS Propagation** link in your dashboard to verify your DNS changes, or consult the **Vercel Domain Docs** for detailed provider-specific instructions.
+If verification fails right after adding DNS records, wait a few minutes and check again. DNS propagation is not instant.
 </Callout>
 
-### Important Notes
+## Assign a domain to a form
 
-- **DNS propagation**: DNS changes can take up to 24 hours to propagate globally, though most changes are visible within 1-2 hours
-- **SSL certificates**: Will be automatically provisioned once DNS is configured
-- **Verification**: You can check verification status using the "Check Verification" button
+Once the domain is verified, open the form's <span className="text-cyan-500 font-semibold bg-cyan-100 px-2 py-1 rounded">Share</span> page and choose the domain from the custom domain selector.
 
-<Callout type="warning">
-The domain status will show as **Pending** until the DNS records are detected. This is normal - just wait for DNS propagation.
-</Callout>
+![Assign a custom domain to a form](/images/custom_domain7.webp)
 
----
+Only verified domains appear in the selector. If no verified domains are available, add or verify a domain from the Domains page first.
 
-## Step 5: Verify and Wait for Completion
+After assigning the domain, the form can be opened at a domain URL such as:
 
-Once DNS is configured, click **Check Verification** to verify your domain.
-
-![Domain Verified](/images/custom_domain5.png)
-
-### Verification Process
-
-1. Wait 5-15 minutes after adding the CNAME record
-2. Click **Check Verification** button in your dashboard
-3. If DNS has propagated, the domain will be verified
-4. SSL certificate will be automatically provisioned
-
-### Domain Status Indicators
-
-Your domain will show different statuses during the setup process:
-
-| Status | Indicator | Description |
-|--------|-----------|-------------|
-| 🟢 **Verified** | Green badge with ✓ checkmark | Domain is fully verified, SSL certificate active, and ready to use |
-| 🟠 **Pending** | Orange outline with ⏰ clock icon | DNS records not yet detected or still propagating |
-| 🔵 **Configuring** | Blue outline with ⚙️ settings icon | DNS detected, SSL certificate being provisioned |
-
-### When Complete
-
-You'll see:
-- ✅ Status changes to **Verified** (green checkmark)
-- ✅ Message: "Domain is verified and ready to use!"
-- ✅ Timestamps for Added, Last Checked, and Verified dates
-
-![Domain Verified](/images/custom_domain6.png)
-
-<Callout type="success">
-**Your custom domain is now live!** Your forms are now accessible at your custom domain with automatic HTTPS encryption.
-</Callout>
-
----
-
-## Using Your Custom Domain with Forms
-
-Once your domain is verified, you can assign it to your forms to create professional branded URLs.
-
-## Assign Custom Domain to a Form
-
-Navigate to the Share page of the form you want to use with your custom domain.
-
-![Form Share Page - Domain Selector](/images/custom_domain7.png)
-
-1. Open your form in the form builder
-2. Click on the **Share** tab in the top navigation
-3. Find the **Custom Domain** section
-4. Click the domain dropdown to select from your verified domains
-
-<Callout type="info">
-Only **verified domains** will appear in the dropdown. Make sure you've completed the domain verification process first.
-</Callout>
-
-After selecting a domain, your form will be accessible at:
-```
-https://yourdomain.com/f/{form-id}
+```text
+https://forms.company.com/f/abc123
 ```
 
-For example: `https://forms.company.com/f/abc123`
+## Use custom paths
 
----
+Custom paths replace the default `/f/{form-id}` path with a clean URL.
 
-## Customizing Form URLs with Custom Paths
+![Create a custom path](/images/custom_domain9.webp)
 
-Take your branded URLs to the next level by creating clean, memorable paths instead of using the default form ID format.
+Examples:
 
-### What are Custom Paths?
+```text
+https://forms.company.com/contact
+https://forms.company.com/feedback
+https://forms.company.com/apply
+```
 
-Custom paths let you replace the `/f/{form-id}` format with your own custom URL path:
+Custom path rules:
 
-- **Default format**: `https://yourdomain.com/f/abc123xyz`
-- **Custom path**: `https://yourdomain.com/contact`
-- **Another example**: `https://yourdomain.com/feedback`
+- Paths can include letters, numbers, hyphens, underscores, and slashes.
+- Paths must be unique on the same domain.
+- Reserved paths such as `api`, `admin`, `auth`, `f`, and `e` cannot be used.
+- Keep paths short and readable.
 
-## Enable Custom Paths
+## Testing checklist
 
-After assigning a custom domain to your form, enable the custom paths feature.
+- Open the custom domain in a private browser window.
+- Confirm HTTPS loads without certificate warnings.
+- Submit a test response from the custom domain URL.
+- If you use a custom path, test both the default form URL and the custom path.
+- Confirm your share links use the custom domain you intended.
 
-![Enable Custom Paths](/images/custom_domain8.png)
+## Troubleshooting
 
-1. In the form Share page, locate the **Custom Paths** toggle
-2. Click the toggle to enable custom path URLs
-3. The custom path input field will appear
+### The domain is still pending
 
-<Callout type="info">
-Custom paths are only available when you have a **custom domain assigned** to your form. The toggle will not be active for forms using the default makeform.ai domain.
-</Callout>
+Check that the DNS record type, name, and value match the values shown in Makeform. Then wait for propagation and check again.
 
----
+### The domain opens the wrong site
 
-## Create Your Custom Path
+Confirm you added the DNS record on the correct domain and did not point an existing production website to Makeform by mistake.
 
-Enter your desired path and save it to create a branded URL.
+### The domain is verified but not available on a form
 
-![Create Custom Path](/images/custom_domain9.png)
+Only verified domains appear in the form Share page. Refresh the page, then confirm the domain is verified in the Domains page.
 
-1. **Enter your path** in the input field (e.g., `contact`, `feedback`, `apply`)
-2. The system will **validate your path** in real-time:
-   - **✓ Green checkmark** — path is available
-   - **✗ Red X** — path is taken or invalid
-3. **Preview your URL** below the input field
-4. Click **Save Path** to create the custom path
+### The custom path is rejected
 
-### Path Rules and Guidelines
-
-When creating custom paths, follow these rules:
-
-**Allowed characters:**
-- Letters (a-z, A-Z)
-- Numbers (0-9)
-- Hyphens (-)
-- Underscores (_)
-- Forward slashes (/) for nested paths
-
-**Reserved paths** that cannot be used:
-- `api`, `admin`, `auth`, `f`, `e`
-- `_next`, `favicon.ico`, `robots.txt`
-- And other system-reserved paths
-
-<Callout type="warning">
-Paths are **case-sensitive** and must be unique within each domain. Two forms on the same domain cannot use the same path.
-</Callout>
+Check for reserved paths, duplicate paths on the same domain, unsupported characters, or paths that start or end with a hyphen.

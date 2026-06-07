@@ -40,4 +40,5 @@ export default {
   'email-notifications': 'Email notifications',
   'share-setting': 'Share setting',
   'summary-detail': 'Summary details',
+  payment: 'Payment',
 }
