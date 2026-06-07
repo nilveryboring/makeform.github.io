@@ -2,90 +2,107 @@ import { Callout } from 'nextra/components'
 
 # Redirect After Submission
 
-Redirect respondents to another page after they submit a form.
+Send respondents to another page after they submit a form. Makeform supports a simple form-level redirect and redirect ending variants for conditional flows.
 
-![Redirect after submission settings](/images/redirect-rule.webp)
+![Redirect ending settings](/images/redirect-ending-settings.webp)
 
 <Callout type="info">
-Use redirects when the next step should happen outside the form, such as booking a meeting, opening a checkout page, or sending someone to a resource.
+Use a form-level redirect when every respondent should go to the same place. Use a redirect ending when different answers should send people to different destinations.
 </Callout>
 
-## When to use a redirect
+## Two redirect options
 
-Redirects are useful when a normal thank-you page is not enough.
+Makeform has two redirect paths:
 
-Common destinations include:
+| Redirect type | Where it is set | Best for |
+| --- | --- | --- |
+| Redirect on completion | Form settings | One destination for every completed submission |
+| Redirect ending variant | Ending pages | Conditional destinations based on answers, scores, or ending logic |
 
-- A booking page for qualified leads
-- A checkout page after an order form
-- A download page after a lead magnet form
-- A help article or onboarding guide
-- A custom thank-you page on your own website
+If a respondent reaches a redirect ending, that ending redirect takes priority over the form-level redirect. This prevents two redirects from firing at the same time.
 
-## Set up a redirect
+## Option 1: Redirect on completion
+
+Use <span className="text-cyan-500 font-semibold bg-cyan-100 px-2 py-1 rounded">Redirect on completion</span> when every completed submission should go to the same URL.
+
+![Redirect on completion setting](/images/redirect-on-completion.webp)
+
+To set it up:
 
 1. Open your form in the builder.
-2. Go to the form's ending or submission settings.
-3. Choose <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Redirect to URL</span> as the post-submission action.
-4. Enter the full destination URL, including `https://`.
-5. Save the form.
-6. Preview the form and submit a test response.
+2. Open the form settings.
+3. Turn on <span className="text-cyan-500 font-semibold bg-cyan-100 px-2 py-1 rounded">Redirect on completion</span>.
+4. Enter the destination URL.
+5. Save or update the form.
+6. Submit a test response.
 
-## What happens after submission
+This redirect runs after Makeform saves the response.
 
-![Redirect submission flow](/images/redirect-preview.webp)
+## Option 2: Redirect ending variant
 
-Makeform saves the response first. Then it opens the destination URL you configured.
+Use a redirect ending when the destination should depend on the respondent's answers. For example, send qualified leads to a calendar, send existing customers to support, or send paid orders to checkout.
 
-This means you can still review the submission in Makeform even if the respondent continues to another site.
+Add a new ending from the builder:
 
-## Good redirect patterns
+![Add an ending page](/images/redirect-add-ending.webp)
 
-| Form type | Redirect destination |
+Then choose <span className="text-cyan-500 font-semibold bg-cyan-100 px-2 py-1 rounded">Redirect to URL</span> as the ending variant:
+
+![Choose redirect ending variant](/images/redirect-ending-variant.webp)
+
+## Configure a redirect ending
+
+Redirect endings have their own settings:
+
+- <span className="text-cyan-500 font-semibold bg-cyan-100 px-2 py-1 rounded">Redirect URL</span> - the page respondents will open.
+- <span className="text-cyan-500 font-semibold bg-cyan-100 px-2 py-1 rounded">Delay before redirect</span> - how long Makeform waits before sending the respondent away. The default is 3 seconds and the maximum is 30 seconds.
+- <span className="text-cyan-500 font-semibold bg-cyan-100 px-2 py-1 rounded">Disable leaving notice</span> - skip the "You're being redirected" message and go straight to the URL.
+
+## Redirect with ending logic
+
+Redirect endings work well with ending logic. Create multiple endings, then route respondents to the right one.
+
+| Scenario | Ending |
 | --- | --- |
-| Demo request | Booking calendar |
-| Paid intake | Checkout page |
-| Event registration | Confirmation page |
-| Lead magnet | Download page |
-| Onboarding form | Next-step guide |
+| Qualified demo request | Redirect to booking calendar |
+| Low-fit lead | Standard ending with resource links |
+| Paid intake | Redirect to checkout |
+| Existing customer | Redirect to support portal |
 
-## Redirect with tracking values
+## Pass context to the destination
 
-If your destination page needs context, combine redirects with pre-populated or hidden values.
+If the destination page needs context, add query parameters to the redirect URL:
 
-For example, you can pass:
+```text
+https://example.com/thank-you?source=newsletter&plan=pro
+```
 
-- `email`
-- `plan`
-- `source`
-- `customer_id`
-- `submission_id`
-
-Only pass values that are safe to include in a URL.
+Only pass values that are safe to expose in a URL. For tracking values that should also be stored with the response, use hidden fields.
 
 ## Testing checklist
 
-- Use a full `https://` URL.
+- Use a valid `http://` or `https://` URL.
+- Save or update the form after changing redirect settings.
 - Submit a test response.
 - Confirm the response is saved in Makeform.
 - Confirm the browser opens the correct destination.
+- If you use ending logic, test each route.
 - Test the redirect on mobile.
-- If you pass tracking values, confirm the destination receives them.
 
 ## Troubleshooting
 
 ### The redirect does not open
 
-Check that the destination URL starts with `https://` and is publicly reachable.
+Check that the destination URL is valid and publicly reachable.
 
-### Respondents see the wrong page
+### The wrong redirect opens
 
-Confirm you saved the latest form settings and are testing the published version of the form.
+Check whether the respondent is reaching a redirect ending. Redirect endings take priority over the form-level redirect.
 
 ### The response is missing
 
 Redirects happen after the response is saved. If the response is missing, test the form without the redirect first to isolate the issue.
 
-### Tracking values are missing
+### Query parameters are missing
 
 Check the destination URL and make sure query parameters are encoded correctly.
