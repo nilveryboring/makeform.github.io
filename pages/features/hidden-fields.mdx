@@ -1,42 +1,140 @@
-# Hidden fields
+import { Callout } from 'nextra/components'
 
-Hidden fields allow you to pass existing data through your form URL directly into your form.
-This helps you personalize the experience for respondents and provides deeper insights from the responses you collect.
+# Hidden Fields
 
-<div style={{ backgroundColor: '#ecfdf5', border: '2px solid #10b981', borderRadius: '0.5rem', padding: '1rem', marginTop: '1.5rem', marginBottom: '1.5rem', display: 'flex', gap: '0.75rem', alignItems: 'flex-start' }}>
-  <div style={{ fontSize: '1.5rem', lineHeight: '1' }}>🎁</div>
-  <div style={{ flex: '1' }}>
-    <span style={{ color: '#065f46', fontSize: '0.95rem' }}>Hidden fields are available for <strong>free</strong> to all Makeform users.</span>
-  </div>
-</div>
+Use hidden fields to pass known values into a form without showing those values to respondents.
 
----
+![Hidden field settings](/images/prepopulate-hidden-field.webp)
 
-# What is a hidden field in Makeform?
+<Callout type="info">
+Hidden fields are available to all Makeform users.
+</Callout>
 
-A hidden field lets you track respondents by associating form submissions with user-specific data, such as user ID or email. It’s completely invisible to respondents, yet it enables you to effectively track users and analyze responses.
+## What hidden fields are
 
-With Makeform, hidden fields specifically help you:
-- Track submissions by associating responses with user IDs or emails.
-- Accurately identify users for deeper insights into your form analytics.
+A hidden field is a value saved with a submission that respondents do not see or edit.
 
----
+Hidden fields are useful when you already know something before the respondent opens the form, such as:
 
-# Create a hidden field
+- `email`
+- `user_id`
+- `customer_id`
+- `utm_source`
+- `referral_code`
+- `plan`
 
-To create a hidden field, go to the <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded"> Settings </span> tab.  
-You will see the hidden field section.
+They are commonly used for campaign tracking, CRM attribution, customer portals, referral links, and pre-populated form flows.
 
-<div className="shadow-2xl mt-12">
-  ![Multi Page Example1](/images/hidden-fields2.png)
-</div>
+## Create a hidden field
 
----
+1. Open your form in the builder.
+2. Go to the <span className="text-cyan-500 font-semibold bg-cyan-100 px-2 py-1 rounded">Settings</span> tab.
+3. Find the <span className="text-cyan-500 font-semibold bg-cyan-100 px-2 py-1 rounded">Hidden Fields</span> section.
+4. Click <span className="text-cyan-500 font-semibold bg-cyan-100 px-2 py-1 rounded">Add Hidden Field</span>.
+5. Enter a field name, such as `email`, `user_id`, or `referral_code`.
+6. Save or update the form.
 
-# Hidden fields in form results
+The save step matters. Makeform needs the hidden field definition before it can read a matching URL parameter or show the field in the variable menu.
 
-You can view hidden fields in form results in the <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded"> Submissions </span> tab.
+## Fill hidden fields from the URL
 
-<div className="shadow-2xl mt-12">
-  ![Multi Page Example1](/images/hidden-fields1.png)
-</div>
+Add query parameters to the form URL using the same names as your hidden fields.
+
+```text
+https://makeform.ai/f/customer-intake?email=maya@example.com&utm_source=newsletter
+```
+
+In this example:
+
+- `email` fills the hidden field named `email`.
+- `utm_source` fills the hidden field named `utm_source`.
+
+Use `&` between multiple values:
+
+```text
+?email=maya@example.com&plan=pro&referral_code=partner_42
+```
+
+## Use hidden fields in form copy
+
+Hidden fields can also be inserted into text, questions, descriptions, and ending pages.
+
+Click or type <span className="text-cyan-500 font-semibold bg-cyan-100 px-2 py-1 rounded">@</span>, then choose the hidden field from the variable menu.
+
+![Select a hidden field from the variable menu](/images/prepopulate-hidden-variable-menu.webp)
+
+Makeform inserts the variable as `{{field_name}}`.
+
+For example:
+
+```text
+We will send the receipt to {{email}}.
+```
+
+## Review hidden values
+
+Hidden fields appear in submissions and exports, even though respondents never see them in the form.
+
+![Hidden fields in submissions](/images/hidden-fields-results.webp)
+
+Use them to segment results, connect submissions back to CRM records, or understand which campaign generated a response.
+
+## Naming rules
+
+Hidden field names must:
+
+- Start with a lowercase letter.
+- Use only lowercase letters, numbers, and underscores.
+- Be unique within the hidden fields list.
+- Not match an existing visible form field name.
+
+Good names:
+
+```text
+email
+user_id
+utm_source
+referral_code
+```
+
+Avoid names like:
+
+```text
+User ID
+123_user
+referral-code
+email!
+```
+
+## Security notes
+
+URL parameters are visible in the browser address bar. Do not use hidden fields for secrets, passwords, private tokens, or values respondents must not be able to copy.
+
+Hidden fields are best for attribution, routing, and known context. If the value is sensitive, store it on your own backend and pass a non-sensitive ID instead.
+
+## Testing checklist
+
+- Save or update the form after adding hidden fields.
+- Open the form with query parameters in a private browser window.
+- Submit a test response.
+- Confirm the hidden values appear in submissions.
+- Confirm any `{{field_name}}` references render correctly.
+- Test values with spaces or special characters using URL encoding.
+
+## Troubleshooting
+
+### The hidden value is missing
+
+Check that the query parameter name exactly matches the hidden field name.
+
+### The field does not appear in the variable menu
+
+Save or update the form after creating the hidden field, then reopen the editor.
+
+### A field name is rejected
+
+Use a lowercase name that starts with a letter and contains only letters, numbers, and underscores.
+
+### The value appears in the URL
+
+That is expected. Query parameters are visible, so do not pass secrets through hidden fields.
