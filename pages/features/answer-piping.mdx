@@ -16,10 +16,10 @@ Answer piping takes a value from an earlier field and places it into later copy.
 
 For example:
 
-- Ask for a first name, then write `Thanks @first_name, what is your main goal?`
-- Ask for a company name, then write `What should we know about @company?`
-- Ask for a selected package, then write `You selected @package. Choose your add-ons.`
-- Ask for a quantity, then write `@quantity Unit Price`
+- Ask for a first name, then write `Thanks {{first_name}}, what is your main goal?`
+- Ask for a company name, then write `What should we know about {{company}}?`
+- Ask for a selected package, then write `You selected {{package}}. Choose your add-ons.`
+- Ask for a quantity, then write `{{quantity}} Unit Price`
 
 ## Create answer piping with AI
 
@@ -36,8 +36,8 @@ Makeform AI can update the form copy and insert the right field reference. Revie
 1. Add the field you want to reuse, such as <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Short Text Input</span> for a first name.
 2. Give that field a clear field name.
 3. Add a later question, description, text block, or ending page.
-4. Type <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">@</span>.
-5. Choose the earlier field from the menu.
+4. Type or click <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">@</span> to open the variable menu.
+5. Choose the earlier field from the menu. Makeform inserts it as a variable such as `{{first_name}}`.
 6. Preview the form and complete the earlier field to confirm the copy updates.
 
 ## Pipe answers into question titles
@@ -58,10 +58,10 @@ The respondent sees the final copy with their answer inserted. They do not need 
 
 | Place | Example |
 | --- | --- |
-| Question title | `Thanks @first_name, what do you want to build?` |
-| Description | `We will send the checklist to @email.` |
-| Text block | `Your selected plan is @plan.` |
-| Ending page | `Thanks @first_name, your request was received.` |
+| Question title | `Thanks {{first_name}}, what do you want to build?` |
+| Description | `We will send the checklist to {{email}}.` |
+| Text block | `Your selected plan is {{plan}}.` |
+| Ending page | `Thanks {{first_name}}, your request was received.` |
 
 ## Best practices
 
