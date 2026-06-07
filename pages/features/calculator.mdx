@@ -46,15 +46,17 @@ Use rules when the calculation is simple and easier to read as steps. Use advanc
 
 ![Advanced formula editor](/images/calculator-advanced-formula.webp)
 
+In advanced formula mode, reference fields with `{{field_name}}`.
+
 ## Formula examples
 
 | Goal | Example formula |
 | --- | --- |
-| Multiply hours by a rate | `hours * rate` |
-| Add two values | `setup_fee + monthly_fee` |
-| Apply a percentage | `subtotal * 0.1` |
-| Score several answers | `score_a + score_b + score_c` |
-| Add tax to a total | `subtotal + (subtotal * tax_rate)` |
+| Multiply hours by a rate | `{{hours}} * {{rate}}` |
+| Add two values | `{{setup_fee}} + {{monthly_fee}}` |
+| Apply a percentage | `{{subtotal}} * 0.1` |
+| Score several answers | `{{score_a}} + {{score_b}} + {{score_c}}` |
+| Add tax to a total | `{{subtotal}} + ({{subtotal}} * {{tax_rate}})` |
 
 ## Show the calculated value
 
@@ -74,13 +76,13 @@ If the calculation is only for your internal workflow, keep it hidden and review
 
 ## Use calculation fields with payments
 
-For dynamic payment amounts, create the calculation first, test it, then use that calculation as the source for the payment amount.
+When a payment field uses a calculated amount, create the calculation first, test it, then select that calculation as the payment amount source.
 
 Good examples:
 
-- `ticket_count * ticket_price`
-- `package_price + add_on_total`
-- `base_fee + rush_fee`
+- `{{ticket_count}} * {{ticket_price}}`
+- `{{package_price}} + {{add_on_total}}`
+- `{{base_fee}} + {{rush_fee}}`
 
 Avoid using calculations for values that should never change without server-side verification, such as regulated pricing or legally binding quotes.
 
