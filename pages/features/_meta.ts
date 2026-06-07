@@ -29,6 +29,7 @@ export default {
 
   // Form Settings
   'conditional-logic': 'Conditional Logic',
+  calculator: 'Calculation Fields',
   'custom-domain': 'Custom Domain',
   'link-preview': 'Link Preview',
   'remove-makeform-branding': 'Remove Makeform branding',
