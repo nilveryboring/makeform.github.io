@@ -1,32 +1,65 @@
 import { Callout } from 'nextra/components'
 
-# Slack
+# Slack Integration
 
-Use our Slack integration to get instantly notified when someone completes your
-Makeform forms with the latest form submissions shared directly in Slack.
+Send new Makeform submissions to a Slack channel so your team can review responses without opening the dashboard.
 
 <Callout type="info">
-  The Slack integration is available for free to all Tally users.
+Slack can be connected from a form's Integrations tab. You can connect a Slack workspace once, then use it across forms.
 </Callout>
 
----
+## What the Slack integration does
 
-## 1. Connect to Slack
+When someone submits your form, Makeform can post a message to a selected Slack channel.
 
-You can find the Slack integration in the <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Integrations</span> tab of your published form.
+Use it for:
 
-<div className="shadow-2xl mt-12">
-  ![Slack Integration1](/images/slack1.png)
-</div>
+- Lead alerts
+- Support intake
+- Application review
+- Internal approvals
+- Payment or order notifications
+- Team visibility on high-value forms
 
-<Callout type="gift">
-  This feature is now available, but the UI is still being improved. If you want to integrate with Slack, you can try it yourself.
-</Callout>
+## Connect Slack
 
-<div>
-  <ul>
-    <li>Item 1</li>
-    <li>Item 2</li>
-    <li>Item 3</li>
-  </ul>
-</div>
+1. Open the form you want to automate.
+2. Go to the <span className="text-cyan-500 font-semibold bg-cyan-100 px-2 py-1 rounded">Integrations</span> tab.
+3. Choose <span className="text-cyan-500 font-semibold bg-cyan-100 px-2 py-1 rounded">Slack</span>.
+4. Connect your Slack workspace if it is not connected yet.
+5. Select the channel where Makeform should post.
+6. Save the integration.
+
+After setup, submit a test response and confirm the message appears in Slack.
+
+## Use multiple Slack automations
+
+You can create more than one integration when different forms or workflows need different destinations.
+
+For example:
+
+- Send sales leads to `#sales`.
+- Send bug reports to `#support`.
+- Send job applications to `#hiring`.
+
+## Testing checklist
+
+- Confirm the Slack workspace is connected.
+- Choose the correct channel.
+- Submit a test response.
+- Check that Slack receives the message.
+- Disable or remove old Slack integrations that should no longer run.
+
+## Troubleshooting
+
+### Slack does not receive a message
+
+Check that the integration is enabled and the selected Slack channel still exists.
+
+### The wrong channel receives messages
+
+Edit the Slack integration and choose the correct channel.
+
+### The Slack connection stopped working
+
+Reconnect the Slack workspace from the integrations area, then test again.

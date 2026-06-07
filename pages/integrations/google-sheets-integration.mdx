@@ -1,0 +1,67 @@
+import { Callout } from 'nextra/components'
+
+# Google Sheets Integration
+
+Send Makeform submissions to Google Sheets so each response becomes a spreadsheet row.
+
+<Callout type="info">
+Google Sheets supports connecting a Google account, creating a new spreadsheet, or selecting an existing Makeform-created spreadsheet.
+</Callout>
+
+## What Google Sheets receives
+
+When a respondent submits your form, Makeform sends the submission data to your connected spreadsheet.
+
+Use Google Sheets when you want to:
+
+- Share response data with teammates.
+- Build reports with spreadsheet formulas.
+- Hand data to an operations team.
+- Keep a lightweight backup outside Makeform.
+- Connect spreadsheet rows to another workflow.
+
+## Connect Google Sheets
+
+1. Open your form.
+2. Go to the <span className="text-cyan-500 font-semibold bg-cyan-100 px-2 py-1 rounded">Integrations</span> tab.
+3. Choose <span className="text-cyan-500 font-semibold bg-cyan-100 px-2 py-1 rounded">Google Sheets</span>.
+4. Connect a Google account or choose an existing connected account.
+5. Choose whether to create a new spreadsheet or select an existing spreadsheet.
+6. Decide whether to export existing submissions.
+7. Save the integration.
+
+## Create new vs select existing
+
+Choose <span className="text-cyan-500 font-semibold bg-cyan-100 px-2 py-1 rounded">Create new</span> when you want Makeform to create a clean spreadsheet for this form.
+
+Choose <span className="text-cyan-500 font-semibold bg-cyan-100 px-2 py-1 rounded">Select existing</span> when you want to send responses to a spreadsheet that already exists.
+
+For security, Makeform's picker may only show spreadsheets created or accessible through Makeform.
+
+## Export existing submissions
+
+Turn on export existing submissions if you want the spreadsheet to include responses that were collected before the integration was created.
+
+Leave it off if you only want new submissions from this point forward.
+
+## Testing checklist
+
+- Submit a test response after connecting the sheet.
+- Confirm a new row appears in Google Sheets.
+- Check that field names and values are readable.
+- If you enabled export existing submissions, confirm old rows were added.
+- Keep the connected Google account active.
+
+## Troubleshooting
+
+### No row appears
+
+Check that the integration is enabled and the connected Google account still has access to the spreadsheet.
+
+### The picker is empty
+
+Use the create-new-spreadsheet option, or confirm the spreadsheet is available to the connected Google account.
+
+### Old submissions are missing
+
+Export existing submissions only runs when that option is enabled during setup.

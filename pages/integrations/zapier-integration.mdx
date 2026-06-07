@@ -1,0 +1,57 @@
+import { Callout } from 'nextra/components'
+
+# Zapier Integration
+
+Connect Makeform to Zapier to send submissions into other apps and workflows.
+
+<Callout type="info">
+Makeform provides a Zapier app connection. Use it when you want no-code automation across tools like CRMs, email platforms, spreadsheets, and project management apps.
+</Callout>
+
+## When to use Zapier
+
+Use Zapier when you want to automate work after someone submits a form.
+
+Common workflows:
+
+- Add a lead to a CRM.
+- Create a task from a support request.
+- Send a notification to another tool.
+- Add a row to a spreadsheet.
+- Start an email sequence.
+
+## Connect with Zapier
+
+1. Open your form.
+2. Go to the <span className="text-cyan-500 font-semibold bg-cyan-100 px-2 py-1 rounded">Integrations</span> tab.
+3. Choose <span className="text-cyan-500 font-semibold bg-cyan-100 px-2 py-1 rounded">Zapier</span>.
+4. Open the Zapier connection.
+5. In Zapier, choose Makeform as the trigger app.
+6. Choose the form submission trigger.
+7. Map Makeform fields into the destination app.
+8. Test and turn on the Zap.
+
+You can also open the Makeform Zapier app directly:
+
+[Open Makeform on Zapier](https://zapier.com/developer/public-invite/235245/4344546378b63736fd889a50f3bd122d/)
+
+## Best practices
+
+- Test with a real submission before turning on the Zap.
+- Use stable field names so mappings do not break when labels change.
+- Keep required destination fields mapped.
+- If a workflow is business-critical, add a notification step for failures.
+
+## Troubleshooting
+
+### Zapier does not show the form
+
+Reconnect Makeform in Zapier, then refresh the trigger setup.
+
+### A mapped field is blank
+
+Check whether the respondent actually answered that field and whether the field name changed.
+
+### The Zap does not run
+
+Check that the Zap is turned on and the Makeform trigger test succeeds.

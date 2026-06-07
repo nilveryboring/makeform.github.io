@@ -1,0 +1,71 @@
+import { Callout } from 'nextra/components'
+
+# Notion Integration
+
+Send Makeform submissions to a Notion database so responses become database entries.
+
+<Callout type="info">
+Notion can be connected from a form's Integrations tab. You can choose a workspace, choose or create a database, and map form fields to Notion properties.
+</Callout>
+
+## What the Notion integration does
+
+When someone submits your form, Makeform can create a new page in a Notion database.
+
+Use it for:
+
+- Lead lists
+- Content requests
+- Support intake
+- Applicant tracking
+- Research notes
+- Lightweight CRM workflows
+
+## Connect Notion
+
+1. Open your form.
+2. Go to the <span className="text-cyan-500 font-semibold bg-cyan-100 px-2 py-1 rounded">Integrations</span> tab.
+3. Choose <span className="text-cyan-500 font-semibold bg-cyan-100 px-2 py-1 rounded">Notion</span>.
+4. Connect a Notion workspace or choose an existing connected workspace.
+5. Select a database or create a new one.
+6. Review field mappings.
+7. Save the integration.
+
+## Map form fields to Notion properties
+
+Makeform can suggest mappings between form fields and Notion database properties.
+
+Review the mappings before saving, especially when:
+
+- Two fields have similar names.
+- A Notion property has a different type than the form answer.
+- You want to skip a field.
+- You renamed fields after creating the form.
+
+## Export existing submissions
+
+If available during setup, use export existing submissions to backfill responses that were already collected before the Notion integration was connected.
+
+For active production forms, test with a copy or a small sample first so you do not create unwanted database rows.
+
+## Testing checklist
+
+- Submit a test response.
+- Confirm a new page appears in the selected Notion database.
+- Check mapped fields.
+- Confirm the Notion workspace connection is still active.
+- Disable old Notion integrations if the destination database changes.
+
+## Troubleshooting
+
+### No database appears
+
+Make sure Makeform has access to the Notion workspace and database you want to use.
+
+### A property is missing
+
+Refresh the database properties, then review the field mappings again.
+
+### Responses go to the wrong database
+
+Edit the Notion integration and select the correct database.
