@@ -1,0 +1,89 @@
+import { Callout } from 'nextra/components'
+
+# Webhooks
+
+Use webhooks to send Makeform submissions to your own endpoint or automation platform.
+
+<Callout type="info">
+Webhooks run after a form submission is saved. They are useful for custom workflows that are not covered by a native automation.
+</Callout>
+
+## What Makeform sends
+
+Makeform sends a request to your webhook URL when a form is submitted.
+
+Webhook settings can include:
+
+- URL
+- HTTP method
+- Custom headers
+- Signing secret
+- Payload template
+
+The default payload includes form and submission context plus submitted field data.
+
+## Create a webhook
+
+1. Open your form.
+2. Go to the <span className="text-cyan-500 font-semibold bg-cyan-100 px-2 py-1 rounded">Automations</span> tab.
+3. Choose <span className="text-cyan-500 font-semibold bg-cyan-100 px-2 py-1 rounded">Webhooks</span>.
+4. Enter your webhook URL.
+5. Add headers or a signing secret if your endpoint requires them.
+6. Customize the payload if needed.
+7. Test the webhook.
+8. Save the automation.
+
+## Example payload
+
+```json
+{
+  "form_id": "@form_id",
+  "submission_id": "@submission_id",
+  "form_name": "@form_name",
+  "submitted_at": "@submitted_at",
+  "data": {
+    "field_name": "@field_value"
+  }
+}
+```
+
+## Use variables
+
+Webhook templates can use variables from the form and submission.
+
+Use variables when your destination expects a specific JSON shape, such as:
+
+- `email`
+- `name`
+- `plan`
+- `submission_id`
+- `submitted_at`
+
+## Security tips
+
+- Use HTTPS URLs.
+- Use a signing secret when the receiving service supports verification.
+- Do not send secrets that respondents should not see.
+- Keep webhook endpoints idempotent, because retries or duplicate processing can happen in real-world automation systems.
+
+## Testing checklist
+
+- Use the test webhook action before going live.
+- Confirm your endpoint receives the payload.
+- Check HTTP status codes.
+- Submit a real test response.
+- Review automation events or logs if delivery fails.
+
+## Troubleshooting
+
+### The webhook test fails
+
+Check the URL, method, headers, and whether your endpoint accepts requests from Makeform.
+
+### The destination receives malformed data
+
+Validate the JSON payload template. Missing commas and unescaped quotes are common mistakes.
+
+### The webhook works in test but not on submission
+
+Confirm the automation is enabled and the form was submitted successfully.

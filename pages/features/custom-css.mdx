@@ -1,0 +1,87 @@
+import { Callout } from 'nextra/components'
+
+# Custom CSS
+
+Use custom CSS to fine-tune the visual design of a form beyond the standard theme controls.
+
+<Callout type="info">
+Custom CSS can be previewed in the builder. Publishing custom CSS requires Makeform Pro.
+</Callout>
+
+## When to use custom CSS
+
+Use custom CSS when the built-in design controls are not enough.
+
+Good examples:
+
+- Match a brand system exactly.
+- Adjust spacing for a dense application form.
+- Style buttons, inputs, or labels for a specific campaign.
+- Add small polish to embedded forms.
+
+Do not use custom CSS as the first option for basic design changes. Start with the Customize panel, then add CSS only for the details it cannot cover.
+
+## Add custom CSS
+
+1. Open your form in the builder.
+2. Go to <span className="text-cyan-500 font-semibold bg-cyan-100 px-2 py-1 rounded">Customize</span>.
+3. Find <span className="text-cyan-500 font-semibold bg-cyan-100 px-2 py-1 rounded">Custom CSS</span>.
+4. Enter your CSS in the editor.
+5. Preview the form.
+6. Publish the form when the styling is ready.
+
+Example:
+
+```css
+button {
+  border-radius: 999px;
+}
+
+input,
+textarea {
+  border-width: 2px;
+}
+```
+
+## What custom CSS affects
+
+Custom CSS applies to the form experience. It is useful for form-level styling, not for changing dashboard UI.
+
+Because CSS can affect many elements at once, keep selectors specific and test every page of the form.
+
+## Best practices
+
+- Keep CSS short and targeted.
+- Prefer existing theme controls for colors, fonts, and border radius.
+- Test mobile and desktop.
+- Test embedded forms separately from direct form links.
+- Avoid hiding required labels, error messages, submit buttons, or payment content.
+
+## Safety notes
+
+Makeform sanitizes custom CSS before rendering it on published forms.
+
+Still, bad CSS can make a form hard to use. If a form suddenly looks broken, remove the latest CSS change and publish again.
+
+## Testing checklist
+
+- Preview the form before publishing.
+- Check every page and ending.
+- Test required field errors.
+- Test the submit button.
+- Test mobile width.
+- If the form is embedded, test it inside the host page.
+
+## Troubleshooting
+
+### CSS previews but does not publish
+
+Custom CSS publishing requires a Pro plan. Free users can preview CSS in the builder.
+
+### A style does not apply
+
+Your selector may be too broad, too weak, or targeting the wrong element. Inspect the rendered form and make the selector more specific.
+
+### The form layout breaks
+
+Remove recent CSS, publish again, then reapply changes one at a time.

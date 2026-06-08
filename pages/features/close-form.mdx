@@ -1,0 +1,86 @@
+import { Callout } from 'nextra/components'
+
+# Close Form Rules
+
+Close a form manually, after a submission limit, or at a scheduled date and time.
+
+<Callout type="info">
+Closed forms stop accepting new submissions. Existing submissions stay available in your results.
+</Callout>
+
+## Ways to close a form
+
+Makeform supports three close form patterns:
+
+- Close the form immediately.
+- Close the form after a total submission limit is reached.
+- Close the form on a scheduled date and time.
+
+Use these rules for applications, event registrations, waitlists, contests, limited inventory, and forms that should only be open during a specific window.
+
+## Close a form manually
+
+1. Open your form.
+2. Go to the <span className="text-cyan-500 font-semibold bg-cyan-100 px-2 py-1 rounded">Settings</span> tab.
+3. Turn on <span className="text-cyan-500 font-semibold bg-cyan-100 px-2 py-1 rounded">Close form</span>.
+4. Add a closed form message if you want respondents to see a custom title or description.
+5. Save or publish the form.
+
+Manual close is best when you want to stop submissions right now.
+
+## Close after a submission limit
+
+Use a submission limit when you only want to accept a fixed number of completed responses.
+
+For example:
+
+```text
+Close this registration form after 100 submissions.
+```
+
+When the limit is reached, Makeform marks the form as closed so new respondents cannot continue submitting.
+
+## Close on a schedule
+
+Use scheduled close when the form should stop accepting submissions at a specific date, time, and timezone.
+
+For example:
+
+```text
+Close this application form on June 30 at 11:59 PM America/Los_Angeles.
+```
+
+Scheduled close is useful for deadlines. Make sure the timezone matches the audience or business rule you care about.
+
+## What respondents see
+
+When a form is closed, respondents see the closed form state instead of the active form.
+
+Use a clear message, such as:
+
+```text
+Applications are now closed.
+Thanks for your interest. We are reviewing submissions and will follow up soon.
+```
+
+## Testing checklist
+
+- Save or publish after changing close settings.
+- Test the public form link in a private browser window.
+- Confirm the closed message is clear.
+- If using a schedule, double-check the timezone.
+- If using a submission limit, submit test responses on a duplicate form before using it live.
+
+## Troubleshooting
+
+### The form still accepts submissions
+
+Check that the close setting was saved or published. Draft-only changes do not affect the live form.
+
+### The form closed earlier or later than expected
+
+Check the scheduled timezone. A correct date with the wrong timezone is still the wrong deadline.
+
+### The form closed after the limit
+
+That is expected. Submission limits close the form when the completed response count reaches the configured limit.
