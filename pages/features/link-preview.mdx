@@ -1,131 +1,74 @@
-## Link Preview
+import { Callout } from 'nextra/components'
 
-### Overview
+# Link Preview
 
-When you share your MakeForm link on social media platforms, messaging apps, or search engines, a link preview is automatically generated. This preview includes a title, description, and image that gives people a glimpse of your form before they click.
+Customize how your form link appears when it is shared in social posts, messaging apps, search results, and internal tools.
 
-Customizing your link preview helps your form stand out and provides context about what respondents can expect when they open it.
+![Link settings in the Share page](/images/link-settings-section.webp)
 
-<div style={{ backgroundColor: '#fdf2f8', border: '2px solid #ec4899', borderRadius: '0.5rem', padding: '1rem', marginTop: '1.5rem', marginBottom: '1.5rem', display: 'flex', gap: '0.75rem', alignItems: 'flex-start' }}>
-  <div style={{ fontSize: '1.5rem', lineHeight: '1' }}>✨</div>
-  <div style={{ flex: '1' }}>
-    <span style={{ color: '#831843', fontSize: '0.95rem' }}>Link preview customization is a <a href="/plans-and-pricing" style={{ textDecoration: 'underline', color: '#831843' }}><strong>Makeform Pro</strong></a> feature.</span>
-  </div>
-</div>
+<Callout type="info">
+Link preview customization is a Makeform Pro feature.
+</Callout>
 
----
+## What a link preview controls
 
-### What is a Link Preview?
+A link preview is the card that platforms generate from your form URL. Makeform can provide the metadata those platforms read:
 
-A link preview (also known as an Open Graph preview or social card) is the visual summary that appears when you share a URL on platforms like:
+| Preview field | Where it appears |
+| --- | --- |
+| Site name | The small source label in preview cards |
+| Favicon | Browser tabs, bookmarks, and some preview cards |
+| Title | Browser tabs, search results, and social preview cards |
+| Description | The supporting text below the title |
+| Open Graph image | The large image shown in most social and messaging previews |
 
-- **Social media**: Facebook, Twitter/X, LinkedIn, Instagram
-- **Messaging apps**: Slack, Discord, WhatsApp, iMessage
-- **Search engines**: Google search results
+## Customize your link preview
 
-The preview typically includes:
-- A title (shown in browser tabs and preview cards)
-- A description (brief text about your form)
-- An image (visual representation of your content)
-- A favicon (small icon in browser tabs)
+1. Open the form you want to share.
+2. Go to the <span className="text-cyan-500 font-semibold bg-cyan-100 px-2 py-1 rounded">Share</span> page.
+3. Find the <span className="text-cyan-500 font-semibold bg-cyan-100 px-2 py-1 rounded">Link Preview</span> or <span className="text-cyan-500 font-semibold bg-cyan-100 px-2 py-1 rounded">Link Settings</span> section.
+4. Click <span className="text-cyan-500 font-semibold bg-cyan-100 px-2 py-1 rounded">Customize text</span>, <span className="text-cyan-500 font-semibold bg-cyan-100 px-2 py-1 rounded">Customize image</span>, or <span className="text-cyan-500 font-semibold bg-cyan-100 px-2 py-1 rounded">Customize favicon</span>.
+5. Save the updated preview settings.
 
-![Link Preview Example](/images/link-preview-example.png)
+## Customize text
 
----
+Use the text dialog to set the site name, preview title, and preview description.
 
-### How to Customize Your Link Preview
+![Customize link preview text](/images/customize-text-dialog.webp)
 
-To customize your link preview:
+Good preview text should be specific. Instead of a generic title like `Form`, use a title such as `Vendor onboarding form`, `Customer feedback survey`, or `Event registration`.
 
-1. Open your form in the editor
-2. Go to the **Share** tab
-3. In the **Link Settings** section, you'll see a preview of how your link currently appears
-4. Use the customization options to personalize your preview
+## Customize the Open Graph image
 
-![Link Settings](/images/link-settings-section.png)
+Upload an image that gives respondents context before they open the form.
 
----
+![Customize link preview image](/images/customize-image-dialog.webp)
 
-### Customize Text
+Recommended image guidelines:
 
-Click the **Customize text** button to edit your title and description.
+- Use a 1200 x 630 image when possible.
+- Keep important text centered so platforms do not crop it.
+- Use JPG, PNG, or WebP.
+- Avoid tiny screenshots or dense UI that becomes unreadable in small cards.
 
-**Title**
-- Appears in browser tabs when respondents view your form
-- Shown in link previews on social media
-- Displayed in search engine results
-- Default: "Form"
+## Customize the favicon
 
-![Customize Text Dialog](/images/customize-text-dialog.png)
+Upload a favicon when you want the browser tab and preview source to feel branded.
 
----
+![Customize link preview favicon](/images/customize-favicon-dialog.webp)
 
-### Customize Image
+Use a square icon with simple shapes. Makeform resizes uploaded favicon images for browser use.
 
-Click the **Customize image** button to upload a custom Open Graph image.
+## Platform behavior
 
-**What is an Open Graph image?**
+Different platforms cache previews differently. Slack, Discord, iMessage, LinkedIn, Facebook, Google, and X may not refresh immediately after you save changes.
 
-The Open Graph image is the visual that appears in link previews when your form is shared. A compelling image can significantly increase click-through rates and engagement.
+If a platform still shows the old preview, wait for its cache to refresh or use that platform's preview/debug tool to request a new scrape.
 
-**Upload Options:**
+## Testing checklist
 
-1. **Upload tab**: Drag and drop a new image or click to browse
-2. **Uploaded tab**: Select from previously uploaded images
-
-![Customize Image Dialog](/images/customize-image-dialog.png)
-
-**Image requirements:**
-- Recommended size: 1200 x 630 pixels
-- Supported formats: JPG, PNG, WebP
-- Maximum file size: Set by your plan limits
-- Images are automatically optimized and converted to JPEG
-
----
-
-### Customize Favicon
-
-Click the **Customize favicon** button to upload a custom favicon for your form.
-
-**What is a favicon?**
-
-A favicon is the small icon that appears in browser tabs, bookmarks, and browser history. It helps users quickly identify your form among multiple open tabs and creates a more professional, branded experience.
-
-![Customize Favicon Dialog](/images/customize-favicon-dialog.png)
-
-**Favicon requirements:**
-- Size: 48 x 48 pixels (automatically resized if larger)
-- Supported formats: ICO, PNG, JPG, WebP
-- Maximum file size: 5 MB
-- Non-ICO files are automatically converted to PNG
-
----
-
-### Live Preview
-
-The Link Settings section shows a real-time preview of how your link will appear when shared. Any changes you make to the title, description, or image are immediately reflected in this preview.
-
-This helps you see exactly what your respondents will see before sharing your form.
-
----
-
-### Platform-Specific Behavior
-
-Different platforms may display your link preview slightly differently:
-
-**Social Media Platforms** (Facebook, LinkedIn, Twitter/X):
-- Display title, description, and Open Graph image
-- May cache previews for several hours
-- Twitter/X uses "summary_large_image" card format
-
-**Messaging Apps** (Slack, Discord, WhatsApp):
-- Show title and image prominently
-- Description may be truncated
-- Some apps cache aggressively
-
-**Search Engines** (Google):
-- Use title and description for search results
-- May use Open Graph image for featured results
-- Favicon appears next to your URL in search results
-
-**Note**: After updating your link preview settings, some platforms may take time to refresh their cached version. You can use each platform's preview refresh tools to force an update.
+- Confirm the title is specific and not just `Form`.
+- Confirm the description explains what the respondent is opening.
+- Confirm the Open Graph image is readable at small sizes.
+- Paste the form link into Slack, iMessage, or another private channel to preview it.
+- Re-test after changing the favicon or preview image, because those are often cached.

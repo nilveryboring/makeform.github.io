@@ -1,0 +1,92 @@
+import { Callout } from 'nextra/components'
+
+# Form Analytics
+
+Use form analytics to understand submissions, answer patterns, and how people move through your form.
+
+<Callout type="info">
+Makeform gives you response summaries inside the form dashboard. You can also connect Google Analytics 4 for traffic analytics on published forms.
+</Callout>
+
+## What you can review
+
+Open a form and go to its summary or submissions area to review:
+
+- Completed submissions
+- Partial submissions when enabled
+- Recent responses
+- Answer summaries for choice, rating, ranking, and scale questions
+- Individual submission details
+- Exportable response data
+
+The summary view is best for patterns. The submissions view is best for individual records.
+
+## Review response summaries
+
+Use summaries when you want to answer questions like:
+
+- Which option was selected most often?
+- What is the average rating?
+- Which ranking options performed best?
+- Are respondents skipping a field?
+- What are people writing in long text answers?
+
+For qualitative forms, summaries help you spot themes before exporting data.
+
+## Review individual submissions
+
+Use the submissions view when you need the exact response from one person.
+
+This is useful for:
+
+- Lead review
+- Support intake
+- Applications
+- Orders
+- Payment-related responses
+- Forms with uploaded files or signatures
+
+## Connect Google Analytics 4
+
+Use GA4 when you need traffic analytics outside Makeform, such as page views, acquisition source, campaigns, or behavior across a larger website funnel.
+
+1. Open your form.
+2. Go to the <span className="text-cyan-500 font-semibold bg-cyan-100 px-2 py-1 rounded">Settings</span> tab.
+3. Find <span className="text-cyan-500 font-semibold bg-cyan-100 px-2 py-1 rounded">Google Analytics</span>.
+4. Turn it on.
+5. Enter a GA4 Measurement ID, such as `G-XXXXXXXXXX`.
+6. Save or publish the form.
+
+<Callout type="warning">
+GA4 uses a Measurement ID, not a Universal Analytics tracking ID. The expected format starts with `G-`.
+</Callout>
+
+## When to use Makeform analytics vs GA4
+
+Use Makeform analytics for response quality and submission data.
+
+Use GA4 for traffic source, visitor behavior, and website-level reporting.
+
+Most teams use both: Makeform for form answers, GA4 for acquisition and funnel context.
+
+## Testing checklist
+
+- Submit a test response and confirm it appears in submissions.
+- Check the summary view after multiple responses.
+- If using GA4, verify the Measurement ID starts with `G-`.
+- Open the published form and confirm events appear in your GA4 realtime view.
+- Keep privacy and consent requirements in mind when using third-party analytics.
+
+## Troubleshooting
+
+### No analytics appear yet
+
+Submit at least one test response. Summary charts need response data.
+
+### GA4 does not receive traffic
+
+Check the Measurement ID and make sure you are testing the published form URL.
+
+### Summary numbers look different from GA4
+
+That can happen. Makeform summaries are based on submissions and answers. GA4 is based on web analytics events and visitor sessions.

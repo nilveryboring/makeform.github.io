@@ -1,0 +1,107 @@
+import { Callout } from 'nextra/components'
+
+# Pre-Populate Forms
+
+Pre-populate forms by passing known values into hidden fields through the form URL. This lets you carry campaign, CRM, customer, or referral data into the submission without asking respondents to type it.
+
+![Add a hidden field for URL parameters](/images/prepopulate-hidden-field.webp)
+
+<Callout type="info">
+Pre-population is best for values you already know before the respondent opens the form, such as `email`, `utm_source`, `customer_id`, `referral_code`, or `plan`.
+</Callout>
+
+## How pre-population works
+
+Create a hidden field, save the form, then pass a matching query parameter in the form URL. Makeform reads that parameter and saves it with the response.
+
+Example:
+
+```text
+https://makeform.ai/f/customer-intake?email=maya@example.com&plan=pro
+```
+
+In this example:
+
+- `email` fills a hidden field named `email`.
+- `plan` fills a hidden field named `plan`.
+
+You can also use that hidden value inside form copy. Click or type <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">@</span> and choose the parameter from the variable menu.
+
+## Create a hidden parameter
+
+1. Open your form in the builder.
+2. Go to the form settings.
+3. Add a <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Hidden Field</span>.
+4. Give it a stable field name, such as `email`, `utm_source`, `customer_id`, `referral_code`, `plan`, or `company`.
+5. Save or update the form after adding the hidden field.
+6. Publish or preview the form.
+7. Add a matching query parameter to the form URL.
+
+## Build a pre-populated link
+
+Start with the form URL, then add a question mark and key-value pairs:
+
+```text
+?email=maya@example.com&plan=pro&utm_source=newsletter
+```
+
+Use `&` between each value.
+
+If a value contains spaces or special characters, encode it:
+
+```text
+company=Acme%20Studio
+```
+
+## Use the parameter in form copy
+
+Hidden parameters are not shown as editable fields, but you can reference them in questions, descriptions, text blocks, or ending pages.
+
+For example, if your hidden field is named `email`, you can insert it into copy as:
+
+```text
+We will send the receipt to {{email}}.
+```
+
+Use the <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">@</span> menu in the builder to insert the parameter instead of typing the variable manually.
+
+![Select a hidden field from the variable menu](/images/prepopulate-hidden-variable-menu.webp)
+
+## Respondent experience
+
+The respondent does not see or edit the hidden field. Makeform stores the parameter with the response, and any visible copy that references the parameter updates when the form loads.
+
+## Common use cases
+
+| Use case | Values to pass |
+| --- | --- |
+| Newsletter campaign | `utm_source`, `campaign`, `segment` |
+| CRM lead routing | `company`, `owner`, `lead_id` |
+| Customer support | `account_id`, `issue_type`, `customer_tier` |
+| Event registration | `ticket_type`, `referrer`, `discount_code` |
+
+## Testing checklist
+
+- Open the link in a private browser window.
+- Confirm hidden tracking fields appear in the submission data.
+- Confirm any copy that references the parameter renders correctly.
+- Test values with spaces and special characters.
+- Submit a test response and review the saved values.
+
+## Troubleshooting
+
+### A hidden field does not receive a value
+
+Check that the query parameter name matches the field name exactly.
+
+### Spaces appear incorrectly
+
+Encode spaces as `%20` or use a URL builder before sending the link.
+
+### The value is visible but should be hidden
+
+Move that value to a hidden field so respondents cannot edit it.
+
+### A variable does not render in copy
+
+Confirm the hidden field exists before you insert it, then use the <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">@</span> menu to select the parameter again.

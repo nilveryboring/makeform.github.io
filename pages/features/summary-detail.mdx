@@ -1,13 +1,95 @@
-# Summary details
+import { Callout } from 'nextra/components'
 
-You can view all the information from respondents in the <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded"> Summary </span> tab
+# Summary Details
 
-<div className="shadow-2xl mt-12">
-  ![Summary Detail Example1](/images/summary-detail1.png)
-</div>
+Customize the information shown in your submissions inbox so each response card is easier to scan.
 
-By scrolling down, all the submission details are there.
+<Callout type="info">
+Summary details are part of the submissions inbox. They help teams review responses quickly without opening every submission.
+</Callout>
 
-<div className="shadow-2xl mt-12">
-  ![Summary Detail Example2](/images/summary-detail2.png)
-</div>
+## What summary details control
+
+Summary details control how submission cards are displayed in the inbox view.
+
+You can configure:
+
+- Which fields appear on each card.
+- Field groups for related answers.
+- How many submissions load at a time.
+- Refresh behavior for new submissions.
+- Conditional styling rules for important responses.
+
+![Summary detail example](/images/summary-detail1.png)
+
+![Summary detail settings](/images/summary-detail2.png)
+
+## When to customize summary details
+
+Customize summary details when your team reviews a lot of submissions and needs the important fields up front.
+
+Good examples:
+
+- Lead qualification forms
+- Job applications
+- Support intake
+- Order requests
+- Event registrations
+- Internal approvals
+
+For simple forms, the default inbox layout is usually enough.
+
+## Configure the inbox
+
+1. Open your form results.
+2. Switch to the <span className="text-cyan-500 font-semibold bg-cyan-100 px-2 py-1 rounded">Inbox</span> view.
+3. Open inbox settings.
+4. Choose fields or field groups to show on cards.
+5. Adjust page size or refresh behavior if needed.
+6. Save the settings.
+
+## Use field groups
+
+Field groups make related details easier to scan.
+
+For example:
+
+- Contact: name, email, phone
+- Company: company name, website, role
+- Request: plan, budget, timeline
+
+Use groups when the same set of fields should stay together on every card.
+
+## Use conditional styling
+
+Conditional styling can highlight submissions that need attention.
+
+Examples:
+
+- Mark enterprise leads when budget is above a threshold.
+- Highlight urgent support requests.
+- Flag submissions from a specific plan or region.
+
+Keep styling rules rare. If everything is highlighted, nothing is highlighted.
+
+## Testing checklist
+
+- Save the inbox settings.
+- Review several real or test submissions.
+- Confirm the most useful fields are visible without opening the card.
+- Check that grouped fields are readable.
+- Test conditional styling with matching and non-matching submissions.
+
+## Troubleshooting
+
+### A field does not appear
+
+Check that the field still exists in the form and is included in the inbox settings.
+
+### A style rule does not apply
+
+Confirm the rule uses the correct field and expected value.
+
+### The inbox feels cluttered
+
+Show fewer fields and group related details. The inbox should be scannable, not exhaustive.

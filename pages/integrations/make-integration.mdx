@@ -1,0 +1,64 @@
+import { Callout } from 'nextra/components'
+
+# Make Integration
+
+Connect Makeform to Make to build visual automation scenarios from form submissions.
+
+<Callout type="info">
+Makeform provides a Make app connection. For custom scenarios, you can also use Makeform webhooks with a Make webhook trigger.
+</Callout>
+
+## When to use Make
+
+Use Make when your workflow needs branching, transformations, or multi-step automation.
+
+Common examples:
+
+- Create a CRM contact and a follow-up task.
+- Route submissions based on form answers.
+- Send data to multiple tools.
+- Transform answers before saving them.
+- Run custom approval or fulfillment workflows.
+
+## Connect with Make
+
+1. Open your form.
+2. Go to the <span className="text-cyan-500 font-semibold bg-cyan-100 px-2 py-1 rounded">Automations</span> tab.
+3. Choose <span className="text-cyan-500 font-semibold bg-cyan-100 px-2 py-1 rounded">Make</span>.
+4. Open the Make connection.
+5. In Make, create a scenario with Makeform as the trigger.
+6. Map form fields into the next module.
+7. Run a test submission.
+8. Turn on the scenario.
+
+You can also open the Makeform Make app directly:
+
+[Open Makeform on Make](https://www.make.com/en/hq/app-invitation/082e74c25e560be79b9b6c8919ace28f)
+
+## Use webhooks with Make
+
+If you need full control over the payload, create a Make custom webhook and paste that webhook URL into Makeform's <span className="text-cyan-500 font-semibold bg-cyan-100 px-2 py-1 rounded">Webhooks</span> automation.
+
+This is the best path when you want a custom JSON structure or when your Make scenario starts from a generic webhook.
+
+## Testing checklist
+
+- Run the Make scenario once before enabling it.
+- Submit a test response from Makeform.
+- Confirm Make receives the payload.
+- Check field mappings.
+- Turn on the scenario after the test succeeds.
+
+## Troubleshooting
+
+### Make does not receive data
+
+Check that the scenario is on and the Makeform connection or webhook URL is correct.
+
+### The scenario receives data but later modules fail
+
+Check field mappings and required fields in the failing Make module.
+
+### You need a custom payload
+
+Use the Webhooks automation instead of the app trigger, then shape the JSON payload in Makeform.

@@ -1,27 +1,83 @@
-import { Callout } from 'nextra/components';
+import { Callout } from 'nextra/components'
 
-# Email notifications
+# Email Notifications
 
-Currently, only form creators (owners) can receive email notifications or track responses.
-
-<div style={{ backgroundColor: '#ecfdf5', border: '2px solid #10b981', borderRadius: '0.5rem', padding: '1rem', marginTop: '1.5rem', marginBottom: '1.5rem', display: 'flex', gap: '0.75rem', alignItems: 'flex-start' }}>
-  <div style={{ fontSize: '1.5rem', lineHeight: '1' }}>🎁</div>
-  <div style={{ flex: '1' }}>
-    <span style={{ color: '#065f46', fontSize: '0.95rem' }}>Email notifications are available for <strong>free</strong> to all Makeform users.</span>
-  </div>
-</div>
+Send emails when someone submits your form.
 
 <Callout type="info">
-Features allowing respondents to receive automated emails or personalized responses are still under
-development and will be available in a future update.
+Makeform supports self email notifications for form owners and respondent email notifications when your form has an email field.
 </Callout>
 
----
+## Notification types
 
-## 1. Enable email notifications
+Makeform has two email notification flows:
 
-To enable email notifications, you need to go to the <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Integrations</span> tab of your published form.
+- <span className="text-cyan-500 font-semibold bg-cyan-100 px-2 py-1 rounded">Self email notifications</span> send the response to the form owner or team.
+- <span className="text-cyan-500 font-semibold bg-cyan-100 px-2 py-1 rounded">Respondent email notifications</span> send a confirmation email to the person who submitted the form.
 
-<div className="shadow-2xl mt-12">
-  ![Email Notification1](/images/email-notification1.png)
-</div>
+Use self emails when your team needs to react to new submissions.
+
+Use respondent emails when the submitter should receive a receipt, confirmation, or next-step message.
+
+## Enable self email notifications
+
+1. Open your form.
+2. Go to the <span className="text-cyan-500 font-semibold bg-cyan-100 px-2 py-1 rounded">Settings</span> or <span className="text-cyan-500 font-semibold bg-cyan-100 px-2 py-1 rounded">Integrations</span> area.
+3. Find <span className="text-cyan-500 font-semibold bg-cyan-100 px-2 py-1 rounded">Form email notifications</span>.
+4. Turn on self email notifications.
+5. Save or publish the form.
+
+![Email notifications](/images/email-notification1.png)
+
+## Enable respondent email notifications
+
+Respondent emails need an email field so Makeform knows where to send the message.
+
+1. Add an <span className="text-cyan-500 font-semibold bg-cyan-100 px-2 py-1 rounded">Email Input</span> field to your form.
+2. Open email notification settings.
+3. Turn on respondent email notifications.
+4. Choose the email field.
+5. Customize the message if needed.
+6. Save or publish the form.
+
+## Customize the email
+
+Email templates can include form and answer variables.
+
+Useful variables include:
+
+- `{{formName}}`
+- `{{submittedDate}}`
+- `{{submittedTime}}`
+- Field answer variables from your form
+
+Use custom copy when the email needs to include next steps, support instructions, or a receipt-style confirmation.
+
+## PDF attachments
+
+Respondent emails can include submission data and may include an optional PDF attachment when configured.
+
+Use this for applications, intake records, confirmations, and forms where the respondent needs a copy of what they submitted.
+
+## Testing checklist
+
+- Submit a test response.
+- Confirm the owner receives the self email.
+- Confirm the respondent receives the confirmation email.
+- Check spam or promotions folders.
+- Verify variables render correctly.
+- Keep email copy short and clear.
+
+## Troubleshooting
+
+### Respondent emails cannot be enabled
+
+Add an email field to the form first.
+
+### The email goes to the wrong address
+
+Check which email field is selected for respondent notifications.
+
+### A variable is blank
+
+Confirm the field exists and the respondent answered it.

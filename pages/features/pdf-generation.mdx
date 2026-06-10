@@ -1,0 +1,83 @@
+import { Callout } from 'nextra/components'
+
+# PDF Generation
+
+Generate a PDF from an individual form submission for records, reviews, and offline sharing.
+
+<Callout type="info">
+PDF generation is available from the submissions table. Open a submission row and use the PDF export action.
+</Callout>
+
+## When to export a submission PDF
+
+PDF exports are useful when a response needs to leave Makeform as a document.
+
+Common examples:
+
+- Applications
+- Intake forms
+- Order records
+- Signed acknowledgements
+- Internal review packets
+- Customer support records
+
+For bulk analysis, use data exports. For a clean record of one response, use PDF generation.
+
+## Export a PDF
+
+1. Open your form.
+2. Go to <span className="text-cyan-500 font-semibold bg-cyan-100 px-2 py-1 rounded">Submissions</span>.
+3. Find the submission you want to export.
+4. Click <span className="text-cyan-500 font-semibold bg-cyan-100 px-2 py-1 rounded">Export PDF</span>.
+5. Choose which fields to include.
+6. Choose a PDF style.
+7. Click <span className="text-cyan-500 font-semibold bg-cyan-100 px-2 py-1 rounded">Print PDF</span>.
+
+Your browser opens a print dialog so you can save or print the PDF.
+
+## Choose fields
+
+The PDF export dialog lets you include all fields or select only the fields you need.
+
+This is useful when a submission contains internal fields, long answers, or information that should not be shared with every reviewer.
+
+## Choose a style
+
+PDF styles control the look of the exported response.
+
+Use the default Makeform style for most records. If your form design matters for the document, choose a style that keeps the PDF closer to the form’s visual theme.
+
+## What is included
+
+Submission PDFs can include:
+
+- Submitted date and time
+- Field labels
+- Answer values
+- Choice selections
+- Ratings, scales, rankings, and matrix-style answers
+- Signature responses when available
+
+Some internal computed fields may be omitted so the PDF stays focused on the submitted response.
+
+## Testing checklist
+
+- Export a test submission before using PDFs in a live workflow.
+- Confirm required fields appear.
+- Check long answers and file-related fields.
+- Save the browser print output as a PDF.
+- Review the PDF before sending it outside your team.
+
+## Troubleshooting
+
+### The PDF window does not open
+
+Allow pop-ups for Makeform, then try again.
+
+### A field is missing
+
+Check whether the field was selected in the export dialog.
+
+### The PDF looks different from the form
+
+PDF output is optimized for printable records. Some interactive form styling does not carry over exactly.

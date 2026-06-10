@@ -1,21 +1,83 @@
-# Customize your link settings and meta information
+import { Callout } from 'nextra/components'
 
-You can customize the link text and meta information of your form.
+# Share Settings
 
-<div style={{ backgroundColor: '#fdf2f8', border: '2px solid #ec4899', borderRadius: '0.5rem', padding: '1rem', marginTop: '1.5rem', marginBottom: '1.5rem', display: 'flex', gap: '0.75rem', alignItems: 'flex-start' }}>
-  <div style={{ fontSize: '1.5rem', lineHeight: '1' }}>✨</div>
-  <div style={{ flex: '1' }}>
-    <span style={{ color: '#831843', fontSize: '0.95rem' }}>Customizing form link previews is a <a href="/plans-and-pricing" style={{ textDecoration: 'underline', color: '#831843' }}><strong>Makeform Pro</strong></a> feature.</span>
-  </div>
-</div>
+Use share settings to publish, copy, embed, and customize how people access your form.
 
-<div className="shadow-2xl mt-12">
-  ![Sharing Setting Example1](/images/share-setting1.png)
-</div>
+<Callout type="info">
+The Share tab contains your public form link, QR code, embed options, custom paths, and link preview controls.
+</Callout>
 
-In the <span className="text-cyan-500 font-bold bg-cyan-200 px-2 py-1 rounded">Share</span> tab,
-clicking the <span className="text-slate-500 font-bold bg-slate-200 px-2 py-1 rounded">Customize text</span> button
-and the <span className="text-slate-500 font-bold bg-slate-100 px-2 py-1 rounded">Customize image</span> button
-to customize the link text and meta information of your form.
+## What you can manage
 
-Then you can either copy the link, or download the QR code to share with others.
+Share settings help you control how a form is distributed.
+
+You can:
+
+- Copy the public form link.
+- Download or customize a QR code.
+- Open embed options for websites.
+- Assign a custom domain or path when available.
+- Customize the link preview title, description, image, site name, and favicon.
+
+![Share settings](/images/share-setting1.png)
+
+## Copy the form link
+
+Use the public link when you want to share the form directly in email, social posts, support docs, or internal tools.
+
+After copying the link, open it in a private browser window to confirm the published form works for respondents.
+
+## Download a QR code
+
+Use the QR code when the form will be accessed from printed material, events, signs, packaging, or in-person workflows.
+
+If your plan supports it, you can customize the QR logo so the code matches your brand.
+
+## Customize the link preview
+
+Use link preview settings when the form will be shared in places that show Open Graph metadata, such as Slack, iMessage, LinkedIn, X, Facebook, or Discord.
+
+You can customize:
+
+- Site name
+- Favicon
+- Title
+- Description
+- Open Graph image
+
+For deeper instructions, see [Link Preview](./link-preview).
+
+## Use custom paths
+
+If you use a custom domain, custom paths let you publish cleaner URLs for individual forms.
+
+Example:
+
+```text
+https://forms.example.com/customer-intake
+```
+
+Use short, readable paths. Avoid spaces, punctuation, and paths that conflict with reserved URLs.
+
+## Testing checklist
+
+- Open the public link in a private browser window.
+- Check the QR code before printing it.
+- Paste the link into Slack or another preview tool to verify metadata.
+- Test the embed code on the destination website.
+- If using a custom domain, confirm the custom path opens the right form.
+
+## Troubleshooting
+
+### The old preview still appears
+
+Some platforms cache link previews. Change the URL, wait for the platform cache to refresh, or use that platform's preview debugger if available.
+
+### The custom path opens the wrong form
+
+Check that the path is assigned to the correct form and custom domain.
+
+### The QR code does not scan
+
+Use enough contrast, avoid tiny print sizes, and test with multiple phones before distributing it.
