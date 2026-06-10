@@ -14,10 +14,10 @@ Complete JavaScript API reference for programmatic control of MakeForm embedded 
 Add the embed script to your page:
 
 ```html copy
-<script src="https://www.makeform.ai/widgets/embed.js"></script>
+<script async src="https://www.makeform.ai/widgets/embed.js"></script>
 ```
 
-The script exposes the global `MakeForm` object. It can be placed in the `<head>` or before `</body>`. It loads asynchronously and initializes automatically.
+The script exposes the global `MakeForm` object. It can be placed in the `<head>` or before `</body>`. It initializes existing `data-makeform-src`, `data-makeform-popup`, `data-makeform-slider`, and auto-open configuration when the DOM is ready.
 
 ---
 
@@ -64,6 +64,8 @@ Opens a popup modal programmatically.
 ```javascript
 MakeForm.openPopup("YOUR_FORM_ID", {
   width: 500,
+  position: "bottom-right",
+  overlay: false,
   initialBgColor: "#ffffff",
   hiddenFields: { user_id: "123" },
   dispatchEvents: true,
@@ -85,11 +87,12 @@ MakeForm.closePopup();
 
 ### MakeForm.openSlider(formId, options?)
 
-Opens a slider panel programmatically. Accepts the same options as `openPopup`.
+Opens a slider panel programmatically. Accepts the same options as `openPopup`, plus a `position` option for slider side.
 
 ```javascript
 MakeForm.openSlider("YOUR_FORM_ID", {
   width: 400,
+  position: "left",
   onSubmit: ({ formId, data }) => {
     console.log("Feedback received:", data);
   }
@@ -127,9 +130,11 @@ Options object for `openPopup()` and `openSlider()`:
 ```typescript
 interface ModalOptions {
   type?: 'embed' | 'form';       // 'embed' uses /e/ route, 'form' uses /f/ route
-  embedUrl?: string;              // Custom domain URL (overrides formId-based URL)
+  embedUrl?: string;              // Pre-built embed URL; preserves its origin
   hiddenFields?: Record<string, string | number | boolean | null>;
-  width?: number;                 // Modal width in px (360–800, default: 500)
+  width?: number;                 // Modal width in px (360–800)
+  position?: string;              // Popup: 'center' | 'bottom-right'; Slider: 'left' | 'right'
+  overlay?: boolean;              // Show dark backdrop (popup only)
   initialBgColor?: string;        // CSS color to prevent white flash
   onOpen?: (payload: { formId: string }) => void;
   onReady?: (payload: { formId: string }) => void;
@@ -143,10 +148,12 @@ interface ModalOptions {
 | Option | Type | Description | Default |
 |--------|------|-------------|---------|
 | `type` | `'embed' \| 'form'` | Route type: `embed` = `/e/`, `form` = `/f/` | `'embed'` |
-| `embedUrl` | `string` | Custom domain URL (overrides formId) | — |
+| `embedUrl` | `string` | Pre-built embed URL. Useful when you need to preserve a generated URL or custom origin | — |
 | `hiddenFields` | `object` | Key-value pairs passed as URL parameters | — |
-| `width` | `number` | Modal width in pixels, clamped to 360–800 | `500` |
-| `initialBgColor` | `string` | Initial background color (any valid CSS color) | `'#ffffff'` |
+| `width` | `number` | Modal width in pixels, clamped to 360–800 | Popup CSS default, slider `500` |
+| `position` | `string` | Popup: `'center'` or `'bottom-right'`. Slider: `'left'` or `'right'` | Popup: `'center'`, Slider: `'right'` |
+| `overlay` | `boolean` | Show dark backdrop behind popup. Center always shows overlay; bottom-right defaults to off | Popup center: `true`, bottom-right: `false` |
+| `initialBgColor` | `string` | Initial background color, if valid CSS color | — |
 | `onOpen` | `function` | Called when the modal opens | — |
 | `onReady` | `function` | Called when the form loads inside the modal | — |
 | `onSubmit` | `function` | Called on successful submission, receives form data | — |
@@ -165,13 +172,15 @@ Configure a single auto-open form:
 ```typescript
 interface MakeFormConfig {
   formId: string;                 // Form ID (8–15 alphanumeric chars + hyphens)
-  embedUrl?: string;              // Custom domain URL
+  embedUrl?: string;              // Optional pre-built embed URL
   popup?: AutoOpenEntry;          // Popup auto-open config
   slider?: AutoOpenEntry;         // Slider auto-open config
 }
 
 interface AutoOpenEntry {
   width?: number;                 // Modal width (360–800)
+  position?: string;              // Popup: 'center' | 'bottom-right'; Slider: 'left' | 'right'
+  overlay?: boolean;              // Show dark backdrop (popup only)
   showOnce?: boolean;             // Show only once per visitor
   doNotShowAfterSubmit?: boolean; // Don't show after submission
   autoClose?: number;             // Auto-close delay in ms (0–30000)
@@ -240,12 +249,12 @@ window.MakeFormConfigs = [
           />
           <div ref={containerRef}>
             <iframe
-              data-makeform-src={`https://makeform.ai/e/${formId}`}
+              data-makeform-src={`https://www.makeform.ai/e/${formId}`}
               data-makeform-auto-resize
               data-makeform-events
               loading="lazy"
-              style={{ width: '100%', height: '600px', border: 'none' }}
-              title="Form"
+              style={{ width: '100%', height: '200px', border: 0 }}
+              title="Makeform form"
             />
           </div>
         </>
@@ -279,12 +288,12 @@ window.MakeFormConfigs = [
     <template>
       <div>
         <iframe
-          :data-makeform-src="`https://makeform.ai/e/${formId}`"
+          :data-makeform-src="`https://www.makeform.ai/e/${formId}`"
           data-makeform-auto-resize
           data-makeform-events
           loading="lazy"
-          :style="{ width: '100%', height: '600px', border: 'none' }"
-          title="Form"
+          :style="{ width: '100%', height: '200px', border: 0 }"
+          title="Makeform form"
         />
       </div>
     </template>
@@ -338,17 +347,17 @@ window.MakeFormConfigs = [
     <body>
       <!-- Inline embed -->
       <iframe
-        data-makeform-src="https://makeform.ai/e/YOUR_FORM_ID"
+        data-makeform-src="https://www.makeform.ai/e/YOUR_FORM_ID"
         data-makeform-auto-resize
         data-makeform-events
         loading="lazy"
-        style="width: 100%; height: 600px; border: none;"
+        style="width: 100%; height: 200px; border: 0;"
         title="Contact Form"
       ></iframe>
 
       <!-- Popup button -->
       <button
-        data-makeform-popup="https://makeform.ai/e/YOUR_FORM_ID"
+        data-makeform-popup="https://www.makeform.ai/e/YOUR_FORM_ID"
         data-makeform-width="500"
         data-makeform-events
       >
@@ -357,13 +366,13 @@ window.MakeFormConfigs = [
 
       <!-- Slider button -->
       <button
-        data-makeform-slider="https://makeform.ai/e/YOUR_FORM_ID"
+        data-makeform-slider="https://www.makeform.ai/e/YOUR_FORM_ID"
         data-makeform-width="400"
       >
         Open Slider
       </button>
 
-      <script src="https://www.makeform.ai/widgets/embed.js"></script>
+      <script async src="https://www.makeform.ai/widgets/embed.js"></script>
     </body>
     </html>
     ```
@@ -402,6 +411,9 @@ MakeForm.loadPopups();
 
 // After navigating to a page with slider triggers
 MakeForm.loadSliders();
+
+// After adding or changing window.MakeFormConfig / window.MakeFormConfigs
+MakeForm.loadAutoOpen();
 ```
 
 **React example** — reload embeds on route change:
@@ -418,6 +430,7 @@ export function MakeFormLoader() {
       MakeForm.loadEmbeds();
       MakeForm.loadPopups();
       MakeForm.loadSliders();
+      MakeForm.loadAutoOpen();
     }
   }, [pathname]);
 
@@ -437,17 +450,18 @@ For detailed event documentation, see <Link href="/developer/embedded/form-event
 |-------|-------------|
 | `MakeForm.Loaded` | Form iframe loaded |
 | `MakeForm.SubmitSuccess` | Form submitted successfully |
-| `MakeForm.FieldChange` | Field value changed |
 | `MakeForm.SetHeight` | Content height changed (internal) |
+| `MakeForm.LayoutReady` | First stable layout height is ready (internal) |
 | `MakeForm.SetBackgroundColor` | Background color determined (internal) |
+| `MakeForm.Submitted` | Payload-free submit signal for safe auto-close (internal) |
 
 ### Custom DOM events
 
 | Event | Detail | Fires when |
 |-------|--------|-----------|
 | `MakeForm:open` | `{ formId }` | Popup/slider opens |
-| `MakeForm:ready` | `{ formId }` | Form loads in modal |
-| `MakeForm:submit` | `{ formId, data }` | Form submitted in modal |
+| `MakeForm:ready` | `{ formId }` | Form iframe reports loaded |
+| `MakeForm:submit` | `{ formId, data }` | Form submitted |
 | `MakeForm:close` | `{ formId }` | Popup/slider closes |
 
 ---
@@ -457,6 +471,8 @@ For detailed event documentation, see <Link href="/developer/embedded/form-event
 | Parameter | Description |
 |-----------|-------------|
 | `mk-rm-bg=true` | Remove form background (transparent) |
+| `mk-align-left=1` | Align supported embedded form content to the left |
+| `mf_locale={locale}` | Request a runtime locale for system copy and paid translation overlays |
 | `__mf_emitEvents=1` | Enable postMessage events on full page (`/f/`) route |
 | `{fieldName}={value}` | Set hidden field values |
 
@@ -478,6 +494,7 @@ Parameters starting with `__mf_` are reserved for internal use and cannot be use
 ### Height not adjusting
 
 - Add `data-makeform-auto-resize` to the iframe element
+- Use the `/e/{formId}` route for inline embeds
 - The SDK uses `ResizeObserver` to detect content changes automatically
 - If content is loaded asynchronously inside the form, height updates when the content renders
 
@@ -486,19 +503,19 @@ Parameters starting with `__mf_` are reserved for internal use and cannot be use
 - For inline embeds: add `data-makeform-events` to the iframe
 - For popups/sliders: add `data-makeform-events` to the trigger or set `dispatchEvents: true`
 - For full page embeds: append `__mf_emitEvents=1` to the URL
-- Check that you are listening on the correct event type (`message` for postMessage, named events for CustomEvent)
+- Listen for `MakeForm:*` CustomEvents unless you specifically need raw `postMessage` payloads
 
 ### Popup/slider not opening
 
 - Ensure the form ID matches the pattern: 8-15 alphanumeric characters and hyphens
 - Check that `embed.js` has loaded before calling `MakeForm.openPopup()`
 - On SPAs, call `MakeForm.loadPopups()` after adding trigger elements
+- For auto-open snippets, call `MakeForm.loadAutoOpen()` after changing `window.MakeFormConfig`
 
 ---
 
 ## Related
 
-- <Link href="/developer/embedded/embed-your-form">Embed Your Form</Link> — Overview of all embed types
-- <Link href="/developer/embedded/popup-and-slider">Popup & Slider Forms</Link> — Auto-open triggers, suppression, and options
-- <Link href="/developer/embedded/embed-hidden-fields">Hidden Fields in Embeds</Link> — Pass data into forms via URL parameters
+- <Link href="/guides/embed-your-form">Embed Your Form</Link> — Overview of all embed types
+- <Link href="/features/hidden-fields">Hidden Fields</Link> — Pass data into forms via URL parameters
 - <Link href="/developer/embedded/form-event">Handle Form Events</Link> — Complete event documentation

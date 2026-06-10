@@ -3,481 +3,328 @@ import Link from 'next/link'
 
 # Handle Form Events
 
-Learn how to handle events from your embedded Makeform forms. These events enable you to create interactive experiences, track form activity, process submission data, and integrate with your application.
+Use Makeform embed events to track when an embedded form is ready, when it is submitted, and when popup or slider modals open and close.
 
 <div style={{ backgroundColor: '#ecfdf5', border: '2px solid #10b981', borderRadius: '0.5rem', padding: '1rem', marginTop: '1.5rem', marginBottom: '1.5rem', display: 'flex', gap: '0.75rem', alignItems: 'flex-start' }}>
   <div style={{ fontSize: '1.5rem', lineHeight: '1' }}>🎁</div>
   <div style={{ flex: '1' }}>
     <span style={{ color: '#065f46', fontSize: '0.95rem' }}>
-      Form events are available for **free** to all Makeform users.
+      Embed events are available for <strong>free</strong> to all Makeform users.
     </span>
   </div>
 </div>
 
 ---
 
-## Enabling events
+## Event layers
 
-Events must be opted into depending on your embed type.
+Makeform uses two event layers:
 
-### Inline (standard) embed
+| Layer | Who uses it | How to listen |
+|-------|-------------|---------------|
+| SDK CustomEvents | Most website analytics and app code | `window.addEventListener('MakeForm:submit', handler)` |
+| iframe postMessage | Advanced integrations and debugging | `window.addEventListener('message', handler)` |
 
-Add <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">data-makeform-events</span> to your iframe element:
+For most websites, use SDK CustomEvents. The SDK validates the iframe source and converts Makeform iframe messages into simpler `MakeForm:*` events when you opt in.
 
-```html
+---
+
+## Enable events
+
+### Standard embed
+
+Add <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">data-makeform-events</span> to the iframe:
+
+```html copy
 <iframe
-  data-makeform-src="https://makeform.ai/e/YOUR_FORM_ID"
+  data-makeform-src="https://www.makeform.ai/e/YOUR_FORM_ID"
+  data-makeform-auto-resize
   data-makeform-events
-  ...
+  loading="lazy"
+  style="width: 100%; height: 200px; border: 0;"
+  title="Makeform form"
 ></iframe>
+<script async src="https://www.makeform.ai/widgets/embed.js"></script>
 ```
+
+Standard embeds dispatch `MakeForm:ready` and `MakeForm:submit`.
 
 ### Popup and slider
 
-Add <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">data-makeform-events</span> to the trigger button:
+For data-attribute triggers, add <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">data-makeform-events</span> to the trigger:
 
-```html
+```html copy
 <button
-  data-makeform-popup="https://makeform.ai/e/YOUR_FORM_ID"
+  data-makeform-popup="https://www.makeform.ai/e/YOUR_FORM_ID"
   data-makeform-events
 >
   Open Form
 </button>
+<script async src="https://www.makeform.ai/widgets/embed.js"></script>
 ```
 
-Or set <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">dispatchEvents: true</span> in the JavaScript API:
+For the JavaScript API, set `dispatchEvents: true`:
 
-```javascript
+```javascript copy
 MakeForm.openPopup("YOUR_FORM_ID", {
   dispatchEvents: true
 });
 ```
 
+Popup and slider embeds can dispatch `MakeForm:open`, `MakeForm:ready`, `MakeForm:submit`, and `MakeForm:close`.
+
 ### Full page embed
 
-Append <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">__mf_emitEvents=1</span> to the form URL:
+Full page embeds use `/f/{FORM_ID}`. To emit submission events, append `__mf_emitEvents=1`, use `data-makeform-src`, and add `data-makeform-events`:
 
-```html
+```html copy
 <iframe
-  data-makeform-src="https://makeform.ai/f/YOUR_FORM_ID?__mf_emitEvents=1"
+  data-makeform-src="https://www.makeform.ai/f/YOUR_FORM_ID?__mf_emitEvents=1"
   data-makeform-events
-  ...
+  style="position: absolute; inset: 0; border: 0; width: 100%; height: 100%;"
+  title="Makeform form"
 ></iframe>
+<script async src="https://www.makeform.ai/widgets/embed.js"></script>
+```
+
+---
+
+## SDK CustomEvents
+
+### MakeForm:ready
+
+Fires when the form iframe reports that it has loaded.
+
+```javascript copy
+window.addEventListener("MakeForm:ready", (event) => {
+  console.log("Ready:", event.detail.formId);
+});
+```
+
+### MakeForm:submit
+
+Fires when the form is successfully submitted.
+
+```javascript copy
+window.addEventListener("MakeForm:submit", (event) => {
+  console.log("Submitted form:", event.detail.formId);
+  console.log("Submission data:", event.detail.data);
+});
+```
+
+### MakeForm:open
+
+Fires when a popup or slider opens.
+
+```javascript copy
+window.addEventListener("MakeForm:open", (event) => {
+  console.log("Opened:", event.detail.formId);
+});
+```
+
+### MakeForm:close
+
+Fires when a popup or slider closes.
+
+```javascript copy
+window.addEventListener("MakeForm:close", (event) => {
+  console.log("Closed:", event.detail.formId);
+});
 ```
 
 ---
 
 ## PostMessage events
 
-These events are sent from the form iframe to the parent window via `window.postMessage`. Listen for them with `window.addEventListener('message', handler)`.
+The form iframe sends `postMessage` payloads to its parent window. These are useful if you are building a custom wrapper around the embed SDK.
 
 ### MakeForm.Loaded
 
-Fired when the form iframe has finished loading and is ready to display.
-
-**Payload:**
 ```json
-{ "type": "MakeForm.Loaded" }
+{
+  "type": "MakeForm.Loaded",
+  "payload": {}
+}
 ```
-
-**Use cases:**
-- Hide a loading indicator on your page
-- Track form load performance
-- Initialize other UI elements after the form is ready
 
 ### MakeForm.SubmitSuccess
 
-Fired when a form submission is successfully completed. The payload contains the form responses as key-value pairs.
-
-**Payload:**
 ```json
 {
   "type": "MakeForm.SubmitSuccess",
   "payload": {
-    "Name": "John Doe",
-    "Email": "john@example.com",
-    "Message": "Hello!"
+    "Name": "Jane Doe",
+    "Email": "jane@example.com"
   }
 }
 ```
 
-**Use cases:**
-- Send form data to your backend
-- Trigger notifications or analytics events
-- Update UI state or redirect users
-- Integration with third-party tools
+### Internal layout messages
 
-### MakeForm.FieldChange
+The SDK also listens for these iframe messages:
 
-Fired when any form field value changes.
+| Event | Purpose |
+|-------|---------|
+| `MakeForm.SetHeight` | Auto-resizes standard embeds and popup height. Payload shape: `{ "height": 640 }`. |
+| `MakeForm.LayoutReady` | Reveals popups only after the first stable layout height is available. |
+| `MakeForm.SetBackgroundColor` | Syncs modal background color with the form background. |
+| `MakeForm.Submitted` | Payload-free submit signal used for safe auto-close on `/f` popup embeds. |
 
-**Payload:**
-```json
-{
-  "type": "MakeForm.FieldChange",
-  "field": "Email",
-  "value": "john@example.com"
-}
-```
-
-**Use cases:**
-- Real-time validation outside the form
-- Conditional UI updates on the parent page
-- Progress tracking
-
-### MakeForm.SetHeight
-
-Fired when the form content height changes. Used internally by the SDK for auto-resizing.
-
-**Payload:**
-```json
-{ "type": "MakeForm.SetHeight", "height": 850 }
-```
-
-### MakeForm.SetBackgroundColor
-
-Fired when the form's background color is determined. Used internally to sync modal backgrounds.
-
-**Payload:**
-```json
-{ "type": "MakeForm.SetBackgroundColor", "backgroundColor": "#ffffff" }
-```
-
----
-
-## Custom DOM events
-
-When using popup or slider embeds with events enabled (<span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">data-makeform-events</span> or <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">dispatchEvents: true</span>), the SDK dispatches `CustomEvent` instances on the `window` object.
-
-### MakeForm:open
-
-Fired when a popup or slider modal opens.
-
-```javascript
-window.addEventListener('MakeForm:open', (e) => {
-  console.log('Modal opened for form:', e.detail.formId);
-});
-```
-
-### MakeForm:ready
-
-Fired when the form content has loaded inside the modal.
-
-```javascript
-window.addEventListener('MakeForm:ready', (e) => {
-  console.log('Form ready:', e.detail.formId);
-});
-```
-
-### MakeForm:submit
-
-Fired when a form is successfully submitted from within a modal.
-
-```javascript
-window.addEventListener('MakeForm:submit', (e) => {
-  console.log('Form submitted:', e.detail.formId);
-  console.log('Form data:', e.detail.data);
-});
-```
-
-### MakeForm:close
-
-Fired when a popup or slider modal closes.
-
-```javascript
-window.addEventListener('MakeForm:close', (e) => {
-  console.log('Modal closed for form:', e.detail.formId);
-});
-```
+<Callout type="info">
+Treat layout messages as SDK internals. For analytics and product logic, prefer `MakeForm:ready`, `MakeForm:submit`, `MakeForm:open`, and `MakeForm:close`.
+</Callout>
 
 ---
 
 ## Complete examples
 
-<Tabs items={['TypeScript', 'JavaScript', 'React/Next.js', 'Vue']}>
+<Tabs items={['JavaScript', 'TypeScript', 'React / Next.js']}>
   <Tabs.Tab>
-    ```typescript filename="events.ts" copy
-    interface MakeFormEvent {
-      type: string;
-      payload?: Record<string, any>;
-      field?: string;
-      value?: any;
-      height?: number;
-      backgroundColor?: string;
-    }
-
-    window.addEventListener('message', (e: MessageEvent) => {
-      try {
-        const data: MakeFormEvent = JSON.parse(e.data);
-
-        switch (data.type) {
-          case 'MakeForm.Loaded':
-            console.log('Form loaded');
-            break;
-
-          case 'MakeForm.SubmitSuccess':
-            console.log('Submitted:', data.payload);
-            // data.payload example: { "Name": "John", "Email": "john@example.com" }
-            break;
-
-          case 'MakeForm.FieldChange':
-            console.log(`Field "${data.field}" changed to:`, data.value);
-            break;
-
-          case 'MakeForm.SetHeight':
-            console.log('Height updated:', data.height);
-            break;
-
-          case 'MakeForm.SetBackgroundColor':
-            console.log('Background:', data.backgroundColor);
-            break;
-        }
-      } catch {
-        // Not a MakeForm event, ignore
-      }
+    ```javascript filename="events.js" copy
+    window.addEventListener("MakeForm:ready", (event) => {
+      console.log("Form ready:", event.detail.formId);
     });
 
-    // Custom DOM events (for popup/slider)
-    window.addEventListener('MakeForm:open', (e: CustomEvent) => {
-      console.log('Opened:', e.detail.formId);
+    window.addEventListener("MakeForm:submit", (event) => {
+      console.log("Submitted:", event.detail.formId, event.detail.data);
     });
 
-    window.addEventListener('MakeForm:submit', (e: CustomEvent) => {
-      console.log('Submitted:', e.detail.formId, e.detail.data);
+    window.addEventListener("MakeForm:open", (event) => {
+      console.log("Modal opened:", event.detail.formId);
     });
 
-    window.addEventListener('MakeForm:close', (e: CustomEvent) => {
-      console.log('Closed:', e.detail.formId);
+    window.addEventListener("MakeForm:close", (event) => {
+      console.log("Modal closed:", event.detail.formId);
     });
     ```
   </Tabs.Tab>
   <Tabs.Tab>
-    ```javascript filename="events.js" copy
-    window.addEventListener('message', (e) => {
-      try {
-        const data = JSON.parse(e.data);
+    ```typescript filename="events.ts" copy
+    type MakeFormEventDetail = {
+      formId: string;
+      data?: Record<string, unknown>;
+    };
 
-        switch (data.type) {
-          case 'MakeForm.Loaded':
-            console.log('Form loaded');
-            break;
+    const onSubmit = (event: Event) => {
+      const detail = (event as CustomEvent<MakeFormEventDetail>).detail;
+      console.log("Submitted:", detail.formId, detail.data);
+    };
 
-          case 'MakeForm.SubmitSuccess':
-            console.log('Submitted:', data.payload);
-            break;
-
-          case 'MakeForm.FieldChange':
-            console.log(`Field "${data.field}" changed to:`, data.value);
-            break;
-
-          case 'MakeForm.SetHeight':
-            console.log('Height updated:', data.height);
-            break;
-
-          case 'MakeForm.SetBackgroundColor':
-            console.log('Background:', data.backgroundColor);
-            break;
-        }
-      } catch {
-        // Not a MakeForm event, ignore
-      }
-    });
-
-    // Custom DOM events (for popup/slider)
-    window.addEventListener('MakeForm:open', (e) => {
-      console.log('Opened:', e.detail.formId);
-    });
-
-    window.addEventListener('MakeForm:submit', (e) => {
-      console.log('Submitted:', e.detail.formId, e.detail.data);
-    });
-
-    window.addEventListener('MakeForm:close', (e) => {
-      console.log('Closed:', e.detail.formId);
-    });
+    window.addEventListener("MakeForm:submit", onSubmit);
     ```
   </Tabs.Tab>
   <Tabs.Tab>
     ```tsx filename="EmbeddedForm.tsx" copy
+    'use client';
+
+    import Script from 'next/script';
     import { useEffect } from 'react';
 
-    export default function EmbeddedForm() {
-      const FORM_ID = 'YOUR_FORM_ID';
-      const FORM_URL = `https://makeform.ai/e/${FORM_ID}`;
-
+    export function EmbeddedForm({ formId }: { formId: string }) {
       useEffect(() => {
-        const handleMessage = (event: MessageEvent) => {
-          try {
-            const data = typeof event.data === 'string'
-              ? JSON.parse(event.data)
-              : event.data;
-
-            switch (data.type) {
-              case 'MakeForm.Loaded':
-                console.log('Form loaded');
-                break;
-              case 'MakeForm.SubmitSuccess':
-                console.log('Submitted:', data.payload);
-                break;
-              case 'MakeForm.FieldChange':
-                console.log(`Field "${data.field}" changed to:`, data.value);
-                break;
-            }
-          } catch {
-            // Not a MakeForm event
-          }
-        };
-
-        const handleOpen = (e: Event) => {
-          console.log('Opened:', (e as CustomEvent).detail.formId);
-        };
-        const handleSubmit = (e: Event) => {
-          const detail = (e as CustomEvent).detail;
+        const handleSubmit = (event: Event) => {
+          const detail = (event as CustomEvent).detail;
           console.log('Submitted:', detail.formId, detail.data);
         };
-        const handleClose = (e: Event) => {
-          console.log('Closed:', (e as CustomEvent).detail.formId);
-        };
 
-        window.addEventListener('message', handleMessage);
-        window.addEventListener('MakeForm:open', handleOpen);
         window.addEventListener('MakeForm:submit', handleSubmit);
-        window.addEventListener('MakeForm:close', handleClose);
-
-        return () => {
-          window.removeEventListener('message', handleMessage);
-          window.removeEventListener('MakeForm:open', handleOpen);
-          window.removeEventListener('MakeForm:submit', handleSubmit);
-          window.removeEventListener('MakeForm:close', handleClose);
-        };
+        return () => window.removeEventListener('MakeForm:submit', handleSubmit);
       }, []);
 
       return (
-        <iframe
-          src={FORM_URL}
-          className="w-full"
-          style={{
-            border: 'none',
-            margin: 0,
-            padding: 0,
-            minHeight: '600px',
-          }}
-        />
+        <>
+          <iframe
+            data-makeform-src={`https://www.makeform.ai/e/${formId}`}
+            data-makeform-auto-resize
+            data-makeform-events
+            loading="lazy"
+            style={{ width: '100%', height: 200, border: 0 }}
+            title="Makeform form"
+          />
+          <Script
+            async
+            src="https://www.makeform.ai/widgets/embed.js"
+            onLoad={() => window.MakeForm?.loadEmbeds?.()}
+          />
+        </>
       );
     }
-    ```
-  </Tabs.Tab>
-  <Tabs.Tab>
-    ```vue filename="EmbeddedForm.vue" copy
-    <template>
-      <iframe
-        :src="formUrl"
-        class="w-full"
-        :style="{
-          border: 'none',
-          margin: 0,
-          padding: 0,
-          minHeight: '600px'
-        }"
-      />
-    </template>
-
-    <script setup>
-    import { onMounted, onUnmounted } from 'vue';
-
-    const FORM_ID = 'YOUR_FORM_ID';
-    const formUrl = `https://makeform.ai/e/${FORM_ID}`;
-
-    const handleMessage = (event) => {
-      try {
-        const data = typeof event.data === 'string'
-          ? JSON.parse(event.data)
-          : event.data;
-
-        switch (data.type) {
-          case 'MakeForm.Loaded':
-            console.log('Form loaded');
-            break;
-          case 'MakeForm.SubmitSuccess':
-            console.log('Submitted:', data.payload);
-            break;
-          case 'MakeForm.FieldChange':
-            console.log(`Field "${data.field}" changed to:`, data.value);
-            break;
-        }
-      } catch {
-        // Not a MakeForm event
-      }
-    };
-
-    const handleOpen = (e) => console.log('Opened:', e.detail.formId);
-    const handleSubmit = (e) => console.log('Submitted:', e.detail.formId, e.detail.data);
-    const handleClose = (e) => console.log('Closed:', e.detail.formId);
-
-    onMounted(() => {
-      window.addEventListener('message', handleMessage);
-      window.addEventListener('MakeForm:open', handleOpen);
-      window.addEventListener('MakeForm:submit', handleSubmit);
-      window.addEventListener('MakeForm:close', handleClose);
-    });
-
-    onUnmounted(() => {
-      window.removeEventListener('message', handleMessage);
-      window.removeEventListener('MakeForm:open', handleOpen);
-      window.removeEventListener('MakeForm:submit', handleSubmit);
-      window.removeEventListener('MakeForm:close', handleClose);
-    });
-    </script>
     ```
   </Tabs.Tab>
 </Tabs>
 
 ---
 
+## Advanced postMessage listener
+
+If you listen to raw iframe messages, validate the origin before using the payload:
+
+```javascript copy
+window.addEventListener("message", (event) => {
+  if (
+    event.origin !== "https://www.makeform.ai" &&
+    event.origin !== "https://makeform.ai"
+  ) {
+    return;
+  }
+
+  if (typeof event.data !== "string") return;
+
+  try {
+    const data = JSON.parse(event.data);
+
+    if (data.type === "MakeForm.SubmitSuccess") {
+      console.log("Submission:", data.payload);
+    }
+  } catch {
+    // Ignore unrelated postMessage traffic.
+  }
+});
+```
+
+---
+
 ## Event reference
 
-### PostMessage events
-
-| Event | Description | Key Payload |
-|-------|-------------|-------------|
-| `MakeForm.Loaded` | Form iframe loaded and ready | — |
-| `MakeForm.SubmitSuccess` | Form submitted successfully | `payload: { [field]: value }` |
-| `MakeForm.FieldChange` | Field value changed | `field`, `value` |
-| `MakeForm.SetHeight` | Content height changed | `height` |
-| `MakeForm.SetBackgroundColor` | Background color determined | `backgroundColor` |
-
-### Custom DOM events
+### SDK CustomEvents
 
 | Event | Fires when | Detail |
-|-------|-----------|--------|
-| `MakeForm:open` | Popup/slider opens | `{ formId }` |
-| `MakeForm:ready` | Form loads in modal | `{ formId }` |
-| `MakeForm:submit` | Form submitted in modal | `{ formId, data }` |
-| `MakeForm:close` | Popup/slider closes | `{ formId }` |
+|-------|------------|--------|
+| `MakeForm:ready` | Form iframe reports loaded | `{ formId }` |
+| `MakeForm:submit` | Form submission succeeds | `{ formId, data }` |
+| `MakeForm:open` | Popup or slider opens | `{ formId }` |
+| `MakeForm:close` | Popup or slider closes | `{ formId }` |
+
+### iframe postMessage events
+
+| Event | Public use |
+|-------|------------|
+| `MakeForm.Loaded` | Advanced wrapper can detect iframe readiness |
+| `MakeForm.SubmitSuccess` | Advanced wrapper can read submission data |
+| `MakeForm.SetHeight` | Internal resizing |
+| `MakeForm.LayoutReady` | Internal popup reveal timing |
+| `MakeForm.SetBackgroundColor` | Internal modal background sync |
+| `MakeForm.Submitted` | Internal payload-free auto-close signal |
 
 ---
 
 ## Best practices
 
-1. **Always clean up event listeners**
-   Remove event listeners when components unmount to avoid memory leaks in single-page applications.
+1. **Use SDK CustomEvents first**
+   They are easier to consume and work across standard, popup, and slider embeds when event tracking is enabled.
 
-2. **Wrap in try-catch**
-   Not all `message` events are from MakeForm. Always wrap `JSON.parse` in a try-catch to ignore unrelated messages.
+2. **Clean up listeners in SPAs**
+   Remove event listeners when components unmount.
 
-3. **Validate event origin**
-   For security, check `event.origin` matches your expected MakeForm domain before processing data.
+3. **Validate postMessage origin**
+   Raw `message` listeners receive traffic from many sources. Check `event.origin` before reading the payload.
 
-4. **Debounce FieldChange events**
-   `MakeForm.FieldChange` fires on every keystroke. If you're making API calls or expensive operations, debounce the handler.
-
-5. **Don't rely on SetHeight/SetBackgroundColor**
-   These are internal events used by the SDK for auto-resizing. They may change without notice. Use them for debugging, not production logic.
+4. **Do not build product logic on layout messages**
+   `SetHeight`, `LayoutReady`, `SetBackgroundColor`, and `Submitted` exist for SDK behavior and can change as the embed runtime evolves.
 
 ---
 
 ## Related
 
-- <Link href="/developer/embedded/embed-your-form">Embed Your Form</Link> — Overview of all embed types
-- <Link href="/developer/embedded/popup-and-slider">Popup & Slider Forms</Link> — Callbacks and lifecycle events
+- <Link href="/guides/embed-your-form">Embed Your Form</Link> — Overview of all embed types
 - <Link href="/developer/embedded/developer-resources">Developer Resources</Link> — Full JavaScript API reference

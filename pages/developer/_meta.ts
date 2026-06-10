@@ -1,3 +1,3 @@
 export default {
-  embedded: "Embed Forms"
+  embedded: "Embed SDK"
 }
