@@ -1,0 +1,178 @@
+import { Callout } from 'nextra/components'
+import Link from 'next/link'
+
+# Embed Your Form
+
+You can embed a Makeform form on any webpage. Add it directly inside the page, open it as a popup or slider, or let it fill a full page.
+
+<div style={{ backgroundColor: '#ecfdf5', border: '2px solid #10b981', borderRadius: '0.5rem', padding: '1rem', marginTop: '1.5rem', marginBottom: '1.5rem', display: 'flex', gap: '0.75rem', alignItems: 'flex-start' }}>
+  <div style={{ fontSize: '1.5rem', lineHeight: '1' }}>🎁</div>
+  <div style={{ flex: '1' }}>
+    <span style={{ color: '#065f46', fontSize: '0.95rem' }}>
+      Embedding forms is available for <strong>free</strong> to all Makeform users. Some branding options require <a href="/plans-and-pricing" style={{ textDecoration: 'underline', color: '#065f46' }}><strong>Makeform Pro</strong></a>.
+    </span>
+  </div>
+</div>
+
+---
+
+## How embedding works
+
+Go to the <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Share</span> tab of your published form and choose <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Embed</span>.
+
+{/* Screenshot TODO: Replace /images/embed_share_tab.webp with the published form Share tab showing where to open Embed. */}
+<div className="shadow-2xl mt-12">![Share tab showing the Embed entry](/images/embed_share_tab.webp)</div>
+
+A preview window opens with the available embed types.
+
+Select an embed type, adjust the options, and use the preview to check how it will look on a webpage.
+
+Use the copy option that matches your site:
+
+- <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Get the code</span> — Copy the full embed code when your website lets you paste embed code.
+- <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Copy embed link</span> — Copy only the embed URL when your site builder or no-code tool asks for a form link.
+
+---
+
+## Choose an embed type
+
+There are four embed types:
+
+| Type | Best for |
+|------|----------|
+| Standard | A form inside normal page content |
+| Popup | A form that opens over your page |
+| Slider | A form that slides in from the side |
+| Full page | A form that fills a page or section |
+
+<Callout type="info">
+Form content changes update automatically in existing embeds. If you change embed options such as width, background, or opening behavior, copy the updated code from the Share tab again.
+</Callout>
+
+---
+
+## Standard embed
+
+The standard embed places the form directly inside your webpage content.
+
+{/* Screenshot TODO: Replace /images/embed_form1.webp with the Share tab embed preview window with Standard selected. Show the options panel, preview area, and Get the code button. */}
+<div className="shadow-2xl mt-12">![Standard embed options](/images/embed_form1.webp)</div>
+
+Select <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Standard</span>, adjust the options, copy the code, and paste it where the form should appear on your page.
+
+### Options
+
+- **Width** — Adjust the form width for your page layout.
+- **Height** — Set a fixed height, or enable dynamic height so the embed automatically fits the form content.
+- **Transparent background** — Remove the default form background so the form blends into your page.
+- **Align content to the left** — Align embedded form content to the left instead of centering it.
+- **Track form events** — Send form load and submission events to your website. See <Link href="/developer/embedded/form-event" className="underline">Handle Form Events</Link>.
+- **Show 'Powered by' badge** — Show or hide the `Powered by Makeform` badge where your plan allows it. See <Link href="/features/remove-makeform-branding" className="underline">Remove Makeform Branding</Link>.
+
+<Callout type="info">
+For normal page content, use the Standard embed code from the Share tab. Use Full page only when the form should fill the page or a dedicated section.
+</Callout>
+
+---
+
+## Popup embed
+
+Popup embeds open the form over your page. Center popups focus attention on the form, while bottom-right popups keep more of the page visible.
+
+{/* Screenshot TODO: Replace /images/embed_form2.webp with the Share tab embed preview window with Popup selected. Show popup-specific options and the preview area. */}
+<div className="shadow-2xl mt-12">![Popup embed options](/images/embed_form2.webp)</div>
+
+Select <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Popup</span>, choose how the popup should open, copy the code, and paste it into your website.
+
+### Options
+
+- **Position** — Open the popup in the center of the page or in the bottom-right corner.
+- **Show dark overlay** — Dim the page behind a bottom-right popup. Center popups always use an overlay.
+- **Open (form trigger)** — Choose whether the popup opens from a button click, on page load, after a delay, on exit intent, or after scrolling.
+- **Width** — Adjust the popup width on desktop.
+- **Close after submit** — Close the popup automatically after a successful submission.
+- **Align content to the left** — Align form content to the left instead of centering it.
+- **Track form events** — Send popup open, close, load, and submission events to your website. See <Link href="/developer/embedded/form-event" className="underline">Handle Form Events</Link>.
+- **Show loading screen** — Show or hide the loading screen while the popup loads. This is the same setting as <Link href="/guides/form-settings#show-loading-screen" className="underline">Show Loading Screen</Link> in Form Settings.
+- **Show 'Powered by' badge** — Show or hide the `Powered by Makeform` badge where your plan allows it. See <Link href="/features/remove-makeform-branding" className="underline">Remove Makeform Branding</Link>.
+
+For automatic opening, custom behavior, or developer setup, see <Link href="/developer/embedded/developer-resources" className="underline">Developer Resources</Link>.
+
+---
+
+## Slider embed
+
+Slider embeds open the form as a side panel. They open from the right by default, but can also open from the left.
+
+{/* Screenshot TODO: Replace /images/embed_form3.webp with the Share tab embed preview window with Slider selected. Show slider-specific options and the preview area. */}
+<div className="shadow-2xl mt-12">![Slider embed options](/images/embed_form3.webp)</div>
+
+Select <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Slider</span>, choose the side it should open from, copy the code, and paste it into your website.
+
+### Options
+
+- **Position** — Open the slider from the right or left side of the page.
+- **Open (form trigger)** — Choose whether the slider opens from a button click, on page load, after a delay, on exit intent, or after scrolling.
+- **Width** — Adjust the slider width on desktop.
+- **Close after submit** — Close the slider automatically after a successful submission.
+- **Align content to the left** — Align form content to the left instead of centering it.
+- **Track form events** — Send slider open, close, load, and submission events to your website. See <Link href="/developer/embedded/form-event" className="underline">Handle Form Events</Link>.
+- **Show loading screen** — Show or hide the loading screen while the slider loads. This is the same setting as <Link href="/guides/form-settings#show-loading-screen" className="underline">Show Loading Screen</Link> in Form Settings.
+- **Show 'Powered by' badge** — Show or hide the `Powered by Makeform` badge where your plan allows it. See <Link href="/features/remove-makeform-branding" className="underline">Remove Makeform Branding</Link>.
+
+For automatic opening, custom behavior, or developer setup, see <Link href="/developer/embedded/developer-resources" className="underline">Developer Resources</Link>.
+
+---
+
+## Full page embed
+
+Use a full page embed when the form should be the main content of a page or fill a dedicated section.
+
+{/* Screenshot TODO: Replace /images/embed_form4.webp with the Share tab embed preview window with Full page selected. Show any available options, the preview area, and the Get the code button. */}
+<div className="shadow-2xl mt-12">![Full page embed options](/images/embed_form4.webp)</div>
+
+Select <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Full page</span>, copy the code, and paste it into the page or container where the form should fill the available space.
+
+### Options
+
+- **Transparent background** — Remove the default form background so the form blends into the page.
+- **Track form events** — Send form load and submission events to your website. See <Link href="/developer/embedded/form-event" className="underline">Handle Form Events</Link>.
+- **Show loading screen** — Show or hide the loading screen while the full page form loads. This is the same setting as <Link href="/guides/form-settings#show-loading-screen" className="underline">Show Loading Screen</Link> in Form Settings.
+- **Show 'Powered by' badge** — Show or hide the `Powered by Makeform` badge where your plan allows it. See <Link href="/features/remove-makeform-branding" className="underline">Remove Makeform Branding</Link>.
+
+---
+
+## Hidden fields and locale
+
+Pass hidden fields by adding query parameters to the embed URL:
+
+```html
+YOUR_EMBED_URL?user_id=123&utm_source=docs
+```
+
+Choose a locale in the Share tab if your embedded form should use a specific language. See <Link href="/guides/supported-languages" className="underline">Supported Languages</Link> for language options.
+
+See <Link href="/features/hidden-fields" className="underline">Hidden Fields</Link> for setup and URL parameters, or <Link href="/developer/embedded/developer-resources" className="underline">Developer Resources</Link> for developer setup.
+
+---
+
+## Shared form settings
+
+Some options in the embed panel are saved on the form itself and stay in sync with Form Settings:
+
+| Setting | Description |
+|---------|-------------|
+| Show loading screen | Controls the form loading screen for popup, slider, and full page embeds. This is the same option as Show Loading Screen in Form Settings. |
+| Custom loading text | Shows custom loading copy while the form loads. |
+| Show 'Powered by' badge | Controls the `Powered by Makeform` badge. |
+| Remove Makeform branding | Removes Makeform branding where your plan allows it. |
+
+---
+
+## See also
+
+- <Link href="/features/hidden-fields" className="underline">Hidden Fields</Link> — Pass user IDs, plans, emails, and other context into embedded forms
+- <Link href="/guides/supported-languages" className="underline">Supported Languages</Link> — Choose the language shown in your form
+- <Link href="/features/remove-makeform-branding" className="underline">Remove Makeform Branding</Link> — Manage the powered-by badge and Makeform branding
+- <Link href="/developer/embedded/form-event" className="underline">Handle Form Events</Link> — Listen for form load, submit, open, and close events
+- <Link href="/developer/embedded/developer-resources" className="underline">Developer Resources</Link> — Use the JavaScript API, auto-open settings, and dynamic hidden fields
