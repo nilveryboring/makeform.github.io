@@ -106,10 +106,9 @@ The AI will add the payment field and configure it based on your instructions.
 2. Click the **Add field** button or the **+** button between fields
 3. Select **Payment** from the field type menu
 4. Configure your payment settings (amount, currency, etc.)
-5. Click **Save**
 
-<Callout type="warning">
-The payment field is always required. Make sure to place it strategically in your form, typically as one of the last fields.
+<Callout type="info">
+Payment fields are optional by default. Turn on **Required** in the field settings when respondents must complete the payment before submitting.
 </Callout>
 
 ---
@@ -145,15 +144,11 @@ See [Dynamic pricing](#dynamic-pricing) for more details.
 
 ### Currency
 
-Makeform supports all currencies available through Stripe, including:
+The Makeform Builder currently offers 26 currencies:
 
-- USD (US Dollar)
-- EUR (Euro)
-- GBP (British Pound)
-- JPY (Japanese Yen)
-- AUD (Australian Dollar)
-- CAD (Canadian Dollar)
-- And [100+ more currencies](https://stripe.com/docs/currencies)
+- USD, EUR, GBP, JPY, CAD, AUD, CHF, CNY, INR
+- BRL, MXN, SGD, HKD, NZD, SEK, NOK, DKK, PLN
+- THB, ZAR, AED, BGN, CZK, HUF, RON, MYR
 
 The currency symbol will automatically display based on your selection.
 
@@ -175,13 +170,9 @@ All payment methods are processed securely through Stripe with full PCI complian
 
 ### Email receipts
 
-You can automatically send payment receipts to your respondents:
+The payment step asks the respondent for a receipt email address. After a successful payment, Stripe can send the receipt to that address.
 
-1. Add an **Email input** field to your form
-2. In the payment field settings, select that email field for receipts
-3. Stripe will automatically send a receipt to that email address after successful payment
-
-If you don't configure this, respondents can enter their email address directly in the payment form to receive a receipt.
+There is currently no Builder setting for selecting another Email field as the receipt address.
 
 ---
 
@@ -192,7 +183,7 @@ After respondents submit payments, you can view them in two places:
 ### In Makeform
 
 1. Open your form
-2. Go to the **Responses** tab
+2. Go to the **Submissions** tab
 3. Each submission shows the payment status and amount
 4. Click on a submission to view full details
 
@@ -282,7 +273,7 @@ The payment amount will automatically update as respondents change their quantit
     Are receipts automatically sent to customers?
   </summary>
   <div className="ml-6 mt-2 text-slate-600 dark:text-slate-400 text-sm">
-    <p>Receipts are sent automatically when you configure an email field for receipts in the payment settings. If not configured, respondents can enter their email address in the payment form to receive a receipt from Stripe.</p>
+    <p>The payment step asks respondents for a receipt email address. Stripe can send the receipt to that address after a successful payment. The Builder does not currently let you select a separate Email field for receipts.</p>
   </div>
 </details>
 
@@ -305,7 +296,7 @@ The payment amount will automatically update as respondents change their quantit
       <li>• <strong>Fixed amounts</strong>: Edit the payment field settings and change the amount</li>
       <li>• <strong>Dynamic amounts</strong>: Modify the calculation logic or linked fields</li>
     </ul>
-    <p>Changes apply immediately to new form submissions but don't affect payments already processed.</p>
+    <p>Your edits update the draft. Publish the form again before new respondents see the updated amount. Existing payments are not affected.</p>
   </div>
 </details>
 
