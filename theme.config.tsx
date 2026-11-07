@@ -5,6 +5,9 @@ import { useConfig } from 'nextra-theme-docs'
 import { useRouter } from 'next/router'
 import IconLogo from './public/icon.svg'
 
+const getCanonicalUrl = (pathname: string) =>
+  `https://www.makeform.ai/help${pathname === '/' ? '' : pathname}`
+
 const themeConfig = {
   project: {
     link: 'https://github.com/nilveryboring/makeform.github.io',
@@ -15,7 +18,7 @@ const themeConfig = {
     const pathname = usePathname()
     return {
       titleTemplate: '%s – Makeform Help Center',
-      canonical: `https://makeform.ai/help${pathname}`,
+      canonical: getCanonicalUrl(pathname),
     }
   },
   logo: () => {
@@ -57,13 +60,13 @@ const themeConfig = {
         <meta name="twitter:image" content={ogImage} />
         <meta
           property="og:url"
-          content={`https://makeform.ai/help${pathname}`}
+          content={getCanonicalUrl(pathname)}
         />
         <meta property="og:type" content="website" />
         <meta property="og:title" content={ogTitle} />
         <meta property="og:description" content={ogDescription} />
         <meta property="og:image" content={ogImage} />
-        <link rel="canonical" href={`https://makeform.ai/help${pathname}`} />
+        <link rel="canonical" href={getCanonicalUrl(pathname)} />
       </>
     )
   },
