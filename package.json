@@ -2,6 +2,9 @@
   "name": "makeform-help-center",
   "version": "0.0.1",
   "description": "Makeform Help Center",
+  "engines": {
+    "node": "22.x"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
