@@ -1,0 +1,15 @@
+export default {
+  index: 'Overview',
+  'makeform-vs-tally-free-alternative': 'Makeform vs Tally',
+  'makeform-vs-typeform-free-alternative': 'Makeform vs Typeform',
+  'makeform-vs-google-forms-free-alternative': 'Makeform vs Google Forms',
+  'makeform-vs-jotform-free-alternative': 'Makeform vs Jotform',
+  'makeform-vs-fillout-free-alternative': 'Makeform vs Fillout',
+  'makeform-vs-microsoft-forms-free-alternative': 'Makeform vs Microsoft Forms',
+  'makeform-vs-paperform-free-alternative': 'Makeform vs Paperform',
+  'makeform-vs-formstack-free-alternative': 'Makeform vs Formstack',
+  'best-ai-form-builders': 'Best AI form builders',
+  'best-form-builders-chatgpt-claude': 'Best form builders for ChatGPT and Claude',
+  'best-free-google-forms-alternatives': 'Best free Google Forms alternatives',
+  'best-free-quiz-makers': 'Best free quiz makers',
+}
