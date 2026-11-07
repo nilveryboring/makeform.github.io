@@ -1,1 +1,65 @@
+---
+description: "Create a free personality quiz in Makeform by scoring answers on one scale and sending each total score range to a different personality result."
+---
+
+import { Callout } from 'nextra/components'
+
 # How to create a free personality quiz with Makeform
+
+Build a free personality quiz with scored choice questions and a <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Calculation</span> field in the form editor. Then use <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Manage post submit actions</span> to map ranges on one score scale to different personality endings.
+
+**Is it free?** Yes. Answer scoring, calculation fields, and ending logic are free on every plan.
+
+## Steps
+
+1. Describe your quiz at [makeform.ai/create](https://www.makeform.ai/create), with no account needed to start. For example:
+
+   ```text
+   A 6-question personality quiz: which kind of traveler are you? Three results: Planner, Explorer, Relaxer.
+   ```
+
+   [Adjust it with AI](/guides/create-a-form-with-ai), or build it by hand. For manual questions, click <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">+</span> (<span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Add form element</span>) and add choice fields such as <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Multiple Choice · Select One</span> from <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Input blocks</span>.
+2. In each question's options, turn on <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Enable scoring</span>. Give answers low, middle, and high points: for this example, 1 for a Relaxer-style answer, 2 for an Explorer-style answer, and 3 for a Planner-style answer.
+3. Add a <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Calculation</span> field that sums the `.score` value of each question. Include all six questions for the six-question example. Set <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Respondent display</span> to <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Hidden</span> so the calculation supports the result without showing its numeric output in the form.
+4. Click <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Add ending</span> three times, once per personality. Give each ending its own result text and image for Relaxer, Explorer, or Planner.
+5. Under the last page's submit button, click <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Manage post submit actions</span> to open <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Post-submit actions</span>. In <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Ending logic</span>, click <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Add rule</span> and set <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">When field</span> to the total calculation. Choose <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">less than</span>, set <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Value</span> to 10, and set <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Go to</span> to Relaxer. Add a second rule for the total <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">less than</span> 15 that goes to Explorer. Set <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Fallback ending (when no rule matches)</span> to Planner.
+6. Preview the quiz and test all three results, then publish and share it. Keep the Relaxer rule before the Explorer rule because the first matching rule wins.
+
+## Build around one scale
+
+Each answer option has one score. For this quiz, low totals map to Relaxer, middle totals to Explorer, and high totals to Planner. Choose questions and answer points that fit that low-to-high scale.
+
+<Callout type="info">
+Use one score scale and map score ranges to personality results. Each option contributes one score, so plan the quiz around that limit.
+</Callout>
+
+## Check the result boundaries
+
+With the rules above, totals below 10 reach Relaxer. Totals from 10 up to, but not including, 15 reach Explorer. Totals of 15 or more reach the Planner fallback. Test those boundaries as well as answers that clearly fit each result.
+
+Makeform is a free AI form builder: describe what you want to collect and it builds the form for you, with unlimited forms and submissions on the free plan.
+
+## FAQ
+
+### Can I make a personality quiz for free?
+
+Yes, the scoring, calculation, and ending logic are free on every plan. You can start by describing the quiz without an account.
+
+### Can one answer have a separate score for each personality?
+
+Each option has one score. Build the quiz around one scale and use total score ranges to select the personality result.
+
+### Why does the order of ending rules matter?
+
+The first matching rule wins. A total below 10 also meets the below-15 rule, so put the Relaxer rule first in this example.
+
+### Can I add more than three results?
+
+Yes, a form can have up to 10 ending pages. Add the result endings and use score ranges plus a fallback to choose between them.
+
+## Related
+
+- [Create a scored quiz](/tutorials/common-tutorials/how-to-create-a-scored-quiz)
+- [Create a free quiz](/tutorials/common-tutorials/how-to-create-a-free-quiz)
+- [Calculation fields](/features/calculator)
+- [Create a form with AI](/guides/create-a-form-with-ai)

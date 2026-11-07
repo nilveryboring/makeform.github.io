@@ -1,0 +1,60 @@
+---
+description: Get Telegram alerts for new Makeform submissions for free through Automations; Pro adds custom messages and higher alert limits.
+---
+
+import { Callout } from 'nextra/components'
+
+# How to get Telegram alerts for new form submissions in Makeform
+
+Send new submission alerts to Telegram from your form's <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Automations</span> tab by adding a <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Telegram</span> automation. Alerts are free on every plan; customizing the message requires Pro or Business.
+
+**Is it free?** Yes. Free includes the default message and up to 10 Telegram alerts per hour; paid plans have much higher limits.
+
+## Steps
+
+1. In Telegram, create a bot with @BotFather and copy its token.
+2. Add the bot to the chat, group, or channel that should receive the alerts. You also need that destination's chat ID.
+3. In Makeform, open your form's <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Automations</span> tab, click <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Add Automation</span>, and choose <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Telegram</span>.
+4. Fill in <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Bot token</span> and <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Chat ID</span>. A chat ID can look like `-1001234567890` or `@channelname`. Fill in <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Display name (optional)</span> if you want one.
+5. On Pro or Business, edit <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Message</span> using the supported template variables. On Free, use the default message.
+6. Save the automation, then submit a test response to check the alert in Telegram.
+
+## Customize the alert message
+
+Paid plans let you customize <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Message</span> with `{{formName}}`, `{{submittedAt}}`, `{{fields}}`, and `{{field.email}}`. Keep template variables in the message when you want to include those form and submission details.
+
+Free uses the default message. The customization prompt says “Upgrade to Pro to customize message.” You do not need a custom template to receive Telegram submission alerts.
+
+## Keep or change the saved token
+
+The saved bot token is hidden when you return to the automation. The <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Bot token</span> setting shows “Leave blank to keep the current token.” Leave it blank when you want to keep the token already saved.
+
+<Callout type="info">
+Free allows up to 10 Telegram alerts per hour. Paid plans have much higher limits.
+</Callout>
+
+Makeform is a free AI form builder: describe what you want to collect and it builds the form for you, with unlimited forms and submissions on the free plan.
+
+## FAQ
+
+### Can alerts go to a Telegram group or channel?
+
+Yes. Add the bot to the destination chat, group, or channel. Enter that destination's chat ID in <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Chat ID</span>.
+
+### Where do I get the bot token?
+
+Create a Telegram bot with @BotFather and copy its token. Enter that value in <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Bot token</span> when you set up the automation.
+
+### Can I customize Telegram messages on Free?
+
+No. Free sends the default message. Pro and Business let you edit <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Message</span> with the supported template variables.
+
+### Why is my saved token hidden?
+
+Makeform hides the token after it is saved. When editing the automation, leave <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Bot token</span> blank to keep the current token.
+
+## Related
+
+- [Slack integration](/integrations/slack-integration)
+- [Webhooks](/integrations/webhooks)
+- [Email notifications](/features/email-notifications)

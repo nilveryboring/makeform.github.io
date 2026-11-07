@@ -1,0 +1,67 @@
+---
+description: Makeform file upload limits are 20 MB per file and submission on Free, or 1 GB per file and 2 GB per submission on Pro and Business.
+---
+
+import { Callout } from 'nextra/components'
+
+# What are Makeform's file upload limits?
+
+Free forms allow 20 MB per file, 20 MB total per submission, and 3 upload fields; Pro and Business allow 1 GB per file, 2 GB per submission, and 100 upload fields. Every plan allows up to 10 files per upload field, with controls in the field settings.
+
+**Is it free?** Yes. File uploads are free on every plan, with higher size and field limits on Pro and Business.
+
+## Steps
+
+1. Open the upload field's settings in your form.
+2. Set <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Max File Size (MB)</span> if you want a smaller per-file limit. This setting can lower the plan limit, but it cannot raise it.
+3. Set <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Maximum Files</span> to a number from 1 to 10. The default is 1 file per field.
+4. Set <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Allowed File Types</span> to restrict uploads by file extension, or leave it empty to accept any type.
+5. Keep your form within its plan's upload field limit before publishing: up to 3 on Free or 100 on Pro and Business.
+6. Open <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Submissions</span> to download files stored with a submitted response.
+
+## Limits by plan
+
+| Limit | Free | Pro / Business |
+| --- | --- | --- |
+| Per file | 20 MB | 1 GB |
+| Per submission (all upload fields together) | 20 MB | 2 GB |
+| Upload fields per form | 3 | 100 |
+| Files per field | 1–10 | 1–10 |
+
+The total submission limit applies across all upload fields together. Allowing more files in a field does not increase the total size a submission can carry.
+
+The form's billing owner determines these limits. For a team form, that means the team owner's plan.
+
+## Publishing and upload attempts
+
+<Callout type="info">
+Publishing a Free form with more than 3 upload fields shows: “Your form has too many file upload fields. Upgrade to Pro for up to 100 file upload fields.”
+</Callout>
+
+Free forms also have an hourly cap on upload attempts per form to stop abuse. This is separate from the per-file, per-submission, and field-count limits above.
+
+Makeform is a free AI form builder: describe what you want to collect and it builds the form for you, with unlimited forms and submissions on the free plan.
+
+## FAQ
+
+### Can I accept a file larger than 20 MB on Free?
+
+No. Free allows up to 20 MB per file, and the whole submission must also stay within 20 MB. Pro and Business raise the per-file limit to 1 GB.
+
+### Can respondents upload several files in one field?
+
+Yes. Set <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Maximum Files</span> from 1 to 10; the default is 1. The submission's total size limit still applies across all upload fields.
+
+### Can I accept any file type?
+
+Yes. Leave <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Allowed File Types</span> empty to accept any type. To restrict uploads, use file extensions in that setting.
+
+### Where do uploaded files go?
+
+Files are stored with the submission. You can download them from <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Submissions</span>.
+
+## Related
+
+- [File upload fields](/features/file-upload)
+- [Plans and pricing](/plans-and-pricing)
+- [Create a job application form](/tutorials/common-tutorials/how-to-create-a-job-application-form)

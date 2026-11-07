@@ -5,4 +5,8 @@ export default {
   'zapier-integration': 'Zapier Integration',
   'make-integration': 'Make Integration',
   webhooks: 'Webhooks',
+  'telegram-integration': 'Telegram Integration',
+  'connect-makeform-to-claude': 'Connect to Claude (MCP)',
+  'makeform-mcp-server': 'MCP server for AI agents',
+  'api-keys': 'API keys',
 }

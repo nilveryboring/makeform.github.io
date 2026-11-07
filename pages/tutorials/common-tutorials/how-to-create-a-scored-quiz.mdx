@@ -1,0 +1,68 @@
+---
+description: "Create a free scored quiz in Makeform with points per answer, a calculated total, and different result pages for each score range."
+---
+
+import { Callout } from 'nextra/components'
+
+# How to create a quiz with scores and different results in Makeform
+
+Create a scored quiz for free with choice questions and a <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Calculation</span> field in the form editor. Use <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Manage post submit actions</span> under the last page's submit button to send each score range to a different ending.
+
+**Is it free?** Yes. Answer scoring, calculation fields, and ending logic are free on every plan.
+
+## Steps
+
+1. Describe the quiz at [makeform.ai/create](https://www.makeform.ai/create), with no account needed to start. Then [adjust it with AI](/guides/create-a-form-with-ai) or build it manually with <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">+</span> (<span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Add form element</span>).
+2. From <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Input blocks</span>, add choice questions using <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Multiple Choice · Select One</span>, <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Single Select</span>, <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Checkboxes</span>, or <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Multi Select</span>. In each question's options, turn on <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Enable scoring</span> and type the points for each answer. These points contribute to that question's `.score` value in calculations.
+3. Add a <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Calculation</span> field, whose default label is “Total Score”. For questions named `q1`, `q2`, and `q3`, use:
+
+   ```text
+   {{q1.score}} + {{q2.score}} + {{q3.score}}
+   ```
+
+   Set <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Respondent display</span> to <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Hidden</span> or <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Visible output</span>.
+4. Use <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Add ending</span> to create result pages, up to a maximum of 10. To show the weighted total on an ending, add a <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Text</span> block containing your calculation's name, such as `{{total_score}}`. Alternatively, add <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Result Breakdown</span> for a result based on correct-answer counts; its score is different from the weighted total.
+5. Click <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Manage post submit actions</span> under the last page's submit button. In <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Post-submit actions</span> > <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Ending logic</span>, click <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Add rule</span>. Set <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">When field</span> to the calculation, choose <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">greater than</span>, <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">less than</span>, or <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">equals</span>, enter <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Value</span>, and set <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Go to</span> to the result ending. Set <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Fallback ending (when no rule matches)</span>. The first matching rule wins.
+6. Preview and test each score range, including answers that should reach the fallback, then publish.
+
+## Choose which score to show
+
+Your calculation adds the points assigned to answers. Use that calculation in a text block when you want respondents to see the weighted total.
+
+<span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Result Breakdown</span> has controls for <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Show score</span>, <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Show correct answers</span>, <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Show explanations</span>, <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Show Try again</span>, <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Celebrate this result</span>, and <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Mark right and wrong</span>.
+
+<Callout type="info">
+The score in <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Result Breakdown</span> counts correct answers. It does not display the weighted points from your calculation.
+</Callout>
+
+## Order your result rules
+
+Ending rules are checked in order. If a total matches more than one rule, the first match determines the ending. The fallback handles totals that match none of your rules, so include it when testing the result ranges.
+
+Makeform is a free AI form builder: describe what you want to collect and it builds the form for you, with unlimited forms and submissions on the free plan.
+
+## FAQ
+
+### Can I give some answers more points than others?
+
+Yes, turn on <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Enable scoring</span> and enter points per option. Add each question's `.score` value in a calculation to get the weighted total.
+
+### Why is my result breakdown different from my total?
+
+<span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Result Breakdown</span> counts correct answers rather than weighted points. To show your calculated total, use the calculation's variable in a text block on the ending.
+
+### Can respondents see different results based on their score?
+
+Yes, use ending rules based on the calculation field. Choose a result ending for each rule and set a fallback for totals that match no rule.
+
+### How many result pages can I add?
+
+You can have up to 10 ending pages per form. Use <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Add ending</span> to create them, then assign them in ending logic.
+
+## Related
+
+- [Create a free quiz](/tutorials/common-tutorials/how-to-create-a-free-quiz)
+- [Calculation fields](/features/calculator)
+- [Conditional logic](/features/conditional-logic)
+- [Answer piping](/features/answer-piping)
+- [Create a free personality quiz](/tutorials/common-tutorials/how-to-create-a-free-personality-quiz)

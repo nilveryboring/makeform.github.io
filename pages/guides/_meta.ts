@@ -1,5 +1,8 @@
 export default {
   'create-form': 'Create a Form',
+  'create-a-form-with-ai': 'Create a form with AI',
+  'edit-a-form-with-ai': 'Edit a form with AI chat',
+  'turn-a-document-into-a-form': 'Turn a PDF or Word file into a form',
   'customize-form': 'Customize Form',
   'form-settings': 'Form Settings',
   publish: 'Publish Your Form',
@@ -9,4 +12,11 @@ export default {
   'name-question-fields': 'Name Question Fields',
   'create-a-multi-page-form': 'Create a Multi-Page Form',
   'supported-languages': 'Supported Languages',
+  'translate-a-form': 'Make a multi-language form',
+  'print-a-form': 'Print a form or download a PDF',
+  'password-protect-a-form': 'Password protect a form',
+  'prevent-duplicate-submissions': 'Prevent duplicate submissions',
+  'limit-responses-per-option': 'Limit responses per option',
+  'stop-spam-submissions': 'Stop spam submissions',
+  'data-privacy-and-deletion': 'Privacy and data deletion',
 }

@@ -1,0 +1,69 @@
+---
+description: "Reduce spam submissions in Makeform for free with Anti-Bot Protection and Cloudflare Turnstile CAPTCHA in your form's Settings."
+---
+
+import { Callout } from 'nextra/components'
+
+# How to stop spam and bot submissions on a Makeform form
+
+Use <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Anti-Bot Protection (Level 1)</span> and <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">CAPTCHA</span> in your form's <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Settings</span> to block bot submissions and require a check before submitting or paying. Both tools are free on every plan.
+
+**Is it free?** Yes. Anti-bot protection and CAPTCHA are available on every plan, with no CAPTCHA keys to set up.
+
+## Steps
+
+1. Open your form and click the <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Settings</span> icon in the top bar.
+2. Turn on <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Anti-Bot Protection (Level 1)</span>. It enables a honeypot field to detect and block spam submissions from bots.
+3. If spam continues, turn on <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">CAPTCHA</span> and keep <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Cloudflare Turnstile</span> as the provider.
+4. Click <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Save Changes</span>.
+5. Submit a test response to check the setup.
+
+## What respondents see
+
+The honeypot field is invisible to people. CAPTCHA requires respondents to complete a check before submitting or paying.
+
+<span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Cloudflare Turnstile</span> is the available CAPTCHA provider. <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">hCaptcha</span> and <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Google reCAPTCHA</span> show as <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Unavailable</span>, so you cannot select them as an alternative provider.
+
+## CAPTCHA and custom domains
+
+<Callout type="info">
+Hosted CAPTCHA works only on Makeform links, not on custom domains. Remove CAPTCHA before assigning a custom domain or path.
+</Callout>
+
+Check this restriction before setting up a custom address for a form that uses hosted CAPTCHA. There are no CAPTCHA keys to configure for the hosted option.
+
+## Other access controls
+
+Under <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Settings</span> > <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Access</span>, you can also use these controls:
+
+- <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Prevent duplicate submissions</span> accepts one completed response for each value in a selected field.
+- <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Password protection</span> requires a password to open and submit the form.
+- <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Limit number of submissions</span> caps total submissions.
+- <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Allowed embed domains</span> controls which sites can embed the form. Enter one origin per line; leaving it empty allows any site to embed.
+
+Makeform is a free AI form builder: describe what you want to collect and it builds the form for you, with unlimited forms and submissions on the free plan.
+
+## FAQ
+
+### Do respondents see the honeypot field?
+
+No. The field used by <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Anti-Bot Protection (Level 1)</span> is invisible to people. It detects and blocks spam submissions from bots.
+
+### Do I need my own CAPTCHA keys?
+
+No. There are no keys to set up for the hosted CAPTCHA. Turn on <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">CAPTCHA</span> and keep <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Cloudflare Turnstile</span>.
+
+### Can I use hosted CAPTCHA on a custom domain?
+
+No. Hosted CAPTCHA works only on Makeform links. Remove it before assigning a custom domain or path.
+
+### Does leaving allowed embed domains empty block embeds?
+
+No. An empty <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Allowed embed domains</span> setting means any site can embed the form. To specify allowed sites, enter one origin per line.
+
+## Related
+
+- [Prevent duplicate submissions](/guides/prevent-duplicate-submissions)
+- [Password protect a form](/guides/password-protect-a-form)
+- [Form settings](/guides/form-settings)
+- [Embed your form](/guides/embed-your-form)

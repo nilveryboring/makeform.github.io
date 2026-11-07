@@ -1,0 +1,68 @@
+---
+description: "Translate a form in Makeform with AI from the editor's Languages button; multi-language forms require Pro or Business."
+---
+
+import { Callout } from 'nextra/components'
+
+# How to make a multi-language form in Makeform
+
+Translate your form into several respondent languages from the <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Languages</span> button in the editor's top bar. Multi-language forms and AI translation require Pro or Business.
+
+**Is it free?** No. On Free, the <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Languages</span> button opens an upgrade prompt.
+
+## Steps
+
+1. Open the form in the editor.
+2. Click <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Languages</span> in the top bar. The button shows the current language code, such as <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">En</span>.
+3. Pick the <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Source language</span>. It locks after you save.
+4. Pick the <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Respondent languages</span> and click <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Save languages</span>.
+5. Under <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Translations</span>, use <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Choose language</span>, then click <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Generate missing</span> to translate missing text with AI.
+6. Review the translations and edit any string that needs changes.
+7. Publish the form. Translations go live on the next publish.
+
+## What respondents see
+
+The language switcher appears on the hosted form page when the owner has Pro or Business. It does not appear inside embeds. The form opens in its source language unless the link sets a language; it does not detect the browser's language automatically.
+
+To share a French version, add this parameter to the form URL:
+
+```text
+?mf_locale=fr
+```
+
+Use the language code for the version you want to share.
+
+## Supported languages
+
+You can translate into English (`en`), Arabic (`ar`), German (`de`), Spanish (`es`), French (`fr`), Italian (`it`), Japanese (`ja`), Korean (`ko`), Portuguese – Brazil (`pt-BR`), Russian (`ru`), Thai (`th`), Chinese Traditional (`zh-Hant`), and Chinese Simplified (`zh-Hans`). Arabic displays right-to-left.
+
+## Other ways to translate
+
+You can ask the AI chat to translate the form or use the `translate_form` MCP tool on Pro or Business. Strings over 2,000 characters are left for you to translate by hand.
+
+Makeform is a free AI form builder: describe what you want to collect and it builds the form for you, with unlimited forms and submissions on the free plan.
+
+## FAQ
+
+### Why aren't my translations live yet?
+
+Translations go live on the next publish. After reviewing or editing strings, publish the form to make those translations available.
+
+### Can I change the source language after saving?
+
+The source language locks after you save. Choose the language of your original form text before clicking <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Save languages</span>.
+
+### How do I turn off multiple languages?
+
+Use <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Turn off multilingual</span>. This is the control for stopping the form's multilingual setup.
+
+### Can AI write a form in another language?
+
+Yes. You can ask the AI in that language to write the form's own text, including in many languages beyond the 13 listed above. Writing the original text in a language is different from translating a form into several respondent languages.
+
+## Related
+
+- [Supported languages](/guides/supported-languages)
+- [Edit a form with AI](/guides/edit-a-form-with-ai)
+- [Publish a form](/guides/publish)
+- [Plans and pricing](/plans-and-pricing)

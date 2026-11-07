@@ -1,0 +1,70 @@
+---
+description: Collect payments in Makeform for free with a Payment block connected to your Stripe account; Stripe's normal processing fees apply.
+---
+
+import { Callout } from 'nextra/components'
+
+# How to collect payments in a Makeform form with Stripe
+
+Add a <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Payment</span> block in the form editor and connect your Stripe account to collect fixed or calculated payments. The block is free on every plan, and money goes to your own Stripe account.
+
+**Is it free?** Makeform takes no fee on payments; Stripe's normal processing fees apply and are paid by your Stripe account.
+
+## Steps
+
+1. Sign in to your Makeform account, open the form in the editor, and click <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">+</span> (<span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Add form element</span>).
+2. Under <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Input blocks</span>, choose <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Payment</span>. You can also ask the AI: “Add prices and payment.”
+3. Click <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Connect with Stripe</span>, finish Stripe's onboarding, and return to Makeform. You need a Stripe account; you can create one during onboarding.
+4. In the block settings, set <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Amount (in cents)</span> and <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Currency</span>. For example, 2500 represents 25.00.
+5. For a fixed price, keep <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Amount Type</span> set to <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Fixed Amount</span>. For a price based on answers, choose <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Dynamic (Calculated)</span> and set <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Calculate From Field</span> to a number or calculation field.
+6. For a calculated price, choose <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Dynamic Mode</span>: <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Field Value → Amount</span> or <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Base Amount × Field Value</span>. Optionally set <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Minimum Amount (in cents)</span>, <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Maximum Amount (in cents)</span>, and <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Payment Description</span>.
+7. Publish the form and make a test payment.
+
+## Calculate a price from answers
+
+With <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Field Value → Amount</span>, the referenced value is read in normal currency units. A value of 75 charges 75.00.
+
+With <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Base Amount × Field Value</span>, the referenced value multiplies <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Amount (in cents)</span>. For example, quantity 3 multiplied by a base amount of 2500 charges 75.00.
+
+Makeform recalculates dynamic amounts on the server from the answers. Use a number field or a [calculation field](/features/calculator) as the source for a calculated payment.
+
+## Currencies and the payment experience
+
+The <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Currency</span> setting offers USD, EUR, GBP, JPY, CAD, AUD, CHF, CNY, and INR.
+
+Respondents see the amount and pay inline with Stripe, where they see <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Secured by Stripe</span>. After payment, they see <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Payment Successful</span>. Stripe emails the receipt. You are the merchant, and payments go to your own Stripe account.
+
+## Connection and form restrictions
+
+<Callout type="info">
+If Stripe is not connected, the Payment block is left out of the live form. Connect Stripe before publishing and testing your payment flow.
+</Callout>
+
+You cannot use <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Prevent duplicate submissions</span> on a form with a Payment field. To disconnect Stripe, use <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Disconnect</span> in the block's settings.
+
+Makeform is a free AI form builder: describe what you want to collect and it builds the form for you, with unlimited forms and submissions on the free plan.
+
+## FAQ
+
+### Does Makeform charge a payment fee?
+
+No. Makeform takes no fee on payments. Stripe's normal processing fees apply, paid by your Stripe account.
+
+### Do I need a Stripe account before I start?
+
+You need a Stripe account to collect payments, but you can create one during onboarding. Sign in to Makeform and use <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Connect with Stripe</span> in the Payment block.
+
+### Does a calculated value of 75 mean 75 cents?
+
+With <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Field Value → Amount</span>, 75 means 75.00 in normal currency units. With <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Base Amount × Field Value</span>, the field value multiplies the base amount entered in cents.
+
+### Why is the Payment block missing from my live form?
+
+If Stripe is not connected, Makeform leaves the block out of the live form. Use <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Connect with Stripe</span> and complete onboarding.
+
+## Related
+
+- [Payment block](/features/payment)
+- [Calculation fields](/features/calculator)
+- [Create an order form](/tutorials/common-tutorials/how-to-create-an-order-form)
+- [Create an event RSVP form](/tutorials/common-tutorials/how-to-create-an-event-rsvp-form)

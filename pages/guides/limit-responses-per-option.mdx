@@ -1,0 +1,63 @@
+---
+description: "Limit responses per option in Makeform for free from a choice field's options editor; full options are marked Full for respondents."
+---
+
+import { Callout } from 'nextra/components'
+
+# How to limit how many people can pick each option in Makeform
+
+Set a response limit for individual choices using <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Limit responses per option</span> in a choice field's options editor. This is free on every plan and works with Multiple Choice, Single Select, Checkboxes, and Multi Select.
+
+**Is it free?** Yes. Response limits for individual options are available on every plan.
+
+## Steps
+
+1. Click the choice field in the form editor.
+2. In its options, turn on <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Limit responses per option</span>.
+3. Type a number next to each option. Leave it blank for no limit, use `0` to make it full now, or enter a limit up to `999,999`.
+4. Publish the form.
+
+You can use these limits for workshop sessions, time slots, T-shirt sizes, or limited seats. Each option has its own limit, so you can leave some choices unlimited while setting a number for others.
+
+## What counts toward a limit
+
+Only published responses count. Test submissions count too, so include them when checking how many places remain. Partial submissions and deleted responses do not count.
+
+Delete a response to free its place. Renaming an option resets its count, so take that into account before changing an option's name.
+
+## What respondents see
+
+Once an option reaches its response limit, respondents see it marked <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Full</span>. If the last place is taken while someone is filling in the form, they see <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">One of your choices just filled up. Please choose another option.</span>
+
+## Limit the whole form
+
+To cap total submissions, use <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Settings</span> > <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Access</span> > <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Limit number of submissions</span>. See [close form rules](/features/close-form) for the whole-form limit.
+
+There is no automatic waitlist. A common workaround is to make a separate waitlist form and link to it from the closed-form message.
+
+Makeform is a free AI form builder: describe what you want to collect and it builds the form for you, with unlimited forms and submissions on the free plan.
+
+## FAQ
+
+### How do I leave one option unlimited?
+
+Leave its limit blank. A blank limit means no limit, while `0` means the option is full right now.
+
+### Do test responses use up places?
+
+Yes. Test submissions count toward the limit. Delete a test response to free its place; deleted responses do not count.
+
+### Do unfinished responses count?
+
+No. Partial submissions do not count toward option limits. Only published responses count.
+
+### What happens if I rename an option?
+
+Renaming an option resets its count. Keep this behavior in mind when editing a choice that has already received responses.
+
+## Related
+
+- [Close form rules](/features/close-form)
+- [Single select](/features/single-select)
+- [Multiple choice](/features/multiple-choice)
+- [Create a registration form with limited spots](/tutorials/common-tutorials/how-to-create-a-registration-form-with-limited-spots)

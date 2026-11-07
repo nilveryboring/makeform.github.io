@@ -1,0 +1,86 @@
+---
+description: "Use Makeform's free MCP server in Cursor, Claude Code, Codex, and other clients with Streamable HTTP and OAuth or a Makeform API key."
+---
+
+import { Callout } from 'nextra/components'
+
+# How to use the Makeform MCP server in Cursor, Claude Code, Codex, and other clients
+
+Connect your MCP client to `https://mcp.makeform.ai` using Streamable HTTP and OAuth or a Makeform API key. The server is free to use and lets your agent create drafts, edit forms, and work with submissions.
+
+**Is it free?** Yes. MCP access is free, with a limit of 60 requests per minute; features such as translation still require Pro.
+
+## Steps
+
+1. [Create a Makeform API key](/integrations/api-keys).
+2. Put the key in an environment variable named `MAKEFORM_API_KEY`. Never commit it or put it in browser code.
+3. Add the server using the configuration or command for your client below.
+4. Restart or reload your client.
+5. Ask your agent to call `get_workflow_guide` first, then try `list_forms`.
+
+## Configure your client
+
+For clients that read an `mcpServers` JSON file, such as Cursor's `mcp.json`, use:
+
+```json
+{
+  "mcpServers": {
+    "makeform": {
+      "type": "http",
+      "url": "https://mcp.makeform.ai",
+      "headers": {
+        "Authorization": "Bearer ${MAKEFORM_API_KEY}"
+      }
+    }
+  }
+}
+```
+
+For Codex CLI, run:
+
+```sh
+codex mcp add makeform --url https://mcp.makeform.ai --bearer-token-env-var MAKEFORM_API_KEY
+```
+
+For Claude Code, run:
+
+```sh
+claude mcp add --transport http makeform https://mcp.makeform.ai --header "Authorization: Bearer $MAKEFORM_API_KEY"
+```
+
+<Callout type="info">
+Use Streamable HTTP. The Makeform MCP server does not support SSE.
+</Callout>
+
+## Follow the draft and publish workflow
+
+`create_form_from_prompt` creates a draft. For changes, call `propose_form_edit` followed by `apply_form_edit`, which uses an edit token. `publish_form` previews first and requires a second call with `confirm_publish` set to `true`.
+
+You can also use tools for submissions, exports, analytics, embeds, webhooks, email notifications, duplication, and workspace information. These include `list_submissions`, `get_submission`, `export_submissions`, `get_form_stats`, `get_analytics_summary`, `get_submission_trend`, `get_form_embed`, `update_email_notification`, `duplicate_form`, and `get_workspace`.
+
+## FAQ
+
+### Do I have to use an API key?
+
+No, the server supports OAuth as well as `Authorization: Bearer <Makeform API key>`. The [Claude connector guide](/integrations/connect-makeform-to-claude) covers signing in with your Makeform account.
+
+### Which tasks still require the dashboard?
+
+Deleting forms, custom domains, editing webhook headers or templates, CAPTCHA setup, and custom email recipients are dashboard-only. Use the dashboard for those tasks.
+
+### Can an agent manage webhooks and translations?
+
+Webhook tools include `create_webhook`, `list_webhooks`, `test_webhook`, and the two-step `delete_webhook`. The `translate_form` tool requires Pro.
+
+### Is there an API for scripts in other languages?
+
+Yes, the REST API at `https://api.makeform.ai` uses the same API key. Machine-readable documentation is available at `https://www.makeform.ai/llms.txt` and `https://www.makeform.ai/agents.md`.
+
+Makeform is a free AI form builder: describe what you want to collect and it builds the form for you, with unlimited forms and submissions on the free plan.
+
+## Related
+
+- [Connect Makeform to Claude](/integrations/connect-makeform-to-claude)
+- [Create an API key](/integrations/api-keys)
+- [Webhooks](/integrations/webhooks)
+- [Developer resources](/developer)

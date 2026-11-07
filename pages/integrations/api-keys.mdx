@@ -1,0 +1,68 @@
+---
+description: "Create a free Makeform API key in Settings > API keys. Choose account or workspace access, then use the key with the REST API or MCP server."
+---
+
+import { Callout } from 'nextra/components'
+
+# How to create a Makeform API key
+
+Create an API key from <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Settings</span> > <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">API keys</span> in your dashboard to connect scripts or MCP clients to Makeform. API keys are free and work with both the REST API and the MCP server.
+
+**Is it free?** Yes. API keys have no paid plan requirement.
+
+## Steps
+
+1. Click <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Settings</span> in the dashboard sidebar.
+2. Open the <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">API keys</span> tab.
+3. In the <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">API Keys</span> card, enter a <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Key name</span>.
+4. Choose a <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Scope</span>: <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">User</span> for the whole account, or <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Workspace</span> for only forms in the selected workspace. You must be able to manage that workspace.
+5. Click <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Generate</span>.
+6. Copy the key immediately. The message says <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Copy this key now. It will not be shown again.</span>
+
+## Use the key
+
+Keys start with `mf_live_`. Send your key in the authorization header as `Authorization: Bearer mf_live_...`.
+
+The same key works with the REST API at `https://api.makeform.ai` and the MCP server at `https://mcp.makeform.ai`. Here is an example REST request; replace `YOUR_MAKEFORM_API_KEY` with your key:
+
+```sh
+curl --request POST 'https://api.makeform.ai/forms' \
+  --header 'Authorization: Bearer YOUR_MAKEFORM_API_KEY' \
+  --header 'Content-Type: application/json' \
+  --data '{"name":"Customer Feedback"}'
+```
+
+<Callout type="warning">
+Keep API keys secret. Never put them in browser code, public repositories, prompts you share, or logs.
+</Callout>
+
+## Revoke a key
+
+Click <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Revoke</span> next to the key. Confirm at <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Revoke API key?</span> to revoke it.
+
+## FAQ
+
+### What is the difference between user and workspace scope?
+
+User scope covers the whole account. Workspace scope covers only forms in the selected workspace, which you must be able to manage.
+
+### Can I view the full key again later?
+
+No, the key is not shown again after generation. Copy it when it appears and keep it secret.
+
+### Do I need separate keys for REST and MCP?
+
+No, one Makeform API key works with both services. Both use the key in a Bearer authorization header.
+
+### Where are apps I approved through OAuth?
+
+Approved OAuth apps, such as Claude, appear under <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Connected apps</span>. They are listed separately from API keys.
+
+Makeform is a free AI form builder: describe what you want to collect and it builds the form for you, with unlimited forms and submissions on the free plan.
+
+## Related
+
+- [Use the Makeform MCP server](/integrations/makeform-mcp-server)
+- [Connect Makeform to Claude](/integrations/connect-makeform-to-claude)
+- [Webhooks](/integrations/webhooks)
+- [Developer resources](/developer)

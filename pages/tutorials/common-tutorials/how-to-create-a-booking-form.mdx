@@ -1,0 +1,61 @@
+---
+description: "Create a free booking request form in Makeform with date and time fields or limited slots. Confirm requests yourself; calendars do not sync."
+---
+
+import { Callout } from 'nextra/components'
+
+# How to create a booking or appointment request form in Makeform
+
+Collect booking requests for free with date and time fields or a slot list in the form editor. Makeform does not check availability or sync your calendar, so you confirm each request yourself.
+
+**Is it free?** Yes. Booking request fields, slot limits, and owner email notifications are free on every plan.
+
+## Steps
+
+1. Describe the booking request form at [makeform.ai/create](https://www.makeform.ai/create), with no account needed to start, or start with a blank form. You can [adjust the form with AI](/guides/create-a-form-with-ai) or add fields by hand.
+2. Click <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">+</span> (<span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Add form element</span>) and use <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Input blocks</span> to add <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Short Text Input</span> for a name, <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Email Input</span>, and <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Phone Input</span>.
+3. Add a <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Single Select</span> or <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Multiple Choice · Select One</span> list of slots. Include both the date and time in each option, such as “Tue 3 June, 10:00”. Set <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Limit responses per option</span> to 1 so each slot accepts one response; a taken slot shows <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Full</span>. Alternatively, add a <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Date Picker</span> and <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Time Input</span> for respondents to request a date and time.
+4. Use <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Add ending</span> to create a thank-you page. Add <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Add to Calendar</span> so respondents can add the chosen date and time to Google Calendar or download an `.ics` file.
+5. Turn on <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Self email notifications</span> so you receive each booking request. Owner notifications are free.
+6. Publish the form. Confirm each request yourself; collecting a preferred date and time does not check your calendar's availability.
+
+## Set date and time choices
+
+A <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Date Picker</span> supports minimum and maximum dates, such as today or a number of days ahead. You can also disable chosen weekdays.
+
+In <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Time Input</span>, use <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Available times</span> to set the earliest and latest time and a minute step of 5, 10, 15, 30, or 60. Use <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">24-hour format</span> if that is how you want times displayed.
+
+## Embed an existing booking page
+
+If you already use Calendly or Cal.com, add <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Booking page / Map</span> from <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Layout</span>. This block embeds a Calendly or Cal.com booking page in the form; it can also embed a Google Map.
+
+<Callout type="info">
+Makeform does not read or sync your calendar, check availability, or send reminders. Adding an event to a respondent's calendar does not replace your confirmation of the request.
+</Callout>
+
+Makeform is a free AI form builder: describe what you want to collect and it builds the form for you, with unlimited forms and submissions on the free plan.
+
+## FAQ
+
+### Can I allow only one booking per slot?
+
+Yes. Use a choice list with a date and time in each option, and set its response limit to 1. Full options display <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Full</span>.
+
+### Does a date picker check whether I am available?
+
+No, Makeform does not check calendar availability. A date and time selection is a request that you confirm yourself.
+
+### Can respondents add the booking to their calendar?
+
+Yes, add <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Add to Calendar</span> to an ending page. It uses their chosen date and time for Google Calendar or an `.ics` download.
+
+### Are confirmation emails free?
+
+Owner email notifications are free. Respondent confirmation emails require Pro, which is also included in Business.
+
+## Related
+
+- [Date picker](/features/date-picker)
+- [Time input](/features/time-input)
+- [Limit responses per option](/guides/limit-responses-per-option)
+- [Email notifications](/features/email-notifications)

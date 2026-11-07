@@ -1,0 +1,61 @@
+---
+description: "Create an order form with payment in Makeform using quantity fields, a calculated total, and Stripe. Payments have no Makeform fee."
+---
+
+import { Callout } from 'nextra/components'
+
+# How to create an order form with payment in Makeform
+
+Build an order form with quantities, a calculated total, and a <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Payment</span> block in the form editor. These features are free on every plan; Stripe's own fees apply.
+
+**Is it free?** Yes. Makeform charges no fee on payments; Stripe fees apply.
+
+## Steps
+
+1. Describe your order form at [makeform.ai/create](https://www.makeform.ai/create), with no account needed to start. Adjust it by hand or by [chatting with the AI](/guides/create-a-form-with-ai). You can use the AI suggestion <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Add prices and payment</span>.
+2. For manual setup, click <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">+</span> (<span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Add form element</span>) and use <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Input blocks</span>. Add one <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Number Input</span> per item for quantity. Put the price in the label, such as “Coffee beans – $18”. Alternatively, use a choice field with <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Enable scoring</span> and assign each option points equal to its price.
+3. Add a <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Calculation</span> field for the total. With quantity fields named `beans_qty` and `mug_qty`, use:
+
+   ```text
+   {{beans_qty}} * 18 + {{mug_qty}} * 12
+   ```
+
+   Set <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Respondent display</span> to <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Hidden</span>, or choose <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Visible output</span> to show the total. Set <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Value prefix</span> to `$` if you want a dollar prefix.
+4. Add <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Short Text Input</span> for the customer's name, <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Email Input</span>, <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Phone Input</span>, and <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Address Input</span> for delivery details.
+5. Add a <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Payment</span> block. Set <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Amount Type</span> to <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Dynamic (Calculated)</span>, <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Dynamic Mode</span> to <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Field Value → Amount</span>, and <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Calculate From Field</span> to your total calculation.
+6. Publish and test the order form. Check the quantities, calculated total, and amount charged together.
+
+## Understand the payment amount
+
+With <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Field Value → Amount</span>, the calculation is read in normal currency units: a total of 54 charges 54.00. A fixed <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Amount (in cents)</span> uses cents instead. Makeform recalculates the payment amount on the server from the submitted answers.
+
+<Callout type="info">
+Makeform has no product catalog or cart block and does not track inventory. Build the order from fields and a calculation.
+</Callout>
+
+## Limit a choice option
+
+For a limited size or another choice option, use <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Limit responses per option</span>. An option shows <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Full</span> when its limit is reached. See [limits per option](/guides/limit-responses-per-option) for setup.
+
+Makeform is a free AI form builder: describe what you want to collect and it builds the form for you, with unlimited forms and submissions on the free plan.
+
+## FAQ
+
+### Can I collect payment on the free plan?
+
+Yes, the payment block is free on every plan. Makeform adds no payment fee, but Stripe's own fees apply.
+
+### Can customers order more than one item?
+
+Use a quantity field for each item and include those fields in the total calculation. The payment block can read that calculated total as the amount to charge.
+
+### Does Makeform include a shopping cart?
+
+There is no cart or product catalog block. Use quantity or scored choice fields, a calculation, and a payment block to build the order form.
+
+## Related
+
+- [Collect payments with Stripe](/tutorials/common-tutorials/how-to-collect-payments-with-stripe)
+- [Calculation fields](/features/calculator)
+- [Payment block](/features/payment)
+- [Limit responses per option](/guides/limit-responses-per-option)

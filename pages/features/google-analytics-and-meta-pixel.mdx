@@ -1,0 +1,66 @@
+---
+description: Add Google Analytics 4 or Meta Pixel to a Makeform form in Settings > Tracking on Pro or Business, then save your tracking IDs.
+---
+
+import { Callout } from 'nextra/components'
+
+# How to add Google Analytics or Meta Pixel to a form in Makeform
+
+Add Google Analytics 4 or Meta Pixel under your form's <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Settings</span> > <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Tracking</span> to track form activity. This feature requires Pro or Business; Meta Pixel works on hosted form links, not inside embeds.
+
+**Is it free?** No. GA4 and Meta Pixel tracking require Pro or Business; dashboard response summaries are free.
+
+## Steps
+
+1. Open your form and go to <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Settings</span> > <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Tracking</span>.
+2. Under <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Google Analytics (GA4)</span>, paste your Measurement ID in the format `G-XXXXXXXXXX`. Find it in Google Analytics under <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Admin</span> > <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Data Streams</span>.
+3. Under <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Meta Pixel</span>, enter the Pixel ID from Meta Events Manager. You can add GA4, Meta Pixel, or both.
+4. Click <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Save Changes</span>.
+5. Open the live form and check real-time reports in GA4 or the Meta Events Manager test tool.
+
+## What each option tracks
+
+<span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Google Analytics (GA4)</span> tracks form views and interactions with Google Analytics 4. Use the Measurement ID for this setting.
+
+<span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Meta Pixel</span> tracks form views and successful submissions for Facebook and Instagram ads. Use the Pixel ID from Meta Events Manager for this setting.
+
+<Callout type="info">
+Meta Pixel works on the hosted Makeform form link. It does not work inside embeds through the form's tracking setting.
+</Callout>
+
+## Track embedded form events
+
+For a form embedded on your own site, open <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Share</span> > <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Embed</span> and turn on <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Track form events</span>. This sends form open and submission events to your page so your page's own analytics can listen to them.
+
+Your site can use those events with analytics tools such as Google Analytics or Meta Pixel. Follow the [embedded form event documentation](/developer/embedded/form-event) for the events your page can listen to.
+
+## Use free response summaries
+
+If you need response summaries in the form dashboard, use [form analytics](/features/form-analytics). Those summaries are free on every plan. Adding GA4 or Meta Pixel tracking is a separate Pro feature, also included in Business.
+
+Makeform is a free AI form builder: describe what you want to collect and it builds the form for you, with unlimited forms and submissions on the free plan.
+
+## FAQ
+
+### Where do I find my GA4 Measurement ID?
+
+In Google Analytics, go to <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Admin</span> > <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Data Streams</span>. The Measurement ID uses the format `G-XXXXXXXXXX`.
+
+### Can I use both Google Analytics and Meta Pixel?
+
+Yes. Enter both IDs in <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Tracking</span> and click <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Save Changes</span>. Open the live form to check the reports or test tool.
+
+### Will the form's Meta Pixel setting track an embedded form?
+
+No. That setting works on hosted Makeform form links. For embeds, enable <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Track form events</span> and have your page's own analytics listen to the events.
+
+### Do I need Pro to see response summaries?
+
+No. Response summaries in the form dashboard are free on every plan. Pro or Business is required to add GA4 or Meta Pixel tracking.
+
+## Related
+
+- [Form analytics](/features/form-analytics)
+- [Embedded form events](/developer/embedded/form-event)
+- [Embed your form](/guides/embed-your-form)
+- [Plans and pricing](/plans-and-pricing)
