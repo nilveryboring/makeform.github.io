@@ -1,0 +1,62 @@
+---
+description: "Create a free event RSVP form in Makeform to collect attendance, guest counts, and meal choices, with different thank-you pages."
+---
+
+import { Callout } from 'nextra/components'
+
+# How to create an event RSVP form in Makeform
+
+Build an RSVP form for free in the form editor to collect attendance, guest counts, and dietary needs. Use ending logic under <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Manage post submit actions</span> to show different thank-you pages based on the attendance answer.
+
+**Is it free?** Yes. RSVP fields and ending logic are free; confirmation emails to guests require Pro or Business.
+
+## Steps
+
+1. Describe your RSVP form at [makeform.ai/create](https://www.makeform.ai/create), with no account needed to start. Then [adjust it with AI](/guides/create-a-form-with-ai) or add fields manually.
+2. Click <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">+</span> (<span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Add form element</span>) and use <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Input blocks</span>. Add <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Short Text Input</span> for a name and <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Email Input</span> for an email address.
+3. Add <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Multiple Choice · Select One</span> for attendance, with Yes, No, and Maybe as the answers. Add <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Number Input</span> for guests and <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Long Text Input</span> for dietary needs.
+4. Add a choice field for a meal or session. If an option has limited seats, use <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Limit responses per option</span> and set its limit. Full options show <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Full</span>.
+5. Use <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Add ending</span> to create an attending ending with the event date, time and place in a Text block, plus a short “Sorry you can't make it” ending.
+6. Under the last page's submit button, click <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Manage post submit actions</span> to open <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Post-submit actions</span>. In <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Ending logic</span>, click <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Add rule</span>. Set <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">When field</span> to the attendance question, choose <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">equals</span>, set <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Value</span> to Yes, and set <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Go to</span> to the attending ending. Set <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Fallback ending (when no rule matches)</span> to the other ending.
+7. Set an RSVP deadline or overall submission limit under <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Settings</span> > <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Access</span>. Use <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Close on scheduled date</span> for a deadline or <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Limit number of submissions</span> with <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Maximum submissions</span> for a response cap.
+
+## Choose the ending for each answer
+
+Ending rules are checked in order, and the first matching rule wins. With the single Yes rule above, both No and Maybe reach the fallback ending. Choose fallback text that fits those answers, or add a separate rule and ending for Maybe.
+
+<Callout type="info">
+You can have a maximum of 10 ending pages per form. Set a fallback ending for answers that do not match a rule.
+</Callout>
+
+## Tickets and email confirmations
+
+To charge for a ticket, add a <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Payment</span> block and follow the [Stripe payment tutorial](/tutorials/common-tutorials/how-to-collect-payments-with-stripe). Makeform charges no payment fee; Stripe's fees apply.
+
+Owner email notifications are free. Sending a confirmation email to the guest requires respondent email notifications on Pro or Business.
+
+Makeform is a free AI form builder: describe what you want to collect and it builds the form for you, with unlimited forms and submissions on the free plan.
+
+## FAQ
+
+### Can I collect RSVPs without charging guests?
+
+Yes, the RSVP fields are free. A payment block is optional if you want to charge for tickets.
+
+### Can I limit places in a session?
+
+Yes, use <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Limit responses per option</span> on the session choice field. An option displays <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Full</span> when its limit is reached.
+
+### Can I show event details only to people who say Yes?
+
+Yes, put the event details on the attending ending and use an ending rule that sends the Yes answer to that page. The <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Add to Calendar</span> block needs a <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Date Picker</span> answer from the respondent, so it is meant for booking forms rather than a fixed event date.
+
+### Can RSVPs close on a date?
+
+Yes, enable <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Close on scheduled date</span> under <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Settings</span> > <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Access</span>. Set the timezone, date, and time for the deadline.
+
+## Related
+
+- [Create a registration form with limited spots](/tutorials/common-tutorials/how-to-create-a-registration-form-with-limited-spots)
+- [Close form rules](/features/close-form)
+- [Limit responses per option](/guides/limit-responses-per-option)
+- [Collect payments with Stripe](/tutorials/common-tutorials/how-to-collect-payments-with-stripe)

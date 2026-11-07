@@ -1,0 +1,70 @@
+---
+description: "Connect Makeform to Claude with the free MCP server to create draft forms, edit forms, and read responses. Add it in Claude's connector settings."
+---
+
+import { Callout } from 'nextra/components'
+
+# How to connect Makeform to Claude
+
+Add Makeform's hosted MCP server at `https://mcp.makeform.ai` in Claude's connector settings to work with your forms and responses. Makeform is not in Claude's connector directory yet, so you add it as a custom connector with the URL `https://mcp.makeform.ai` and sign in with your Makeform account (OAuth). The connection is free; use these steps if your Claude plan supports custom connectors. Using ChatGPT? See [make a form in ChatGPT](/integrations/make-a-form-in-chatgpt).
+
+**Is it free?** Yes. Makeform requires no paid plan for MCP access, but feature plan rules still apply, such as Pro for translation.
+
+## Steps
+
+1. In Claude on claude.ai or Claude desktop, open <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Settings</span> > <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Connectors</span> and choose <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Add custom connector</span>.
+2. Name the connector Makeform and paste `https://mcp.makeform.ai` as the URL.
+3. Click <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Connect</span>. You are sent to Makeform to sign in.
+4. On Makeform's <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Authorize Application</span> page, click <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Approve</span>.
+5. Back in Claude, ask it to call `get_workflow_guide` first. Then try “List my Makeform forms” or “Create a draft RSVP form for a June 14 picnic.”
+
+## Connect from Claude Code
+
+Run this command to add the server, then run `/mcp` inside Claude Code to sign in:
+
+```sh
+claude mcp add --transport http makeform https://mcp.makeform.ai
+```
+
+Or connect using a [Makeform API key](/integrations/api-keys):
+
+```sh
+claude mcp add --transport http makeform https://mcp.makeform.ai --header "Authorization: Bearer $MAKEFORM_API_KEY"
+```
+
+The server uses Streamable HTTP and supports OAuth or an API key sent as `Authorization: Bearer <key>`. The rate limit is 60 requests per minute.
+
+## Review drafts before publishing
+
+`create_form` and `create_form_from_prompt` always create drafts. Edits are proposed with `propose_form_edit` before they are applied with `apply_form_edit`.
+
+<Callout type="info">
+Publishing requires a preview followed by a second, confirmed call. Deleting forms, custom domains, and some webhook settings are dashboard-only.
+</Callout>
+
+## FAQ
+
+### What can Claude do with my Makeform account?
+
+Claude can list forms, create and edit drafts, publish after confirmation, read submissions, export responses, and get analytics. Tools include `list_forms`, `get_form`, `list_submissions`, `export_submissions`, `get_analytics_summary`, `create_webhook`, and `get_form_embed`.
+
+### Can Claude translate a form on the free plan?
+
+The MCP connection is free, but individual features keep their plan requirements. The `translate_form` tool requires Pro.
+
+### Can Claude publish a form without confirmation?
+
+No, publishing needs a preview and a second, confirmed call. Creating a form through the connector makes a draft.
+
+### Where do I revoke Claude's access?
+
+Open Makeform's <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Settings</span> > <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Connected apps</span> to manage or revoke access. Approved OAuth apps are listed there rather than under API keys.
+
+Makeform is a free AI form builder: describe what you want to collect and it builds the form for you, with unlimited forms and submissions on the free plan.
+
+## Related
+
+- [Use the Makeform MCP server](/integrations/makeform-mcp-server)
+- [Create an API key](/integrations/api-keys)
+- [Create a form with AI](/guides/create-a-form-with-ai)
+- [Webhooks](/integrations/webhooks)

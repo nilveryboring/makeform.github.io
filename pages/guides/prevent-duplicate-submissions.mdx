@@ -1,0 +1,64 @@
+---
+description: "Stop duplicate submissions in Makeform for free by choosing an email, phone, or short text field in Settings > Access."
+---
+
+import { Callout } from 'nextra/components'
+
+# How to stop people from submitting a form twice in Makeform
+
+Duplicate prevention accepts only one completed response for each value in a selected field. It is free on every plan under <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Settings</span> > <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Access</span> > <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Prevent duplicate submissions</span>.
+
+**Is it free?** Yes. Duplicate prevention is free on every plan, but unavailable on forms with a Payment field.
+
+## Steps
+
+1. Make sure your form has an Email, Phone, or Short Text field that every respondent sees. Do not choose a field hidden from some respondents by logic.
+2. Open your form and click the <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Settings</span> icon in the top bar, then go to <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Access</span>.
+3. Turn on <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Prevent duplicate submissions</span>.
+4. In <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Identify respondents by</span>, select the field you want to use for matching responses.
+5. Click <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Save Changes</span>.
+
+Choose the field whose values you want to limit to one completed response each. The rule uses the value in that field to identify a repeat submission.
+
+## How matching works
+
+For email and short text values, matching ignores surrounding spaces and A–Z letter case. A change in capitalization or extra spaces around the value does not make it a different value for this check.
+
+Phone values compare digits only. Phone formatting is not used to distinguish responses with the same digits.
+
+Existing responses without a value in the selected field are kept and skipped. They are not deleted when you set up duplicate prevention.
+
+## What respondents see
+
+A respondent who has already submitted sees <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Looks like you've already submitted this form</span>. This message relates to the value in the field selected under <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Identify respondents by</span>.
+
+<Callout type="info">
+Duplicate prevention is unavailable for forms with a Payment field. There is no IP-address option.
+</Callout>
+
+Makeform is a free AI form builder: describe what you want to collect and it builds the form for you, with unlimited forms and submissions on the free plan.
+
+## FAQ
+
+### Can I block duplicate responses by IP address?
+
+No. There is no IP-address option. Select an Email, Phone, or Short Text field under <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Identify respondents by</span> instead.
+
+### Can I use this on a form that collects payments?
+
+No. Duplicate prevention is unavailable on forms with a Payment field. This restriction applies even though duplicate prevention itself is free on every plan.
+
+### Do uppercase letters count as a different email?
+
+No. Email and short text matching ignores A–Z letter case and surrounding spaces. Phone matching compares digits only.
+
+### What happens to older responses with no matching value?
+
+Existing responses without a value are kept and skipped. Choose a field that every respondent sees when setting up the rule for completed responses.
+
+## Related
+
+- [Password protect a form](/guides/password-protect-a-form)
+- [Close form rules](/features/close-form)
+- [Email input](/features/email-input)
+- [Form settings](/guides/form-settings)

@@ -1,0 +1,60 @@
+---
+description: "Create a free registration form with limited spots in Makeform using a total submission cap or limits for individual sessions and slots."
+---
+
+import { Callout } from 'nextra/components'
+
+# How to create a registration form with limited spots in Makeform
+
+Limit registration for free with a whole-form submission cap under <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Settings</span> > <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Access</span>, or limits on individual choice options. Use the whole-form limit for an overall response cap and option limits for sessions, classes, or time slots.
+
+**Is it free?** Yes. Submission limits, option limits, scheduled closing, and duplicate prevention are free on every plan.
+
+## Steps
+
+1. Describe your registration form at [makeform.ai/create](https://www.makeform.ai/create), with no account needed to start. You can [adjust it with AI](/guides/create-a-form-with-ai) or build it manually with <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">+</span> (<span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Add form element</span>).
+2. For a whole-form cap, go to <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Settings</span> > <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Access</span>. Turn on <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Limit number of submissions</span> and enter <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Maximum submissions</span>. The form automatically closes when the submission limit is reached.
+3. Turn on <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Show custom message on closed form</span>. Fill in <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Title</span> and <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Description</span> so people arriving after the limit know what to do next. The default closed message is “This form is now closed”.
+4. For a session, class, or time-slot limit, add a choice field such as <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Single Select</span> from <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Input blocks</span>. Enable <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Limit responses per option</span> and enter a number for each option. Options show <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Full</span> when taken.
+5. If registration also has a deadline, enable <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Close on scheduled date</span> under <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Settings</span> > <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Access</span>. Set <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Timezone</span>, <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Date</span>, and <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Time</span>.
+6. To prevent one person from taking two spots, use <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Prevent duplicate submissions</span> with the email field. This option is not available on forms with a <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Payment</span> field.
+7. Test the registration limits, then delete your test responses before sharing the form. Test submissions count toward the limits.
+
+## Choose what the limit counts
+
+The whole-form setting caps the number of submissions. The per-option setting limits responses to a particular session, class, or slot. Choose the limit that matches the registration you are collecting; use the option setting when each choice needs its own capacity.
+
+## Offer a waitlist
+
+Makeform does not have an automatic waitlist. As a workaround, create a second form for the waitlist and link to it in the closed-form message. The AI chat includes a <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Create Waitlist</span> starter.
+
+<Callout type="info">
+Delete test responses before sharing a form with limits. Test submissions count toward those limits, just like other submissions.
+</Callout>
+
+Makeform is a free AI form builder: describe what you want to collect and it builds the form for you, with unlimited forms and submissions on the free plan.
+
+## FAQ
+
+### Can I close registration after a fixed number of submissions?
+
+Yes, enable <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Limit number of submissions</span> and enter <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Maximum submissions</span>. The form closes automatically when that limit is reached.
+
+### Can each class have a different number of spots?
+
+Yes, use <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Limit responses per option</span> on the class choice field. Enter a number per option; a full option shows <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Full</span>.
+
+### Does Makeform automatically move people to a waitlist?
+
+No, there is no automatic waitlist. Link to a separate waitlist form in your custom closed-form message.
+
+### Can I prevent duplicate registrations on a paid ticket form?
+
+<span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Prevent duplicate submissions</span> is not available on forms with a <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Payment</span> field. On forms without that field, use duplicate prevention with the email field.
+
+## Related
+
+- [Limit responses per option](/guides/limit-responses-per-option)
+- [Close form rules](/features/close-form)
+- [Prevent duplicate submissions](/guides/prevent-duplicate-submissions)
+- [Create an event RSVP form](/tutorials/common-tutorials/how-to-create-an-event-rsvp-form)

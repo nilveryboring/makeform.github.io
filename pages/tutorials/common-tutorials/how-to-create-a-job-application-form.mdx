@@ -1,0 +1,63 @@
+---
+description: "Create a free job application form in Makeform with resume uploads, role questions, and an application deadline."
+---
+
+import { Callout } from 'nextra/components'
+
+# How to create a job application form with resume upload in Makeform
+
+Create a job application form for free by adding contact fields and a <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">File Upload</span> block in the form editor. You can collect resumes, ask role-specific questions, and set an application deadline.
+
+**Is it free?** Yes. Application fields and resume uploads are free within the Free plan's upload limits; team invitations require a paid plan.
+
+## Steps
+
+1. Describe your application form at [makeform.ai/create](https://www.makeform.ai/create). You do not need an account to start, and you can [adjust the form with AI](/guides/create-a-form-with-ai) or edit it by hand.
+2. Click <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">+</span> (<span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Add form element</span>) and use <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Input blocks</span>. Add <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Short Text Input</span> for the applicant's name, <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Email Input</span>, <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Phone Input</span>, and <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Link Input</span> for a LinkedIn profile or portfolio.
+3. Add <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">File Upload</span> for the resume. Its default label is “Upload your resume”, with the subtext “Accepted formats: PDF, DOC, DOCX.” Set <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Allowed File Types</span> to the formats you want, such as `pdf`, `doc`, and `docx`, and set <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Maximum Files</span>.
+4. Add <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Long Text Input</span> for a cover letter or an explanation of why the applicant wants the role. Use choice questions for role, location, or work authorization. You can also add a <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Signature</span> for a declaration.
+5. Use [conditional logic](/features/conditional-logic) for follow-up questions that depend on the selected role.
+6. For a deadline, go to <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Settings</span> > <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Access</span> and enable <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Close on scheduled date</span>. Set <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Timezone</span>, <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Date</span>, and <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Time</span>.
+7. Review applications in the <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Submissions</span> table. Use <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Export submission PDF</span> to export an individual application, or send applications to Slack, Google Sheets, or Notion through the free integrations.
+
+## Resume upload limits
+
+On Free, each file can be up to 20 MB, and all files in one submission must total no more than 20 MB. You can add up to three upload fields per form and collect up to ten files per field.
+
+Pro and Business support files up to 1 GB each, up to 2 GB per submission, and up to 100 upload fields per form.
+
+<Callout type="info">
+The default resume subtext names PDF, DOC, and DOCX. Use <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Allowed File Types</span> to set the formats for your upload field.
+</Callout>
+
+## Review applications with a team
+
+Inviting teammates requires a paid plan. Pro supports Editor invitations; Business also supports Viewer and Admin roles. Individual submission PDF exports and the Slack, Google Sheets, and Notion integrations are free.
+
+Makeform is a free AI form builder: describe what you want to collect and it builds the form for you, with unlimited forms and submissions on the free plan.
+
+## FAQ
+
+### Can applicants upload resumes for free?
+
+Yes, resume uploads are available on Free. Each file can be up to 20 MB, with a 20 MB total across the submission.
+
+### Can I ask different questions for different roles?
+
+Yes, use conditional logic for role-specific follow-up questions. Add a choice question for the role and base the follow-ups on that answer.
+
+### Can applications close automatically on a deadline?
+
+Yes, use <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Close on scheduled date</span> under <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Settings</span> > <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Access</span>. Set the date, time, and timezone for the deadline.
+
+### Can I export one application as a PDF?
+
+Yes, use <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Export submission PDF</span> from <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Submissions</span>. This export is free on every plan.
+
+## Related
+
+- [File upload limits](/features/file-upload-limits)
+- [Conditional logic](/features/conditional-logic)
+- [Close form rules](/features/close-form)
+- [Google Sheets integration](/integrations/google-sheets-integration)
+- [Team collaboration](/features/team-collaboration)

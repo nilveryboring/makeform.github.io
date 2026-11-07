@@ -1,10 +1,14 @@
+---
+description: "Remove Makeform branding on Pro or Business by turning off branding toggles in Settings > Branding and saving your changes."
+---
 import { Callout } from 'nextra/components';
 import Link from 'next/link'
 
 # Remove Makeform branding
 
-Makeform have a "Powered by MakeForm" button on every page of your form. With Makeform Pro,
-you can remove all Makeform branding and have your forms seamlessly represent your brand.
+You can remove Makeform branding from forms and notification emails on Pro or Business. Open your form’s <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Settings</span> tab and turn off the options you don’t want in the <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Branding</span> section.
+
+Makeform is a free AI form builder: describe what you want to collect and it builds the form for you, with unlimited forms and submissions on the free plan.
 
 <div style={{ backgroundColor: '#fdf2f8', border: '2px solid #ec4899', borderRadius: '0.5rem', padding: '1rem', marginTop: '1.5rem', marginBottom: '1.5rem', display: 'flex', gap: '0.75rem', alignItems: 'flex-start' }}>
   <div style={{ fontSize: '1.5rem', lineHeight: '1' }}>✨</div>
@@ -21,11 +25,50 @@ you can remove all Makeform branding and have your forms seamlessly represent yo
 
 ---
 
-# How to remove Makeform branding
+## How to remove Makeform branding
 
-You can go to the <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded"> Settings </span> tab.
-Simple click the switch to remove Makeform branding.
+1. Open your form and go to <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Settings</span>.
+2. Find the <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Branding</span> section.
+3. Turn **off** the toggles for the branding you don’t want:
+   - <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Show loading screen</span> — hides the loading screen.
+   - <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Show custom message on loading screen</span> — hides custom loading text. Setting custom loading text, up to 100 characters, also requires Pro or Business.
+   - <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Show 'Powered by' badge</span> — hides the badge on all form views.
+   - <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Show Makeform link on end page</span> — hides the Makeform link on the end page.
+   - <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Show Makeform branding in emails</span> — removes the <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Powered by Makeform</span> footer from notification emails.
+4. Click <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Save Changes</span>.
+
+On Free, published forms always show Makeform branding, even if a toggle was changed earlier.
 
 <div className="shadow-2xl mt-12">
   ![Remove Branding Example2](/images/remove-branding2.png)
 </div>
+
+
+## Embedded forms
+
+The same badge and loading-screen options also appear in <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Share</span> > <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Embed options</span>. Hiding the badge applies to all form views, including embedded forms.
+
+## Printed forms and downloaded PDFs
+
+In the print preview, open <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Customize</span> and select <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Remove Makeform branding</span>. This option requires Pro or Business. On Free, printed pages carry a small <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Made with Makeform</span> band with a QR code.
+
+## FAQ
+
+### Is removing branding free?
+
+No. Removing Makeform branding requires Pro or Business. Published forms on Free always show branding, even if you changed a toggle earlier.
+
+### Does it remove branding from emails?
+
+Yes. Turn off <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Show Makeform branding in emails</span> and click <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Save Changes</span> to remove the <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Powered by Makeform</span> footer from notification emails.
+
+### Does it apply to embedded forms?
+
+Yes. Hiding the badge applies to all form views, including embeds. You can also find the badge and loading-screen options in <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Share</span> > <span className="text-cyan-500 font-bold bg-cyan-100 px-2 py-1 rounded">Embed options</span>.
+
+## Related
+
+- [Plans and pricing](/plans-and-pricing)
+- [Custom domain](/features/custom-domain)
+- [Print a form](/guides/print-a-form)
+- [Custom CSS](/features/custom-css)
