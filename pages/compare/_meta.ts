@@ -12,4 +12,9 @@ export default {
   'best-form-builders-chatgpt-claude': 'Best form builders for ChatGPT and Claude',
   'best-free-google-forms-alternatives': 'Best free Google Forms alternatives',
   'best-free-quiz-makers': 'Best free quiz makers',
+  'best-free-survey-makers': 'Best free survey makers',
+  'best-free-typeform-alternatives': 'Best free Typeform alternatives',
+  'best-free-form-builders-with-payments': 'Best free form builders with payments',
+  'best-free-online-form-builders': 'Best free online form builders',
+  'best-printable-form-worksheet-makers': 'Best printable form and worksheet makers',
 }
