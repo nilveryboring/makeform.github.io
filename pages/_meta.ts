@@ -6,6 +6,7 @@ export default {
   integrations: 'Integrations',
   developer: 'Developer',
   'plans-and-pricing': 'Plans & Pricing',
+  compare: 'Compare',
   'makeform-for-startups': {
     title: "Makeform's Partner Program",
     display: 'hidden',
